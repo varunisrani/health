@@ -25,6 +25,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted:', { isLogin, email });
     setIsLoading(true);
 
     try {
@@ -34,6 +35,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
           toast({ title: "Welcome back!", description: "You've been logged in successfully." });
           onOpenChange(false);
           navigate('/dashboard');
+        } else {
+          toast({ title: "Login failed", description: "Please check your credentials.", variant: "destructive" });
         }
       } else {
         if (password !== confirmPassword) {
@@ -46,13 +49,24 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
           toast({ title: "Account created!", description: "Welcome to HealConnect." });
           onOpenChange(false);
           navigate('/dashboard');
+        } else {
+          toast({ title: "Signup failed", description: "Please try again.", variant: "destructive" });
         }
       }
     } catch (error) {
+      console.error('Auth error:', error);
       toast({ title: "Authentication failed", description: "Please try again.", variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleModeSwitch = () => {
+    setIsLogin(!isLogin);
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setName('');
   };
 
   return (
@@ -133,8 +147,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
             {isLogin ? "Don't have an account?" : "Already have an account?"}
           </p>
           <Button
+            type="button"
             variant="ghost"
-            onClick={() => setIsLogin(!isLogin)}
+            onClick={handleModeSwitch}
             className="text-hc-primary hover:text-hc-primary/80"
           >
             {isLogin ? "Create account" : "Log in"}

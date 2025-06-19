@@ -9,6 +9,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   const handleStartTrial = () => {
+    console.log('Start trial clicked, isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
       navigate('/dashboard');
     } else {
@@ -17,8 +18,9 @@ const HeroSection = () => {
   };
 
   const handleBrowseMentors = () => {
+    console.log('Browse mentors clicked, isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
-      navigate('/dashboard#therapists');
+      navigate('/dashboard');
     } else {
       setShowAuthModal(true);
     }
@@ -44,7 +46,7 @@ const HeroSection = () => {
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-6xl font-inter font-semibold text-gray-900 leading-tight">
                 Guided Support for Your{" "}
-                <span className="hc-primary">Healing Journey</span>
+                <span className="text-hc-primary">Healing Journey</span>
               </h1>
               
               <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
@@ -57,7 +59,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 onClick={handleStartTrial}
-                className="bg-hc-accent hover:bg-hc-accent/90 text-white px-8 py-6 text-lg rounded-2xl shadow-lg hover-lift"
+                className="bg-hc-accent hover:bg-hc-accent/90 text-white px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 Start Your 14-Day Free Journey
               </Button>
@@ -65,7 +67,7 @@ const HeroSection = () => {
               <Button 
                 variant="ghost" 
                 onClick={handleBrowseMentors}
-                className="text-hc-primary hover:text-hc-primary/80 px-8 py-6 text-lg"
+                className="text-hc-primary hover:text-hc-primary/80 px-8 py-6 text-lg hover:bg-hc-primary/5 transition-all duration-300"
               >
                 Browse Mentors →
               </Button>

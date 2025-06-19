@@ -36,44 +36,66 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Check for existing auth on mount
     const savedUser = localStorage.getItem('healconnect_user');
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
-      setIsAuthenticated(true);
+      try {
+        const parsedUser = JSON.parse(savedUser);
+        setUser(parsedUser);
+        setIsAuthenticated(true);
+        console.log('User restored from localStorage:', parsedUser);
+      } catch (error) {
+        console.error('Error parsing saved user:', error);
+        localStorage.removeItem('healconnect_user');
+      }
     }
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
-    // Mock authentication - in real app, this would call an API
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-    
-    const mockUser: User = {
-      id: '1',
-      email,
-      name: email.split('@')[0],
-    };
-    
-    setUser(mockUser);
-    setIsAuthenticated(true);
-    localStorage.setItem('healconnect_user', JSON.stringify(mockUser));
-    return true;
+    try {
+      console.log('Login attempt for:', email);
+      // Mock authentication - in real app, this would call an API
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      
+      const mockUser: User = {
+        id: '1',
+        email,
+        name: email.split('@')[0],
+      };
+      
+      setUser(mockUser);
+      setIsAuthenticated(true);
+      localStorage.setItem('healconnect_user', JSON.stringify(mockUser));
+      console.log('Login successful:', mockUser);
+      return true;
+    } catch (error) {
+      console.error('Login failed:', error);
+      return false;
+    }
   };
 
   const signup = async (email: string, password: string, name: string): Promise<boolean> => {
-    // Mock signup - in real app, this would call an API
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-    
-    const mockUser: User = {
-      id: '1',
-      email,
-      name,
-    };
-    
-    setUser(mockUser);
-    setIsAuthenticated(true);
-    localStorage.setItem('healconnect_user', JSON.stringify(mockUser));
-    return true;
+    try {
+      console.log('Signup attempt for:', email, name);
+      // Mock signup - in real app, this would call an API
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      
+      const mockUser: User = {
+        id: '1',
+        email,
+        name,
+      };
+      
+      setUser(mockUser);
+      setIsAuthenticated(true);
+      localStorage.setItem('healconnect_user', JSON.stringify(mockUser));
+      console.log('Signup successful:', mockUser);
+      return true;
+    } catch (error) {
+      console.error('Signup failed:', error);
+      return false;
+    }
   };
 
   const logout = () => {
+    console.log('Logging out user');
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem('healconnect_user');
