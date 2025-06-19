@@ -65,7 +65,7 @@ const HeroSection = () => {
                 onClick={handleStartTrial}
                 variant="hc-accent"
                 size="xl"
-                className="rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer bg-hc-accent text-white hover:bg-hc-accent/90 border-0"
               >
                 Start Your 14-Day Free Journey
               </Button>
@@ -74,7 +74,7 @@ const HeroSection = () => {
                 variant="ghost" 
                 size="xl"
                 onClick={handleBrowseMentors}
-                className="text-hc-primary hover:text-hc-primary/80 hover:bg-hc-primary/5 transition-all duration-300"
+                className="text-hc-primary hover:text-hc-primary/80 hover:bg-hc-primary/10 transition-all duration-300 cursor-pointer border border-hc-primary hover:border-hc-primary/80 hover:scale-105"
               >
                 Browse Mentors →
               </Button>
