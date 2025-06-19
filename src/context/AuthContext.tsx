@@ -101,6 +101,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem('healconnect_user');
   };
 
+  console.log('AuthContext state:', { isAuthenticated, showAuthModal, user: user?.name });
+
   return (
     <AuthContext.Provider value={{
       isAuthenticated,

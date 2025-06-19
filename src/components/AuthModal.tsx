@@ -23,6 +23,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
   const { login, signup } = useAuth();
   const navigate = useNavigate();
 
+  const resetForm = () => {
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setName('');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', { isLogin, email });
@@ -34,6 +41,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
         if (success) {
           toast({ title: "Welcome back!", description: "You've been logged in successfully." });
           onOpenChange(false);
+          resetForm();
           navigate('/dashboard');
         } else {
           toast({ title: "Login failed", description: "Please check your credentials.", variant: "destructive" });
@@ -48,6 +56,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
         if (success) {
           toast({ title: "Account created!", description: "Welcome to HealConnect." });
           onOpenChange(false);
+          resetForm();
           navigate('/dashboard');
         } else {
           toast({ title: "Signup failed", description: "Please try again.", variant: "destructive" });
@@ -62,15 +71,23 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
   };
 
   const handleModeSwitch = () => {
+    console.log('Switching auth mode from', isLogin ? 'login' : 'signup', 'to', !isLogin ? 'login' : 'signup');
     setIsLogin(!isLogin);
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setName('');
+    resetForm();
   };
 
+  const handleOpenChange = (newOpen: boolean) => {
+    console.log('AuthModal open change:', newOpen);
+    if (!newOpen) {
+      resetForm();
+    }
+    onOpenChange(newOpen);
+  };
+
+  console.log('AuthModal render:', { open, isLogin });
+
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-semibold">

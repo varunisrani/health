@@ -13,6 +13,7 @@ const HeroSection = () => {
     if (isAuthenticated) {
       navigate('/dashboard');
     } else {
+      console.log('Setting showAuthModal to true');
       setShowAuthModal(true);
     }
   };
@@ -22,6 +23,7 @@ const HeroSection = () => {
     if (isAuthenticated) {
       navigate('/dashboard');
     } else {
+      console.log('Setting showAuthModal to true');
       setShowAuthModal(true);
     }
   };
