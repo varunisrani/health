@@ -32,7 +32,12 @@ const HeroSection = () => {
 
   return (
     <section className="relative py-20 px-6 bg-gradient-to-br from-hc-surface to-white overflow-hidden">
-      <div className="container mx-auto max-w-6xl">
+      {/* Background Pattern - moved to top and added z-index */}
+      <div className="absolute inset-0 opacity-5 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(20,157,161,0.1),transparent_50%)]"></div>
+      </div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8 fade-in">
@@ -60,7 +65,7 @@ const HeroSection = () => {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 relative z-20">
               <Button 
                 onClick={handleStartTrial}
                 variant="hc-accent"
@@ -107,11 +112,6 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(20,157,161,0.1),transparent_50%)]"></div>
       </div>
     </section>
   );
