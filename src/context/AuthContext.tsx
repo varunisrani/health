@@ -32,9 +32,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
   
-  // Ensure modal state changes are logged
+  // Debug modal state changes
   useEffect(() => {
-    console.log('Auth modal state changed:', showAuthModal);
+    console.log('AuthModal state changed to:', showAuthModal);
   }, [showAuthModal]);
 
   useEffect(() => {
@@ -103,10 +103,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     console.log('Logging out user');
     setUser(null);
     setIsAuthenticated(false);
+    setShowAuthModal(false);
     localStorage.removeItem('healconnect_user');
   };
 
-  console.log('AuthContext state:', { isAuthenticated, showAuthModal, user: user?.name });
+  // Enhanced debug logging
+  console.log('AuthContext current state:', { 
+    isAuthenticated, 
+    showAuthModal, 
+    userName: user?.name || 'No user' 
+  });
 
   return (
     <AuthContext.Provider value={{

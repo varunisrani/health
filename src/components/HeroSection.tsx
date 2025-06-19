@@ -8,24 +8,24 @@ const HeroSection = () => {
   const { isAuthenticated, setShowAuthModal } = useAuth();
   const navigate = useNavigate();
 
-  const handleStartTrial = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log('Start trial clicked, isAuthenticated:', isAuthenticated);
+  const handleStartTrial = () => {
+    console.log('Start trial button clicked, isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
+      console.log('User authenticated, navigating to dashboard');
       navigate('/dashboard');
     } else {
-      console.log('Setting showAuthModal to true');
+      console.log('User not authenticated, showing auth modal');
       setShowAuthModal(true);
     }
   };
 
-  const handleBrowseMentors = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log('Browse mentors clicked, isAuthenticated:', isAuthenticated);
+  const handleBrowseMentors = () => {
+    console.log('Browse mentors button clicked, isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
+      console.log('User authenticated, navigating to dashboard');
       navigate('/dashboard');
     } else {
-      console.log('Setting showAuthModal to true');
+      console.log('User not authenticated, showing auth modal');
       setShowAuthModal(true);
     }
   };

@@ -32,7 +32,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', { isLogin, email });
+    console.log('Auth form submitted:', { isLogin, email });
     setIsLoading(true);
 
     try {
@@ -71,35 +71,27 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
   };
 
   const handleModeSwitch = () => {
-    console.log('Switching auth mode from', isLogin ? 'login' : 'signup', 'to', !isLogin ? 'login' : 'signup');
+    console.log('Switching auth mode from', isLogin ? 'login' : 'signup');
     setIsLogin(!isLogin);
     resetForm();
   };
 
-  const handleOpenChange = (newOpen: boolean) => {
-    console.log('AuthModal open change:', newOpen);
-    if (!newOpen) {
-      resetForm();
-    }
-    // Ensure we're updating the state in the parent component
-    onOpenChange(newOpen);
-    
-    // Add a small delay to ensure the DOM has updated
-    if (newOpen) {
-      setTimeout(() => {
-        const modalElement = document.querySelector('[role="dialog"]');
-        if (modalElement) {
-          console.log('Modal element found and focused');
-          (modalElement as HTMLElement).focus();
-        }
-      }, 100);
-    }
+  const handleGoToLoginPage = () => {
+    console.log('Navigating to login page');
+    onOpenChange(false);
+    navigate('/auth/login');
   };
 
-  console.log('AuthModal render:', { open, isLogin });
+  const handleGoToSignupPage = () => {
+    console.log('Navigating to signup page');
+    onOpenChange(false);
+    navigate('/auth/signup');
+  };
+
+  console.log('AuthModal render - open:', open, 'isLogin:', isLogin);
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-semibold">
@@ -172,18 +164,39 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
           </Button>
         </form>
         
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-4">
           <p className="text-sm text-gray-600">
             {isLogin ? "Don't have an account?" : "Already have an account?"}
           </p>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={handleModeSwitch}
-            className="text-hc-primary hover:text-hc-primary/80"
-          >
-            {isLogin ? "Create account" : "Log in"}
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={handleModeSwitch}
+              className="text-hc-primary hover:text-hc-primary/80"
+            >
+              {isLogin ? "Create account" : "Log in"}
+            </Button>
+            <div className="text-xs text-gray-500">or</div>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleGoToLoginPage}
+                className="flex-1"
+              >
+                Go to Login Page
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleGoToSignupPage}
+                className="flex-1"
+              >
+                Go to Signup Page
+              </Button>
+            </div>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
