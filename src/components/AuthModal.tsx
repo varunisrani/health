@@ -81,7 +81,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
     if (!newOpen) {
       resetForm();
     }
+    // Ensure we're updating the state in the parent component
     onOpenChange(newOpen);
+    
+    // Add a small delay to ensure the DOM has updated
+    if (newOpen) {
+      setTimeout(() => {
+        const modalElement = document.querySelector('[role="dialog"]');
+        if (modalElement) {
+          console.log('Modal element found and focused');
+          (modalElement as HTMLElement).focus();
+        }
+      }, 100);
+    }
   };
 
   console.log('AuthModal render:', { open, isLogin });
@@ -152,7 +164,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
           
           <Button
             type="submit"
-            className="w-full bg-hc-primary hover:bg-hc-primary/90 text-white"
+            variant="hc-primary"
+            className="w-full"
             disabled={isLoading}
           >
             {isLoading ? "Processing..." : (isLogin ? "Log In" : "Create Account")}

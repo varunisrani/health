@@ -8,7 +8,8 @@ const HeroSection = () => {
   const { isAuthenticated, setShowAuthModal } = useAuth();
   const navigate = useNavigate();
 
-  const handleStartTrial = () => {
+  const handleStartTrial = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     console.log('Start trial clicked, isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
       navigate('/dashboard');
@@ -18,7 +19,8 @@ const HeroSection = () => {
     }
   };
 
-  const handleBrowseMentors = () => {
+  const handleBrowseMentors = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     console.log('Browse mentors clicked, isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
       navigate('/dashboard');
@@ -61,15 +63,18 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 onClick={handleStartTrial}
-                className="bg-hc-accent hover:bg-hc-accent/90 text-white px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                variant="hc-accent"
+                size="xl"
+                className="rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 Start Your 14-Day Free Journey
               </Button>
               
               <Button 
                 variant="ghost" 
+                size="xl"
                 onClick={handleBrowseMentors}
-                className="text-hc-primary hover:text-hc-primary/80 px-8 py-6 text-lg hover:bg-hc-primary/5 transition-all duration-300"
+                className="text-hc-primary hover:text-hc-primary/80 hover:bg-hc-primary/5 transition-all duration-300"
               >
                 Browse Mentors →
               </Button>

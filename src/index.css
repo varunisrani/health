@@ -111,6 +111,22 @@
     background-color: rgb(var(--hc-accent));
   }
   
+  .hover\:bg-hc-primary\/90:hover {
+    background-color: rgba(var(--hc-primary), 0.9);
+  }
+  
+  .hover\:bg-hc-accent\/90:hover {
+    background-color: rgba(var(--hc-accent), 0.9);
+  }
+  
+  .hover\:bg-hc-primary\/5:hover {
+    background-color: rgba(var(--hc-primary), 0.05);
+  }
+  
+  .hover\:text-hc-primary\/80:hover {
+    color: rgba(var(--hc-primary), 0.8);
+  }
+  
   .border-hc-primary {
     border-color: rgb(var(--hc-primary));
   }

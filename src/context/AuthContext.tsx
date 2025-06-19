@@ -31,6 +31,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
+  
+  // Ensure modal state changes are logged
+  useEffect(() => {
+    console.log('Auth modal state changed:', showAuthModal);
+  }, [showAuthModal]);
 
   useEffect(() => {
     // Check for existing auth on mount
