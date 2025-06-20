@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,11 +23,11 @@ export default {
 				'open-sans': ['Open Sans', 'SF Pro Display', 'Roboto', 'sans-serif'],
 			},
 			colors: {
-				'hc-primary': 'rgb(20 157 161)',
-				'hc-secondary': 'rgb(191 170 246)',
-				'hc-tertiary': 'rgb(168 216 185)',
-				'hc-surface': 'rgb(245 243 239)',
-				'hc-accent': 'rgb(255 131 103)',
+				'hc-primary': 'rgb(44 82 130)', /* Medical Navy Blue */
+				'hc-secondary': 'rgb(116 142 168)', /* Soft Gray-Blue */
+				'hc-tertiary': 'rgb(134 154 139)', /* Light Sage Green */
+				'hc-surface': 'rgb(249 250 251)', /* Clean Off-White */
+				'hc-accent': 'rgb(79 172 159)', /* Muted Medical Teal */
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -12,7 +11,8 @@ const libraryItems = [
       { title: "Anxiety Relief", duration: "15 min", level: "Intermediate" }
     ],
     bgColor: "bg-hc-primary/10",
-    accentColor: "hc-primary"
+    accentColor: "hc-primary",
+    borderColor: "border-hc-primary"
   },
   {
     category: "Yoga Routines",
@@ -23,7 +23,8 @@ const libraryItems = [
       { title: "Restorative Yoga", duration: "25 min", level: "All Levels" }
     ],
     bgColor: "bg-hc-secondary/10",
-    accentColor: "hc-secondary"
+    accentColor: "hc-secondary",
+    borderColor: "border-hc-secondary"
   },
   {
     category: "Music Therapy",
@@ -34,7 +35,8 @@ const libraryItems = [
       { title: "Binaural Beats", duration: "30 min", level: "Intermediate" }
     ],
     bgColor: "bg-hc-tertiary/10",
-    accentColor: "hc-tertiary"
+    accentColor: "hc-tertiary",
+    borderColor: "border-hc-tertiary"
   }
 ];
 
@@ -62,44 +64,33 @@ const WellnessLibrarySection = () => {
               <CardContent className="p-8">
                 {/* Category Header */}
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">
-                    {section.icon}
-                  </div>
-                  <h3 className="text-2xl font-inter font-semibold text-gray-900">
+                  <div className="text-3xl">{section.icon}</div>
+                  <h3 className="text-xl font-inter font-semibold text-gray-900">
                     {section.category}
                   </h3>
                 </div>
 
-                {/* Library Items */}
-                <div className="space-y-4">
+                {/* Items List */}
+                <div className="space-y-4 mb-6">
                   {section.items.map((item, itemIndex) => (
-                    <div 
-                      key={itemIndex}
-                      className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer hover:scale-105"
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-medium text-gray-900 flex-1">
-                          {item.title}
-                        </h4>
-                        <Badge 
-                          variant="secondary"
-                          className="text-xs bg-gray-100 text-gray-600 ml-2"
-                        >
+                    <div key={itemIndex} className="bg-white/80 p-4 rounded-xl">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-medium text-gray-900">{item.title}</h4>
+                        <Badge variant="outline" className="text-xs">
                           {item.duration}
                         </Badge>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">{item.level}</span>
-                        <button className="text-sm hc-primary hover:underline font-medium">
-                          Preview →
+                        <span className="text-sm text-gray-600">{item.level}</span>
+                        <button className={`text-sm ${section.accentColor} hover:underline font-medium`}>
+                          Start →
                         </button>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* View All in Category */}
-                <button className={`w-full mt-6 bg-white border-2 border-${section.accentColor.replace('hc-', 'hc-')} ${section.accentColor} hover:bg-${section.accentColor.replace('hc-', 'hc-')} hover:text-white font-medium py-3 rounded-xl transition-all duration-300`}>
+                <button className={`w-full mt-6 bg-white ${section.borderColor} border-2 ${section.accentColor} hover:bg-hc-primary hover:text-white font-medium py-3 rounded-xl transition-all duration-300`}>
                   Explore All {section.category}
                 </button>
               </CardContent>

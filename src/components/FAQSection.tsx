@@ -1,4 +1,3 @@
-
 import {
   Accordion,
   AccordionContent,
@@ -70,12 +69,12 @@ const FAQSection = () => {
         </div>
 
         {/* Important Disclaimer */}
-        <div className="mt-12 bg-red-50 border-l-4 border-red-400 rounded-r-xl p-6 fade-in">
+        <div className="mt-12 bg-orange-50 border-l-4 border-orange-400 rounded-r-xl p-6 fade-in">
           <div className="flex items-start space-x-3">
-            <div className="text-red-400 text-xl">⚠️</div>
+            <div className="text-orange-400 text-xl">⚠️</div>
             <div>
-              <h3 className="font-semibold text-red-800 mb-2">Important Medical Disclaimer</h3>
-              <p className="text-red-700 leading-relaxed">
+              <h3 className="font-semibold text-orange-800 mb-2">Important Medical Disclaimer</h3>
+              <p className="text-orange-700 leading-relaxed">
                 HealConnect provides wellness support and is <strong>not a replacement for professional medical or mental health therapy</strong>. 
                 If you're experiencing a mental health crisis, please contact emergency services immediately or reach out to:
               </p>
