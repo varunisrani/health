@@ -6,53 +6,57 @@
 
 @layer base {
   :root {
-    /* HealConnect Medical Color Palette */
-    --hc-primary: 44 82 130; /* Medical Navy Blue #2C5282 */
-    --hc-secondary: 116 142 168; /* Soft Gray-Blue #748EA8 */
-    --hc-tertiary: 134 154 139; /* Light Sage Green #869A8B */
-    --hc-surface: 249 250 251; /* Clean Off-White #F9FAFB */
-    --hc-accent: 79 172 159; /* Muted Medical Teal #4FAC9F */
+    /* HealConnect Therapeutic Color Palette */
+    --hc-primary: 59 107 140; /* Therapeutic Ocean Blue #3B6B8C */
+    --hc-secondary: 123 160 152; /* Sage Wellness #7BA098 */
+    --hc-tertiary: 168 200 168; /* Healing Mint #A8C8A8 */
+    --hc-surface: 253 255 254; /* Pure Wellness White #FDFFFE */
+    --hc-accent: 232 184 109; /* Warm Sunrise #E8B86D */
+    --hc-warm: 244 228 193; /* Comfort Cream #F4E4C1 */
+    --hc-success: 107 207 127; /* Growth Green #6BCF7F */
+    --hc-warning: 255 184 77; /* Gentle Alert #FFB84D */
+    --hc-soft: 234 244 244; /* Tranquil Mist #EAF4F4 */
     
     /* shadcn/ui variables */
-    --background: 249 250 251; /* Clean Off-White */
-    --foreground: 55 65 81; /* Professional Dark Gray for text */
+    --background: 255 255 255; /* Pure White for better contrast */
+    --foreground: 30 41 59; /* Darker text for better readability */
 
     --card: 255 255 255;
-    --card-foreground: 55 65 81;
+    --card-foreground: 30 41 59;
 
     --popover: 255 255 255;
-    --popover-foreground: 55 65 81;
+    --popover-foreground: 30 41 59;
 
-    --primary: 44 82 130; /* Medical Navy Blue */
+    --primary: 59 107 140; /* Therapeutic Ocean Blue */
     --primary-foreground: 255 255 255;
 
-    --secondary: 243 244 246; /* Light Gray */
-    --secondary-foreground: 55 65 81;
+    --secondary: 248 250 252; /* Very Light Blue */
+    --secondary-foreground: 30 41 59;
 
-    --muted: 249 250 251;
-    --muted-foreground: 107 114 128;
+    --muted: 248 250 252; /* Light background */
+    --muted-foreground: 71 85 105; /* Darker muted text */
 
-    --accent: 79 172 159; /* Muted Medical Teal */
-    --accent-foreground: 255 255 255;
+    --accent: 232 184 109; /* Warm Sunrise */
+    --accent-foreground: 30 41 59; /* Dark text on accent */
 
     --destructive: 220 38 38;
     --destructive-foreground: 255 255 255;
 
-    --border: 229 231 235;
-    --input: 229 231 235;
-    --ring: 44 82 130;
+    --border: 226 232 240; /* Lighter border for better visibility */
+    --input: 226 232 240;
+    --ring: 59 107 140;
 
-    --radius: 0.75rem; /* Slightly less rounded for professional look */
+    --radius: 1rem; /* Increased for friendlier feel */
 
     /* Sidebar variables for shadcn compatibility */
     --sidebar-background: 255 255 255;
-    --sidebar-foreground: 55 65 81;
-    --sidebar-primary: 44 82 130;
+    --sidebar-foreground: 44 55 66;
+    --sidebar-primary: 59 107 140;
     --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 249 250 251;
-    --sidebar-accent-foreground: 55 65 81;
-    --sidebar-border: 229 231 235;
-    --sidebar-ring: 44 82 130;
+    --sidebar-accent: 234 244 244;
+    --sidebar-accent-foreground: 44 55 66;
+    --sidebar-border: 207 224 230;
+    --sidebar-ring: 59 107 140;
   }
 }
 
@@ -64,12 +68,14 @@
   body {
     @apply bg-background text-foreground font-['Open_Sans',_'SF_Pro_Display',_'Roboto',_sans-serif];
     line-height: 1.6;
+    color: rgb(30 41 59); /* Force dark text for readability */
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-['Inter',_'SF_Pro_Display',_'Roboto',_sans-serif] font-semibold;
     line-height: 1.25;
     letter-spacing: -0.025em;
+    color: rgb(30 41 59); /* Dark headings for visibility */
   }
 }
 
@@ -109,6 +115,34 @@
   .bg-hc-accent {
     background-color: rgb(var(--hc-accent));
   }
+
+  .bg-hc-warm {
+    background-color: rgb(var(--hc-warm));
+  }
+
+  .bg-hc-success {
+    background-color: rgb(var(--hc-success));
+  }
+
+  .bg-hc-warning {
+    background-color: rgb(var(--hc-warning));
+  }
+
+  .bg-hc-soft {
+    background-color: rgb(var(--hc-soft));
+  }
+
+  .text-hc-warm {
+    color: rgb(var(--hc-warm));
+  }
+
+  .text-hc-success {
+    color: rgb(var(--hc-success));
+  }
+
+  .text-hc-warning {
+    color: rgb(var(--hc-warning));
+  }
   
   .hover\:bg-hc-primary\/90:hover {
     background-color: rgba(var(--hc-primary), 0.9);
@@ -117,9 +151,17 @@
   .hover\:bg-hc-accent\/90:hover {
     background-color: rgba(var(--hc-accent), 0.9);
   }
+
+  .hover\:bg-hc-secondary\/90:hover {
+    background-color: rgba(var(--hc-secondary), 0.9);
+  }
   
   .hover\:bg-hc-primary\/5:hover {
     background-color: rgba(var(--hc-primary), 0.05);
+  }
+
+  .hover\:bg-hc-soft\/50:hover {
+    background-color: rgba(var(--hc-soft), 0.5);
   }
   
   .hover\:text-hc-primary\/80:hover {
@@ -128,6 +170,14 @@
   
   .border-hc-primary {
     border-color: rgb(var(--hc-primary));
+  }
+
+  .border-hc-secondary {
+    border-color: rgb(var(--hc-secondary));
+  }
+
+  .border-hc-soft {
+    border-color: rgb(var(--hc-soft));
   }
   
   .hover-lift {

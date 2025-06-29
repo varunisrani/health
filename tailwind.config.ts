@@ -23,11 +23,15 @@ export default {
 				'open-sans': ['Open Sans', 'SF Pro Display', 'Roboto', 'sans-serif'],
 			},
 			colors: {
-				'hc-primary': 'rgb(44 82 130)', /* Medical Navy Blue */
-				'hc-secondary': 'rgb(116 142 168)', /* Soft Gray-Blue */
-				'hc-tertiary': 'rgb(134 154 139)', /* Light Sage Green */
-				'hc-surface': 'rgb(249 250 251)', /* Clean Off-White */
-				'hc-accent': 'rgb(79 172 159)', /* Muted Medical Teal */
+				'hc-primary': 'rgb(59 107 140)', /* Therapeutic Ocean Blue */
+				'hc-secondary': 'rgb(123 160 152)', /* Sage Wellness */
+				'hc-tertiary': 'rgb(168 200 168)', /* Healing Mint */
+				'hc-surface': 'rgb(253 255 254)', /* Pure Wellness White */
+				'hc-accent': 'rgb(232 184 109)', /* Warm Sunrise */
+				'hc-warm': 'rgb(244 228 193)', /* Comfort Cream */
+				'hc-success': 'rgb(107 207 127)', /* Growth Green */
+				'hc-warning': 'rgb(255 184 77)', /* Gentle Alert */
+				'hc-soft': 'rgb(234 244 244)', /* Tranquil Mist */
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
