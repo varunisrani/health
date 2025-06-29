@@ -69,6 +69,8 @@
     @apply bg-background text-foreground font-['Open_Sans',_'SF_Pro_Display',_'Roboto',_sans-serif];
     line-height: 1.6;
     color: rgb(30 41 59); /* Force dark text for readability */
+    /* Mobile-first typography */
+    font-size: 16px; /* Ensure 16px base font size for mobile accessibility */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -77,9 +79,88 @@
     letter-spacing: -0.025em;
     color: rgb(30 41 59); /* Dark headings for visibility */
   }
+  
+  /* Mobile-optimized text sizes */
+  @media (max-width: 767px) {
+    body {
+      font-size: 16px; /* Maintain 16px minimum for mobile */
+      line-height: 1.6;
+    }
+    
+    h1 {
+      font-size: 1.75rem; /* 28px */
+      line-height: 1.2;
+    }
+    
+    h2 {
+      font-size: 1.5rem; /* 24px */
+      line-height: 1.3;
+    }
+    
+    h3 {
+      font-size: 1.25rem; /* 20px */
+      line-height: 1.3;
+    }
+    
+    h4, h5, h6 {
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.4;
+    }
+    
+    /* Ensure readable text sizes */
+    .text-xs {
+      font-size: 0.75rem !important; /* 12px minimum */
+    }
+    
+    .text-sm {
+      font-size: 0.875rem !important; /* 14px */
+    }
+    
+    /* Better spacing for mobile */
+    p {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 @layer utilities {
+  /* Mobile-first responsive text utilities */
+  .text-mobile-xs {
+    font-size: 0.75rem; /* 12px */
+  }
+  
+  .text-mobile-sm {
+    font-size: 0.875rem; /* 14px */
+  }
+  
+  .text-mobile-base {
+    font-size: 1rem; /* 16px */
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.125rem; /* 18px */
+  }
+  
+  /* Touch-friendly spacing */
+  .touch-spacing {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+  
+  .touch-spacing-sm {
+    padding: 0.5rem 0.75rem;
+    min-height: 40px;
+  }
+  
+  /* Mobile-optimized line heights */
+  .leading-mobile {
+    line-height: 1.6;
+  }
+  
+  .leading-mobile-tight {
+    line-height: 1.4;
+  }
+  
   .hc-primary {
     color: rgb(var(--hc-primary));
   }

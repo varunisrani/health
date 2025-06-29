@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Badge } from '@/components/ui/badge';
 import { useMoodTracker } from '@/hooks/useMoodTracker';
 import { Download, Calendar as CalendarIcon, FileText, BarChart3, Database } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 
@@ -18,6 +19,7 @@ export const MoodExport = () => {
     exportToPDF,
     getMoodConfig,
   } = useMoodTracker();
+  const isMobile = useIsMobile();
 
   const [exportFormat, setExportFormat] = useState<'csv' | 'pdf'>('csv');
   const [dateRange, setDateRange] = useState<{
@@ -85,18 +87,33 @@ export const MoodExport = () => {
   }, [entriesInRange]);
 
   return (
-    <div className="space-y-6">
+    <div className={cn(
+      isMobile ? "space-y-4 px-2" : "space-y-6"
+    )}>
       <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center text-hc-primary">
-            <Download className="h-5 w-5 mr-2" />
+        <CardHeader className={cn(
+          isMobile ? "p-4" : "p-6"
+        )}>
+          <CardTitle className={cn(
+            "flex items-center text-hc-primary",
+            isMobile ? "text-lg" : "text-xl"
+          )}>
+            <Download className={cn(
+              "mr-2",
+              isMobile ? "h-4 w-4" : "h-5 w-5"
+            )} />
             Export Mood Data
           </CardTitle>
-          <p className="text-gray-600">
+          <p className={cn(
+            "text-gray-600",
+            isMobile ? "text-sm" : "text-base"
+          )}>
             Export your mood tracking data for backup or analysis
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className={cn(
+          isMobile ? "space-y-4 p-4" : "space-y-6 p-6"
+        )}>
           {/* Export Configuration */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Date Range Selection */}

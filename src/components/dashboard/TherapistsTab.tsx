@@ -6,7 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { BookingDialog } from '@/components/BookingDialog';
-import { Search } from 'lucide-react';
+import { Search, Users, Award, Star } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const mockTherapists = [
   {
@@ -66,6 +67,7 @@ export const TherapistsTab = () => {
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
   const [selectedTherapist, setSelectedTherapist] = useState<any>(null);
   const [showBookingDialog, setShowBookingDialog] = useState(false);
+  const isMobile = useIsMobile();
 
   const filteredTherapists = mockTherapists.filter(therapist => {
     const matchesSearch = therapist.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -79,16 +81,16 @@ export const TherapistsTab = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Search and Filters */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         <div className="relative">
           <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
           <Input
             placeholder="Search therapists..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 h-11 sm:h-10"
           />
         </div>
         
@@ -99,7 +101,9 @@ export const TherapistsTab = () => {
               variant={selectedSpecialty === specialty ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedSpecialty(specialty)}
-              className={selectedSpecialty === specialty ? "bg-hc-primary text-white" : ""}
+              className={`h-8 px-3 text-xs sm:text-sm ${
+                selectedSpecialty === specialty ? "bg-hc-primary text-white" : ""
+              }`}
             >
               {specialty}
             </Button>
@@ -107,51 +111,128 @@ export const TherapistsTab = () => {
         </div>
       </div>
 
-      {/* Therapists Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredTherapists.map((therapist) => (
-          <Card 
-            key={therapist.id} 
-            className="hover-lift cursor-pointer transition-all duration-300 hover:shadow-lg"
-          >
-            <CardContent className="p-6 space-y-4">
-              <div className="flex items-center space-x-4">
-                <Avatar className="h-12 w-12">
-                  <AvatarImage src={therapist.avatar} />
-                  <AvatarFallback className="bg-hc-primary text-white">
-                    {therapist.name.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{therapist.name}</h3>
-                  <p className="text-sm text-gray-600">{therapist.experience} experience</p>
+      {/* Enhanced Therapists Grid */}
+      {filteredTherapists.length === 0 ? (
+        <Card className="border-dashed border-2 border-hc-primary/30">
+          <CardContent className={isMobile ? "p-6" : "p-8"}>
+            <div className="text-center">
+              <div className="bg-hc-soft/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                <Users className="w-10 h-10 text-hc-primary" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">No Therapists Found</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Try adjusting your search terms or filters to find the perfect therapist for you.
+              </p>
+              <Button 
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedSpecialty('All');
+                }}
+                variant="outline"
+                className="border-hc-primary text-hc-primary hover:bg-hc-primary/5"
+              >
+                Clear Filters
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className={`grid gap-4 sm:gap-6 ${
+          isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'
+        }`}>
+          {filteredTherapists.map((therapist) => (
+            <Card 
+              key={therapist.id} 
+              className="hover-lift cursor-pointer transition-all duration-300 hover:shadow-xl border-l-4 border-l-hc-primary/20 hover:border-l-hc-primary"
+            >
+              <CardContent className={isMobile ? "p-5" : "p-6"}>
+                {/* Mobile Layout */}
+                <div className={isMobile ? "block" : "hidden"}>
+                  {/* Header */}
+                  <div className="flex items-center space-x-4 mb-4">
+                    <Avatar className="h-14 w-14 border-2 border-hc-primary/20">
+                      <AvatarImage src={therapist.avatar} />
+                      <AvatarFallback className="bg-gradient-to-br from-hc-primary to-hc-secondary text-white font-bold text-lg">
+                        {therapist.name.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-gray-900 text-lg leading-tight">
+                        {therapist.name}
+                      </h3>
+                      <div className="flex items-center space-x-2 mt-1">
+                        <Award className="w-4 h-4 text-hc-secondary" />
+                        <p className="text-sm text-gray-600 font-medium">{therapist.experience} experience</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Specialties */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {therapist.specialties.map((specialty) => (
+                      <Badge key={specialty} variant="secondary" className="bg-hc-tertiary/20 text-hc-primary text-xs px-3 py-1 font-medium">
+                        {specialty}
+                      </Badge>
+                    ))}
+                  </div>
+                  
+                  {/* Rating & Action */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2 bg-hc-soft/50 px-3 py-2 rounded-lg">
+                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      <span className="text-sm font-bold text-gray-900">{therapist.rating}</span>
+                      <span className="text-xs text-gray-600">rating</span>
+                    </div>
+                    <Button 
+                      onClick={() => handleBookSession(therapist)}
+                      className="bg-gradient-to-r from-hc-accent to-hc-accent/90 hover:from-hc-accent/90 hover:to-hc-accent/80 text-slate-800 h-10 px-4 font-semibold shadow-md"
+                    >
+                      Book Session
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {therapist.specialties.map((specialty) => (
-                  <Badge key={specialty} variant="secondary" className="bg-hc-tertiary/20 text-hc-primary">
-                    {specialty}
-                  </Badge>
-                ))}
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-1">
-                  <span className="text-yellow-400">⭐</span>
-                  <span className="text-sm font-medium">{therapist.rating}</span>
+                
+                {/* Desktop Layout */}
+                <div className={isMobile ? "hidden" : "block space-y-4"}>
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-12 w-12">
+                      <AvatarImage src={therapist.avatar} />
+                      <AvatarFallback className="bg-hc-primary text-white text-sm">
+                        {therapist.name.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-gray-900 text-base">{therapist.name}</h3>
+                      <p className="text-sm text-gray-600">{therapist.experience} experience</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {therapist.specialties.map((specialty) => (
+                      <Badge key={specialty} variant="secondary" className="bg-hc-tertiary/20 text-hc-primary text-xs px-2 py-1">
+                        {specialty}
+                      </Badge>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center justify-between pt-2">
+                    <div className="flex items-center space-x-1">
+                      <span className="text-yellow-400 text-sm">⭐</span>
+                      <span className="text-sm font-medium">{therapist.rating}</span>
+                    </div>
+                    <Button 
+                      onClick={() => handleBookSession(therapist)}
+                      className="bg-hc-accent hover:bg-hc-accent/90 text-white h-9 px-4 text-sm"
+                    >
+                      Book Session
+                    </Button>
+                  </div>
                 </div>
-                <Button 
-                  onClick={() => handleBookSession(therapist)}
-                  className="bg-hc-accent hover:bg-hc-accent/90 text-white"
-                >
-                  Book Session
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
 
       {/* Booking Dialog */}
       <BookingDialog

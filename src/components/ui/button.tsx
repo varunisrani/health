@@ -28,12 +28,14 @@ const buttonVariants = cva(
         "hc-soft": "bg-hc-soft text-slate-800 hover:bg-hc-soft/80 hover:scale-105",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-11 px-4 py-2", // Increased from h-10 to meet 44px touch target
+        sm: "h-10 rounded-md px-3", // Increased from h-9 to meet 40px minimum
+        lg: "h-12 rounded-md px-8", // Increased from h-11 for better touch
+        icon: "h-11 w-11", // Increased from h-10 w-10 to meet 44px touch target
         // Add custom size
         xl: "h-14 rounded-xl px-8 py-4 text-lg",
+        // Add mobile-optimized size
+        touch: "h-12 px-6 py-3 text-base", // Optimized for mobile touch
       },
     },
     defaultVariants: {

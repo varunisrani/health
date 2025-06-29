@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const yogaQuotes = [
   {
@@ -48,6 +49,7 @@ export const LibraryTab = () => {
   const [currentQuote, setCurrentQuote] = useState(0);
   const [playingTrack, setPlayingTrack] = useState<number | null>(null);
   const audioRefs = useRef<{ [key: number]: HTMLAudioElement }>({});
+  const isMobile = useIsMobile();
 
   // Auto-rotate quotes every 6 seconds
   React.useEffect(() => {
@@ -77,28 +79,34 @@ export const LibraryTab = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className={isMobile ? "space-y-6" : "space-y-8"}>
       {/* Yoga Quotes Slider */}
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-gray-900">Daily Inspiration</h2>
+        <h2 className={`font-semibold mb-4 text-gray-900 ${isMobile ? 'text-lg' : 'text-xl'}`}>
+          Daily Inspiration
+        </h2>
         <Card className="bg-gradient-to-r from-hc-tertiary/20 to-hc-surface overflow-hidden">
-          <CardContent className="p-8 text-center">
+          <CardContent className={`text-center ${isMobile ? 'p-6' : 'p-8'}`}>
             <div className="transition-all duration-500 ease-in-out">
-              <blockquote className="text-lg font-inter font-medium text-gray-800 mb-4">
+              <blockquote className={`font-inter font-medium text-gray-800 mb-4 ${
+                isMobile ? 'text-base leading-relaxed' : 'text-lg'
+              }`}>
                 "{yogaQuotes[currentQuote].text}"
               </blockquote>
-              <cite className="text-sm text-gray-600">
+              <cite className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                 — {yogaQuotes[currentQuote].author}
               </cite>
             </div>
             
             {/* Quote indicators */}
-            <div className="flex justify-center space-x-2 mt-6">
+            <div className={`flex justify-center space-x-2 ${isMobile ? 'mt-4' : 'mt-6'}`}>
               {yogaQuotes.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentQuote(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
+                  className={`rounded-full transition-colors ${
+                    isMobile ? 'w-2 h-2' : 'w-2 h-2'
+                  } ${
                     index === currentQuote ? 'bg-hc-primary' : 'bg-gray-300'
                   }`}
                 />
@@ -110,8 +118,10 @@ export const LibraryTab = () => {
 
       {/* Soothing Music */}
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-gray-900">Soothing Music</h2>
-        <div className="grid gap-4">
+        <h2 className={`font-semibold mb-4 text-gray-900 ${isMobile ? 'text-lg' : 'text-xl'}`}>
+          Soothing Music
+        </h2>
+        <div className={`grid gap-3 sm:gap-4`}>
           {musicTracks.map((track) => (
             <Card 
               key={track.id} 
@@ -119,46 +129,75 @@ export const LibraryTab = () => {
                 playingTrack === track.id ? 'shadow-lg scale-[1.02]' : ''
               }`}
             >
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <Button
-                      onClick={() => togglePlay(track.id)}
-                      className={`w-12 h-12 rounded-full ${
-                        playingTrack === track.id 
-                          ? 'bg-hc-accent hover:bg-hc-accent/90' 
-                          : 'bg-hc-primary hover:bg-hc-primary/90'
-                      } text-white`}
-                    >
-                      {playingTrack === track.id ? '⏸️' : '▶️'}
-                    </Button>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">{track.title}</h3>
-                      <p className="text-sm text-gray-600">{track.description}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <Badge variant="outline" className="mb-2">
-                      {track.duration}
-                    </Badge>
-                    {playingTrack === track.id && (
-                      <div className="flex items-center space-x-2 text-sm text-gray-600">
-                        <div className="w-2 h-2 bg-hc-accent rounded-full animate-pulse"></div>
-                        <span>Playing...</span>
+              <CardContent className={isMobile ? "p-4" : "p-6"}>
+                <div className={`flex items-center ${
+                  isMobile ? 'flex-col space-y-3' : 'justify-between'
+                }`}>
+                  <div className={`flex items-center ${
+                    isMobile ? 'w-full justify-between' : 'space-x-4'
+                  }`}>
+                    <div className={`flex items-center ${
+                      isMobile ? 'space-x-3' : 'space-x-4'
+                    }`}>
+                      <Button
+                        onClick={() => togglePlay(track.id)}
+                        className={`rounded-full text-white ${
+                          isMobile ? 'w-10 h-10' : 'w-12 h-12'
+                        } ${
+                          playingTrack === track.id 
+                            ? 'bg-hc-accent hover:bg-hc-accent/90' 
+                            : 'bg-hc-primary hover:bg-hc-primary/90'
+                        }`}
+                      >
+                        <span className={isMobile ? "text-xs" : "text-sm"}>
+                          {playingTrack === track.id ? '⏸️' : '▶️'}
+                        </span>
+                      </Button>
+                      <div className={isMobile ? "min-w-0 flex-1" : ""}>
+                        <h3 className={`font-semibold text-gray-900 ${
+                          isMobile ? 'text-sm truncate' : 'text-base'
+                        }`}>
+                          {track.title}
+                        </h3>
+                        <p className={`text-gray-600 ${
+                          isMobile ? 'text-xs truncate' : 'text-sm'
+                        }`}>
+                          {track.description}
+                        </p>
                       </div>
-                    )}
+                    </div>
+                    
+                    <div className={`flex items-center space-x-2 ${
+                      isMobile ? 'flex-shrink-0' : 'text-right'
+                    }`}>
+                      <Badge variant="outline" className={isMobile ? "text-xs px-2 py-1" : "mb-2"}>
+                        {track.duration}
+                      </Badge>
+                      {playingTrack === track.id && (
+                        <div className={`flex items-center space-x-1 text-gray-600 ${
+                          isMobile ? 'text-xs' : 'text-sm'
+                        }`}>
+                          <div className="w-1.5 h-1.5 bg-hc-accent rounded-full animate-pulse"></div>
+                          {!isMobile && <span>Playing...</span>}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
                 
                 {/* Mock audio waveform */}
-                <div className="mt-4 flex items-center space-x-1 h-8">
-                  {Array.from({ length: 50 }, (_, i) => (
+                <div className={`flex items-center space-x-1 ${
+                  isMobile ? 'mt-3 h-6' : 'mt-4 h-8'
+                }`}>
+                  {Array.from({ length: isMobile ? 30 : 50 }, (_, i) => (
                     <div
                       key={i}
-                      className={`w-1 bg-hc-primary/30 rounded-full transition-all duration-300 ${
+                      className={`bg-hc-primary/30 rounded-full transition-all duration-300 ${
+                        isMobile ? 'w-0.5' : 'w-1'
+                      } ${
                         playingTrack === track.id 
-                          ? `h-${Math.floor(Math.random() * 6) + 2} animate-pulse` 
-                          : 'h-2'
+                          ? `h-${Math.floor(Math.random() * (isMobile ? 4 : 6)) + 2} animate-pulse` 
+                          : isMobile ? 'h-1.5' : 'h-2'
                       }`}
                     />
                   ))}

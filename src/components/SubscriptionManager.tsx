@@ -21,6 +21,7 @@ import {
 import { TrialStatus } from './TrialStatus';
 import { PaymentIntegration } from './PaymentIntegration';
 import { SubscriptionPlan, BillingHistory } from '@/types';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { toast } from 'sonner';
 
 export const SubscriptionManager: React.FC = () => {
@@ -36,6 +37,7 @@ export const SubscriptionManager: React.FC = () => {
     canCancel,
     currentPlan
   } = useSubscription();
+  const isMobile = useIsMobile();
 
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
@@ -102,31 +104,37 @@ export const SubscriptionManager: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className={isMobile ? "space-y-4" : "space-y-6"}>
       {/* Current Subscription Status */}
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2">
+          <div className={`flex items-center ${
+            isMobile ? 'flex-col space-y-2' : 'justify-between'
+          }`}>
+            <CardTitle className={`flex items-center gap-2 ${
+              isMobile ? 'text-lg' : 'text-xl'
+            }`}>
               {currentPlan && getPlanIcon(currentPlan.planType)}
               Current Subscription
             </CardTitle>
             {getStatusBadge()}
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className={isMobile ? "space-y-3" : "space-y-4"}>
           {subscription ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <h4 className="font-medium">Plan</h4>
-                  <p className="text-sm text-gray-600">
+              <div className={`grid gap-3 sm:gap-4 ${
+                isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'
+              }`}>
+                <div className={isMobile ? "p-3 bg-hc-surface rounded-lg" : ""}>
+                  <h4 className={`font-medium ${isMobile ? 'text-sm' : 'text-base'}`}>Plan</h4>
+                  <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                     {currentPlan?.name || subscription.planType}
                   </p>
                 </div>
-                <div>
-                  <h4 className="font-medium">Billing</h4>
-                  <p className="text-sm text-gray-600">
+                <div className={isMobile ? "p-3 bg-hc-surface rounded-lg" : ""}>
+                  <h4 className={`font-medium ${isMobile ? 'text-sm' : 'text-base'}`}>Billing</h4>
+                  <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                     {subscription.planType === 'trial' 
                       ? 'Free Trial' 
                       : subscription.billingCycle === 'monthly' 
@@ -134,9 +142,9 @@ export const SubscriptionManager: React.FC = () => {
                         : 'Yearly'}
                   </p>
                 </div>
-                <div>
-                  <h4 className="font-medium">Next Billing</h4>
-                  <p className="text-sm text-gray-600">
+                <div className={isMobile ? "p-3 bg-hc-surface rounded-lg" : ""}>
+                  <h4 className={`font-medium ${isMobile ? 'text-sm' : 'text-base'}`}>Next Billing</h4>
+                  <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                     {subscription.nextBillingDate
                       ? subscription.nextBillingDate.toLocaleDateString()
                       : 'N/A'}
@@ -155,19 +163,29 @@ export const SubscriptionManager: React.FC = () => {
 
               {/* Usage Metrics */}
               {usageMetrics && (
-                <div className="pt-4 border-t">
-                  <h4 className="font-medium mb-3">Usage This Month</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className={`border-t ${isMobile ? 'pt-3' : 'pt-4'}`}>
+                  <h4 className={`font-medium mb-3 ${isMobile ? 'text-sm' : 'text-base'}`}>
+                    Usage This Month
+                  </h4>
+                  <div className={`grid gap-3 sm:gap-4 ${
+                    isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'
+                  } ${isMobile ? 'text-xs' : 'text-sm'}`}>
                     <div className="bg-hc-surface p-3 rounded-lg">
-                      <div className="font-medium">{usageMetrics.sessionsUsed}</div>
+                      <div className={`font-medium ${isMobile ? 'text-base' : 'text-lg'}`}>
+                        {usageMetrics.sessionsUsed}
+                      </div>
                       <div className="text-gray-600">Sessions</div>
                     </div>
                     <div className="bg-hc-surface p-3 rounded-lg">
-                      <div className="font-medium">{usageMetrics.therapistsContacted}</div>
+                      <div className={`font-medium ${isMobile ? 'text-base' : 'text-lg'}`}>
+                        {usageMetrics.therapistsContacted}
+                      </div>
                       <div className="text-gray-600">Therapists Contacted</div>
                     </div>
                     <div className="bg-hc-surface p-3 rounded-lg">
-                      <div className="font-medium">{usageMetrics.storageUsed.toFixed(1)} GB</div>
+                      <div className={`font-medium ${isMobile ? 'text-base' : 'text-lg'}`}>
+                        {usageMetrics.storageUsed.toFixed(1)} GB
+                      </div>
                       <div className="text-gray-600">Storage Used</div>
                     </div>
                   </div>
@@ -184,21 +202,37 @@ export const SubscriptionManager: React.FC = () => {
 
       {/* Subscription Management Tabs */}
       <Tabs defaultValue="plans" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="plans">Available Plans</TabsTrigger>
-          <TabsTrigger value="billing">Billing & Payments</TabsTrigger>
-          <TabsTrigger value="history">Billing History</TabsTrigger>
+        <TabsList className={`grid w-full ${
+          isMobile ? 'grid-cols-2' : 'grid-cols-3'
+        }`}>
+          <TabsTrigger value="plans" className={isMobile ? "text-xs px-2" : ""}>
+            {isMobile ? "Plans" : "Available Plans"}
+          </TabsTrigger>
+          <TabsTrigger value="billing" className={isMobile ? "text-xs px-2" : ""}>
+            {isMobile ? "Billing" : "Billing & Payments"}
+          </TabsTrigger>
+          {!isMobile && (
+            <TabsTrigger value="history">Billing History</TabsTrigger>
+          )}
+          {isMobile && (
+            <TabsTrigger value="history" className="text-xs px-2">History</TabsTrigger>
+          )}
         </TabsList>
 
         {/* Available Plans */}
         <TabsContent value="plans" className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">Choose Your Plan</h3>
+          <div className={`flex items-center ${
+            isMobile ? 'flex-col space-y-3' : 'justify-between'
+          }`}>
+            <h3 className={`font-semibold ${isMobile ? 'text-base' : 'text-lg'}`}>
+              Choose Your Plan
+            </h3>
             <div className="flex items-center gap-2">
               <Button
                 variant={billingCycle === 'monthly' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setBillingCycle('monthly')}
+                className={isMobile ? "h-9 px-3 text-xs" : ""}
               >
                 Monthly
               </Button>
@@ -206,13 +240,16 @@ export const SubscriptionManager: React.FC = () => {
                 variant={billingCycle === 'yearly' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setBillingCycle('yearly')}
+                className={isMobile ? "h-9 px-3 text-xs" : ""}
               >
                 Yearly
               </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className={`grid gap-4 ${
+            isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+          }`}>
             {plans.map((plan) => {
               const isCurrentPlan = subscription?.planType === plan.planType;
               const price = plan.price[billingCycle];
@@ -237,13 +274,13 @@ export const SubscriptionManager: React.FC = () => {
                     </Badge>
                   )}
 
-                  <CardHeader className="text-center pb-2">
+                  <CardHeader className={`text-center ${isMobile ? 'pb-2 px-4 pt-4' : 'pb-2'}`}>
                     <div className="flex justify-center mb-2">
                       {getPlanIcon(plan.planType)}
                     </div>
-                    <CardTitle className="text-lg">{plan.name}</CardTitle>
+                    <CardTitle className={isMobile ? "text-base" : "text-lg"}>{plan.name}</CardTitle>
                     <div className="space-y-1">
-                      <div className="text-2xl font-bold">
+                      <div className={`font-bold ${isMobile ? 'text-xl' : 'text-2xl'}`}>
                         {formatPrice(price, billingCycle)}
                       </div>
                       {billingCycle === 'yearly' && price > 0 && (
@@ -254,8 +291,8 @@ export const SubscriptionManager: React.FC = () => {
                     </div>
                   </CardHeader>
 
-                  <CardContent className="space-y-4">
-                    <ul className="space-y-2 text-sm">
+                  <CardContent className={`space-y-3 sm:space-y-4 ${isMobile ? 'px-4 pb-4' : ''}`}>
+                    <ul className={`space-y-2 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-2">
                           <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />

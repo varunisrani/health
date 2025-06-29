@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface BookingDialogProps {
   open: boolean;
@@ -32,6 +33,7 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
   const [selectedTime, setSelectedTime] = useState('');
   const [showSuccessSheet, setShowSuccessSheet] = useState(false);
   const [meetLink, setMeetLink] = useState('');
+  const isMobile = useIsMobile();
 
   const handleDateSelect = (date: Date | undefined) => {
     setSelectedDate(date);
@@ -85,21 +87,29 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Book a Session with {therapist?.name}</DialogTitle>
+        <DialogContent className={`w-full max-w-md mx-4 ${
+          isMobile 
+            ? 'h-auto max-h-[90vh] overflow-y-auto p-4' 
+            : 'sm:max-w-md'
+        }`}>
+          <DialogHeader className="pb-4">
+            <DialogTitle className="text-base sm:text-lg font-semibold text-center">
+              Book a Session with {therapist?.name}
+            </DialogTitle>
           </DialogHeader>
 
           {step === 1 && (
             <div className="space-y-4">
-              <p className="text-sm text-gray-600">Select a date for your session:</p>
+              <p className="text-sm text-gray-600 text-center">Select a date for your session:</p>
               <div className="flex justify-center">
                 <Calendar
                   mode="single"
                   selected={selectedDate}
                   onSelect={handleDateSelect}
                   disabled={(date) => date < today || date > maxDate}
-                  className="rounded-md border"
+                  className={`rounded-md border ${
+                    isMobile ? 'text-sm' : ''
+                  }`}
                 />
               </div>
             </div>
@@ -107,16 +117,29 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
 
           {step === 2 && (
             <div className="space-y-4">
-              <p className="text-sm text-gray-600">
-                Available times for {selectedDate && format(selectedDate, 'MMMM d, yyyy')}:
-              </p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-2">
+                <Button
+                  variant="ghost"
+                  onClick={() => setStep(1)}
+                  className="text-xs text-gray-500 hover:text-gray-700 p-1 h-auto"
+                >
+                  ← Back to date selection
+                </Button>
+                <p className="text-sm text-gray-600 text-center">
+                  Available times for {selectedDate && format(selectedDate, isMobile ? 'MMM d, yyyy' : 'MMMM d, yyyy')}:
+                </p>
+              </div>
+              <div className={`grid gap-2 ${
+                isMobile ? 'grid-cols-2' : 'grid-cols-3'
+              }`}>
                 {timeSlots.map((time) => (
                   <Button
                     key={time}
                     variant="outline"
                     onClick={() => handleTimeSelect(time)}
-                    className={`${selectedTime === time ? 'bg-hc-secondary text-white' : ''}`}
+                    className={`h-10 text-xs sm:text-sm ${
+                      selectedTime === time ? 'bg-hc-secondary text-white' : ''
+                    }`}
                   >
                     {time}
                   </Button>
@@ -127,15 +150,24 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
 
           {step === 3 && (
             <div className="space-y-4">
+              <Button
+                variant="ghost"
+                onClick={() => setStep(2)}
+                className="text-xs text-gray-500 hover:text-gray-700 p-1 h-auto mb-2"
+              >
+                ← Back to time selection
+              </Button>
               <div className="bg-hc-surface p-4 rounded-lg">
-                <h3 className="font-semibold mb-2">Booking Summary</h3>
-                <p><strong>Therapist:</strong> {therapist?.name}</p>
-                <p><strong>Date:</strong> {selectedDate && format(selectedDate, 'MMMM d, yyyy')}</p>
-                <p><strong>Time:</strong> {selectedTime}</p>
+                <h3 className="font-semibold mb-3 text-sm sm:text-base">Booking Summary</h3>
+                <div className="space-y-2 text-sm">
+                  <p><strong>Therapist:</strong> {therapist?.name}</p>
+                  <p><strong>Date:</strong> {selectedDate && format(selectedDate, isMobile ? 'MMM d, yyyy' : 'MMMM d, yyyy')}</p>
+                  <p><strong>Time:</strong> {selectedTime}</p>
+                </div>
               </div>
               <Button
                 onClick={handleConfirmBooking}
-                className="w-full bg-hc-accent hover:bg-hc-accent/90 text-white"
+                className="w-full h-11 bg-hc-accent hover:bg-hc-accent/90 text-white font-medium"
               >
                 Confirm Booking
               </Button>
@@ -145,24 +177,38 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
       </Dialog>
 
       <Sheet open={showSuccessSheet} onOpenChange={setShowSuccessSheet}>
-        <SheetContent>
+        <SheetContent className={isMobile ? 'w-full' : 'w-96'}>
           <SheetHeader>
-            <SheetTitle className="text-hc-primary">✅ Booking Confirmed!</SheetTitle>
+            <SheetTitle className="text-hc-primary text-lg sm:text-xl">✅ Booking Confirmed!</SheetTitle>
           </SheetHeader>
-          <div className="space-y-6 mt-6">
+          <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
             <div className="bg-hc-surface p-4 rounded-lg">
-              <p className="font-semibold mb-2">
+              <p className="font-semibold mb-2 text-sm sm:text-base">
                 Session confirmed for {selectedDate && format(selectedDate, 'EEE, MMM d')} at {selectedTime}
               </p>
-              <p className="text-sm text-gray-600">with {therapist?.name}</p>
+              <p className="text-xs sm:text-sm text-gray-600">with {therapist?.name}</p>
             </div>
             
             <div className="space-y-2">
-              <Label>Meeting Link</Label>
-              <div className="flex space-x-2">
-                <Input value={meetLink} readOnly className="flex-1" />
-                <Button onClick={copyLink} variant="outline">
-                  Copy
+              <Label className="text-sm font-medium">Meeting Link</Label>
+              <div className={`flex gap-2 ${
+                isMobile ? 'flex-col' : 'flex-row'
+              }`}>
+                <Input 
+                  value={meetLink} 
+                  readOnly 
+                  className={`h-10 text-sm ${
+                    isMobile ? 'w-full' : 'flex-1'
+                  }`} 
+                />
+                <Button 
+                  onClick={copyLink} 
+                  variant="outline"
+                  className={`h-10 px-4 text-sm ${
+                    isMobile ? 'w-full' : 'w-auto'
+                  }`}
+                >
+                  Copy Link
                 </Button>
               </div>
             </div>
@@ -170,7 +216,7 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
             <div className="flex space-x-2">
               <Button 
                 onClick={() => setShowSuccessSheet(false)}
-                className="bg-hc-primary hover:bg-hc-primary/90 text-white flex-1"
+                className="bg-hc-primary hover:bg-hc-primary/90 text-white flex-1 h-11 font-medium"
               >
                 View My Sessions
               </Button>

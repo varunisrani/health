@@ -6,6 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { useMoodTracker } from '@/hooks/useMoodTracker';
 import { Heart, TrendingUp, TrendingDown, Minus, Plus, BarChart3 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface MoodWidgetProps {
   onNavigateToMoodTracker?: () => void;
@@ -26,6 +27,7 @@ export const MoodWidget: React.FC<MoodWidgetProps> = ({ onNavigateToMoodTracker 
   } = useMoodTracker();
 
   const [showQuickEntry, setShowQuickEntry] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleQuickMoodEntry = async (moodLevel: number) => {
     setSelectedMoodLevel(moodLevel);
@@ -66,18 +68,18 @@ export const MoodWidget: React.FC<MoodWidgetProps> = ({ onNavigateToMoodTracker 
 
   return (
     <Card className="h-full">
-      <CardHeader className="pb-3">
+      <CardHeader className={isMobile ? "pb-2 px-4 pt-4" : "pb-3"}>
         <CardTitle className="flex items-center justify-between text-hc-primary">
           <span className="flex items-center">
-            <Heart className="h-5 w-5 mr-2" />
-            Mood Tracker
+            <Heart className={`mr-2 ${isMobile ? "h-4 w-4" : "h-5 w-5"}`} />
+            <span className={isMobile ? "text-sm" : "text-base"}>Mood Tracker</span>
           </span>
           {moodStats && moodStats.totalEntries > 0 && (
             <Button
               variant="ghost"
-              size="sm"
+              size={isMobile ? "sm" : "sm"}
               onClick={onNavigateToMoodTracker}
-              className="text-hc-accent hover:text-hc-accent/80"
+              className="text-hc-accent hover:text-hc-accent/80 h-8 w-8 p-1"
             >
               <BarChart3 className="h-4 w-4" />
             </Button>
@@ -85,67 +87,69 @@ export const MoodWidget: React.FC<MoodWidgetProps> = ({ onNavigateToMoodTracker 
         </CardTitle>
       </CardHeader>
       
-      <CardContent className="space-y-4">
+      <CardContent className={`space-y-3 ${isMobile ? "px-4 pb-4" : "space-y-4"}`}>
         {/* Today's Mood Status */}
         {hasLoggedToday && todaysMoodEntry ? (
-          <div className="text-center space-y-3">
-            <div className="text-4xl">{todaysMoodEntry.emoji}</div>
+          <div className="text-center space-y-2 sm:space-y-3">
+            <div className={isMobile ? "text-3xl" : "text-4xl"}>{todaysMoodEntry.emoji}</div>
             <div>
-              <Badge variant="secondary" className="bg-hc-tertiary/20 text-hc-primary">
+              <Badge variant="secondary" className={`bg-hc-tertiary/20 text-hc-primary ${isMobile ? "text-xs px-2 py-1" : ""}`}>
                 {getMoodConfig(todaysMoodEntry.moodLevel)?.label}
               </Badge>
             </div>
-            <p className="text-sm text-gray-600">
+            <p className={`text-gray-600 ${isMobile ? "text-xs" : "text-sm"}`}>
               You logged your mood today!
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className={isMobile ? "space-y-3" : "space-y-4"}>
             {/* Quick Entry Toggle */}
             {!showQuickEntry ? (
-              <div className="text-center space-y-3">
-                <div className="text-4xl text-gray-300">😊</div>
-                <p className="text-sm text-gray-600">
+              <div className="text-center space-y-2 sm:space-y-3">
+                <div className={isMobile ? "text-3xl text-gray-300" : "text-4xl text-gray-300"}>😊</div>
+                <p className={`text-gray-600 ${isMobile ? "text-xs" : "text-sm"}`}>
                   How are you feeling today?
                 </p>
                 <Button
                   onClick={() => setShowQuickEntry(true)}
-                  size="sm"
-                  className="bg-hc-accent hover:bg-hc-accent/90 text-white"
+                  size={isMobile ? "sm" : "sm"}
+                  className={`bg-hc-accent hover:bg-hc-accent/90 text-white ${isMobile ? "h-9 px-3 text-xs" : ""}`}
                 >
-                  <Plus className="h-4 w-4 mr-1" />
+                  <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                   Quick Log
                 </Button>
               </div>
             ) : (
-              <div className="space-y-3">
-                <p className="text-sm text-gray-600 text-center">Select your mood:</p>
-                <div className="grid grid-cols-5 gap-2">
+              <div className="space-y-2 sm:space-y-3">
+                <p className={`text-gray-600 text-center ${isMobile ? "text-xs" : "text-sm"}`}>Select your mood:</p>
+                <div className={`grid gap-1.5 sm:gap-2 ${isMobile ? "grid-cols-5" : "grid-cols-5"}`}>
                   {MOOD_LEVELS.map((mood) => (
                     <button
                       key={mood.level}
                       onClick={() => handleQuickMoodEntry(mood.level)}
                       disabled={isSubmitting}
                       className={cn(
-                        "flex flex-col items-center p-2 rounded-lg border transition-all duration-200 hover:scale-105",
+                        "flex flex-col items-center rounded-lg border transition-all duration-200 hover:scale-105",
+                        isMobile ? "p-1.5 h-12" : "p-2",
                         isSubmitting
                           ? "opacity-50 cursor-not-allowed"
                           : "hover:border-hc-accent hover:bg-hc-accent/5"
                       )}
                     >
-                      <span className="text-lg mb-1">{mood.emoji}</span>
-                      <span className="text-xs text-center text-gray-600">
+                      <span className={isMobile ? "text-base mb-0.5" : "text-lg mb-1"}>{mood.emoji}</span>
+                      <span className={`text-center text-gray-600 ${isMobile ? "text-[10px] leading-none" : "text-xs"}`}>
                         {mood.level}
                       </span>
                     </button>
                   ))}
                 </div>
-                <div className="flex justify-center space-x-2">
+                <div className={`flex justify-center ${isMobile ? "space-x-1" : "space-x-2"}`}>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setShowQuickEntry(false)}
                     disabled={isSubmitting}
+                    className={isMobile ? "h-8 px-2 text-xs" : ""}
                   >
                     Cancel
                   </Button>
@@ -153,6 +157,7 @@ export const MoodWidget: React.FC<MoodWidgetProps> = ({ onNavigateToMoodTracker 
                     variant="outline"
                     size="sm"
                     onClick={onNavigateToMoodTracker}
+                    className={isMobile ? "h-8 px-2 text-xs" : ""}
                   >
                     Full Entry
                   </Button>
