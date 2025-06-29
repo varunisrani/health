@@ -239,7 +239,7 @@ export const SessionBooking: React.FC<SessionBookingProps> = ({
               </div>
               <div className="text-right">
                 <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-4 h-4 fill-hc-accent text-hc-accent" />
                   <span className="text-sm font-medium">{therapist.rating}</span>
                   <span className="text-xs text-gray-500">({therapist.reviewCount})</span>
                 </div>
@@ -506,8 +506,8 @@ export const SessionBooking: React.FC<SessionBookingProps> = ({
         {step === 'confirmation' && selectedTherapist && selectedDate && (
           <div className="space-y-6 text-center">
             <div className="flex justify-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                <Check className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-hc-soft/50 rounded-full flex items-center justify-center">
+                <Check className="w-8 h-8 text-hc-primary" />
               </div>
             </div>
 

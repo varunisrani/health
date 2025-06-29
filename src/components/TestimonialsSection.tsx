@@ -56,7 +56,7 @@ const TestimonialsSection = () => {
 
                 {/* Rating */}
                 <div className="flex items-center mb-4">
-                  <div className="flex text-yellow-400 text-lg">
+                  <div className="flex text-hc-accent text-lg">
                     {"★".repeat(testimonial.rating)}
                   </div>
                 </div>

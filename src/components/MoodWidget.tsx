@@ -45,9 +45,9 @@ export const MoodWidget: React.FC<MoodWidgetProps> = ({ onNavigateToMoodTracker 
     
     switch (moodStats.recentTrend) {
       case 'improving':
-        return <TrendingUp className="h-4 w-4 text-green-600" />;
+        return <TrendingUp className="h-4 w-4 text-hc-primary" />;
       case 'declining':
-        return <TrendingDown className="h-4 w-4 text-red-600" />;
+        return <TrendingDown className="h-4 w-4 text-hc-primary" />;
       default:
         return <Minus className="h-4 w-4 text-gray-600" />;
     }
@@ -58,9 +58,9 @@ export const MoodWidget: React.FC<MoodWidgetProps> = ({ onNavigateToMoodTracker 
     
     switch (moodStats.recentTrend) {
       case 'improving':
-        return 'text-green-600';
+        return 'text-hc-primary';
       case 'declining':
-        return 'text-red-600';
+        return 'text-hc-primary';
       default:
         return 'text-gray-600';
     }

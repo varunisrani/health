@@ -281,14 +281,14 @@ const TherapistProfile = () => {
                       <div className="flex items-center gap-2 mb-2">
                         <h1 className="text-3xl font-bold text-gray-900">{therapist.name}</h1>
                         {therapist.verified && (
-                          <CheckCircle className="w-6 h-6 text-green-500" />
+                          <CheckCircle className="w-6 h-6 text-hc-primary" />
                         )}
                       </div>
                       <p className="text-xl text-hc-primary font-medium mb-3">{therapist.title}</p>
                       
                       <div className="flex items-center gap-4 mb-4">
                         <div className="flex items-center gap-1">
-                          <Star className="w-5 h-5 text-yellow-400 fill-current" />
+                          <Star className="w-5 h-5 text-hc-accent fill-current" />
                           <span className="font-bold text-gray-900">{therapist.rating}</span>
                           <span className="text-gray-600">({therapist.totalReviews} reviews)</span>
                         </div>
@@ -402,7 +402,7 @@ const TherapistProfile = () => {
                       <ul className="space-y-2">
                         {therapist.education.map((item, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-hc-primary mt-1 flex-shrink-0" />
                             <span className="text-gray-700">{item}</span>
                           </li>
                         ))}
@@ -491,7 +491,7 @@ const TherapistProfile = () => {
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-gray-900">{review.name}</span>
                           {review.verified && (
-                            <CheckCircle className="w-4 h-4 text-green-500" />
+                            <CheckCircle className="w-4 h-4 text-hc-primary" />
                           )}
                         </div>
                         <span className="text-sm text-gray-500">{review.date}</span>
@@ -501,7 +501,7 @@ const TherapistProfile = () => {
                           <Star
                             key={i}
                             className={`w-4 h-4 ${
-                              i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                              i < review.rating ? 'text-hc-accent fill-current' : 'text-gray-300'
                             }`}
                           />
                         ))}

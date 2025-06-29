@@ -58,7 +58,7 @@ const activityCategories = [
     name: 'Breathing Exercises',
     description: 'Breathwork for calm and focus',
     icon: Wind,
-    color: 'from-green-500 to-teal-600',
+    color: 'from-hc-tertiary to-hc-secondary',
     count: 0
   },
   {

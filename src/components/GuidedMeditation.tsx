@@ -59,7 +59,7 @@ const meditationThemes = [
     name: 'Emotional Healing',
     icon: Heart,
     description: 'Inner peace and emotional balance',
-    color: 'from-green-500 to-teal-600',
+    color: 'from-hc-tertiary to-hc-secondary',
     tags: ['healing', 'emotional', 'peace']
   },
   {

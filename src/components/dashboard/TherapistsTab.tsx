@@ -185,7 +185,7 @@ export const TherapistsTab = () => {
                   {/* Rating & Actions */}
                   <div className="space-y-3">
                     <div className="flex items-center justify-center bg-hc-soft/50 px-3 py-2 rounded-lg">
-                      <Star className="w-4 h-4 text-yellow-500 fill-current mr-2" />
+                      <Star className="w-4 h-4 text-hc-accent fill-current mr-2" />
                       <span className="text-sm font-bold text-gray-900">{therapist.rating}</span>
                       <span className="text-xs text-gray-600 ml-1">rating</span>
                     </div>
@@ -232,7 +232,7 @@ export const TherapistsTab = () => {
                   
                   <div className="flex items-center justify-between pt-2">
                     <div className="flex items-center space-x-1">
-                      <span className="text-yellow-400 text-sm">⭐</span>
+                      <span className="text-hc-accent text-sm">⭐</span>
                       <span className="text-sm font-medium">{therapist.rating}</span>
                     </div>
                     <div className="flex space-x-2">

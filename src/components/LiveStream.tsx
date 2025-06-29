@@ -187,8 +187,8 @@ export const LiveStream: React.FC<LiveStreamProps> = ({
 
   const getConnectionIcon = () => {
     switch (connectionQuality) {
-      case 'excellent': return <Wifi className="w-4 h-4 text-green-500" />;
-      case 'good': return <Wifi className="w-4 h-4 text-yellow-500" />;
+      case 'excellent': return <Wifi className="w-4 h-4 text-hc-success" />;
+      case 'good': return <Wifi className="w-4 h-4 text-hc-warning" />;
       case 'poor': return <WifiOff className="w-4 h-4 text-red-500" />;
     }
   };
@@ -290,7 +290,7 @@ export const LiveStream: React.FC<LiveStreamProps> = ({
                     onClick={() => setIsHandRaised(!isHandRaised)}
                     className={cn(
                       "text-white hover:bg-white/20",
-                      isHandRaised && "bg-yellow-500 hover:bg-yellow-600"
+                      isHandRaised && "bg-hc-warning hover:bg-hc-warning/80"
                     )}
                   >
                     <Hand className="w-4 h-4" />
@@ -461,7 +461,7 @@ export const LiveStream: React.FC<LiveStreamProps> = ({
                           
                           <div className="flex items-center space-x-1">
                             {participant.handRaised && (
-                              <Hand className="w-4 h-4 text-yellow-500" />
+                              <Hand className="w-4 h-4 text-hc-warning" />
                             )}
                             {participant.role === 'host' && (
                               <Star className="w-4 h-4 text-hc-accent" />

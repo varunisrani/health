@@ -209,14 +209,14 @@ export const SessionHistory: React.FC<SessionHistoryProps> = ({
             disabled={!interactive}
             className={cn(
               "transition-colors",
-              interactive && "hover:text-yellow-400 cursor-pointer",
+              interactive && "hover:text-hc-accent cursor-pointer",
               !interactive && "cursor-default"
             )}
           >
             <Star
               className={cn(
                 "w-4 h-4",
-                star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+                star <= rating ? "fill-hc-accent text-hc-accent" : "text-gray-300"
               )}
             />
           </button>
@@ -510,7 +510,7 @@ export const SessionHistory: React.FC<SessionHistoryProps> = ({
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center space-x-2">
-              <Star className="w-5 h-5 text-yellow-500" />
+              <Star className="w-5 h-5 text-hc-accent" />
               <div>
                 <p className="text-sm text-gray-600">Avg Rating</p>
                 <p className="text-lg font-semibold">

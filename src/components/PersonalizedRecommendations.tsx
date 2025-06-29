@@ -31,11 +31,11 @@ interface PersonalizedRecommendationsProps {
 // Mood options with associated icons and colors
 const moodOptions = [
   { id: 'stressed', name: 'Stressed', icon: Zap, color: 'from-red-500 to-orange-500', description: 'Need to unwind and relax' },
-  { id: 'anxious', name: 'Anxious', icon: Brain, color: 'from-yellow-500 to-amber-500', description: 'Looking for calm and peace' },
+  { id: 'anxious', name: 'Anxious', icon: Brain, color: 'from-hc-accent to-hc-primary', description: 'Looking for calm and peace' },
   { id: 'tired', name: 'Tired', icon: Moon, color: 'from-purple-500 to-indigo-500', description: 'Need rest and restoration' },
   { id: 'unfocused', name: 'Unfocused', icon: Target, color: 'from-blue-500 to-cyan-500', description: 'Want clarity and concentration' },
   { id: 'energized', name: 'Energized', icon: Sun, color: 'from-orange-500 to-pink-500', description: 'Ready for active practices' },
-  { id: 'peaceful', name: 'Peaceful', icon: Heart, color: 'from-green-500 to-teal-500', description: 'Maintaining inner balance' }
+  { id: 'peaceful', name: 'Peaceful', icon: Heart, color: 'from-hc-tertiary to-hc-secondary', description: 'Maintaining inner balance' }
 ];
 
 // Time-based recommendations

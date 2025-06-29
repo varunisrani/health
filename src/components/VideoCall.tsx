@@ -144,8 +144,8 @@ export const VideoCall: React.FC<VideoCallProps> = ({
 
   const getConnectionQualityColor = () => {
     switch (connectionQuality) {
-      case 'excellent': return 'text-green-500';
-      case 'good': return 'text-yellow-500';
+      case 'excellent': return 'text-hc-success';
+      case 'good': return 'text-hc-warning';
       case 'poor': return 'text-red-500';
       default: return 'text-gray-500';
     }

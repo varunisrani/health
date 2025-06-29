@@ -98,7 +98,7 @@ const MentorSpotlightSection = () => {
                         {mentor.name}
                       </h3>
                       <div className="flex items-center space-x-2 mt-1">
-                        <div className="flex text-yellow-400">
+                        <div className="flex text-hc-accent">
                           {"★".repeat(5)}
                         </div>
                         <span className="text-sm text-gray-600">

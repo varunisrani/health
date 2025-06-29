@@ -13,8 +13,8 @@
     --hc-surface: 248 246 241; /* Light cream #F8F6F1 */
     --hc-accent: 123 84 84; /* Muted mauve/rose #7B5454 */
     --hc-warm: 248 246 241; /* Light cream #F8F6F1 */
-    --hc-success: 107 207 127; /* Growth Green #6BCF7F */
-    --hc-warning: 255 184 77; /* Gentle Alert #FFB84D */
+    --hc-success: 123 84 84; /* Muted mauve/rose #7B5454 */
+    --hc-warning: 123 84 84; /* Muted mauve/rose #7B5454 */
     --hc-soft: 220 199 182; /* Warm beige #DCC7B6 */
     
     /* shadcn/ui variables - FIXED to Mended Minds Theme */
@@ -196,11 +196,11 @@
   }
 
   .bg-hc-success {
-    background-color: rgb(107, 207, 127) !important;
+    background-color: rgb(123, 84, 84) !important;
   }
 
   .bg-hc-warning {
-    background-color: rgb(255, 184, 77) !important;
+    background-color: rgb(123, 84, 84) !important;
   }
 
   .bg-hc-soft {
@@ -212,11 +212,11 @@
   }
 
   .text-hc-success {
-    color: rgb(107, 207, 127) !important;
+    color: rgb(123, 84, 84) !important;
   }
 
   .text-hc-warning {
-    color: rgb(255, 184, 77) !important;
+    color: rgb(123, 84, 84) !important;
   }
   
   .hover\:bg-hc-primary\/90:hover {

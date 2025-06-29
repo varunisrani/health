@@ -170,7 +170,7 @@ export const WebinarHub: React.FC<WebinarHubProps> = ({
         {/* Featured badge */}
         {featured && (
           <div className="absolute top-3 right-3">
-            <Badge className="bg-yellow-500 text-black">
+            <Badge className="bg-hc-accent text-white">
               <Award className="w-3 h-3 mr-1" />
               Featured
             </Badge>
@@ -237,7 +237,7 @@ export const WebinarHub: React.FC<WebinarHubProps> = ({
           <div className="flex items-center space-x-2">
             {/* Mock rating */}
             <div className="flex items-center space-x-1">
-              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              <Star className="w-4 h-4 fill-hc-accent text-hc-accent" />
               <span className="text-sm font-medium">4.8</span>
             </div>
             {/* Mock popularity indicator */}
@@ -327,7 +327,7 @@ export const WebinarHub: React.FC<WebinarHubProps> = ({
       {featuredWebinars.length > 0 && (
         <div>
           <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <Award className="w-5 h-5 mr-2 text-yellow-500" />
+            <Award className="w-5 h-5 mr-2 text-hc-accent" />
             Featured Webinars
           </h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

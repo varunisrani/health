@@ -95,7 +95,7 @@ const PricingSection = () => {
             <div className="absolute -top-2 -right-2 w-24 h-24 bg-white/20 rounded-full blur-xl group-hover:bg-white/30 transition-colors duration-500"></div>
             
             <CardContent className="p-10 relative z-10">
-              <Badge className="absolute -top-4 right-8 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold px-4 py-2 text-sm shadow-lg animate-pulse">
+              <Badge className="absolute -top-4 right-8 bg-gradient-to-r from-hc-accent to-hc-primary text-white font-bold px-4 py-2 text-sm shadow-lg animate-pulse">
                 💎 Premium
               </Badge>
               
@@ -162,7 +162,7 @@ const PricingSection = () => {
         {/* Enhanced Guarantee & Trust Signals */}
         <div className="text-center space-y-8 fade-in">
           <div className="inline-flex items-center space-x-4 bg-white/90 backdrop-blur-sm rounded-3xl px-8 py-6 shadow-2xl border border-white/50">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-2xl shadow-lg">
+            <div className="w-16 h-16 bg-gradient-to-br from-hc-tertiary to-hc-secondary rounded-2xl flex items-center justify-center text-2xl shadow-lg">
               🛡️
             </div>
             <div className="text-left">
