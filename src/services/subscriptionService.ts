@@ -16,7 +16,7 @@ const mockPlans: SubscriptionPlan[] = [
     planType: 'free',
     price: { monthly: 0, yearly: 0 },
     features: [
-      'Basic wellness library access',
+      'Basic consultant library access',
       'Community support',
       'Basic health tracking'
     ],
@@ -35,7 +35,7 @@ const mockPlans: SubscriptionPlan[] = [
       'Full access to all premium features',
       'Unlimited therapist consultations',
       'Advanced health tracking',
-      'Personalized wellness plans',
+      'Personalized consultant plans',
       'Priority support'
     ],
     limitations: {
@@ -52,7 +52,7 @@ const mockPlans: SubscriptionPlan[] = [
     features: [
       'Unlimited therapist consultations',
       'Advanced health tracking',
-      'Personalized wellness plans',
+      'Personalized consultant plans',
       'Priority support',
       'Offline access',
       'Data export'

@@ -311,7 +311,7 @@ export const PrivacyProvider: React.FC<{ children: React.ReactNode }> = ({ child
           ...request,
           status: 'completed' as const,
           completedAt: new Date(),
-          downloadUrl: `https://api.healconnect.com/exports/${request.id}`,
+          downloadUrl: `https://api.mendedminds.com/exports/${request.id}`,
           expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // Expires in 7 days
         };
         

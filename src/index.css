@@ -6,57 +6,57 @@
 
 @layer base {
   :root {
-    /* HealConnect Therapeutic Color Palette */
-    --hc-primary: 59 107 140; /* Therapeutic Ocean Blue #3B6B8C */
-    --hc-secondary: 123 160 152; /* Sage Wellness #7BA098 */
-    --hc-tertiary: 168 200 168; /* Healing Mint #A8C8A8 */
-    --hc-surface: 253 255 254; /* Pure Wellness White #FDFFFE */
-    --hc-accent: 232 184 109; /* Warm Sunrise #E8B86D */
-    --hc-warm: 244 228 193; /* Comfort Cream #F4E4C1 */
+    /* Mended Minds Therapeutic Color Palette */
+    --hc-primary: 123 84 84; /* Muted mauve/rose #7B5454 */
+    --hc-secondary: 220 199 182; /* Warm beige #DCC7B6 */
+    --hc-tertiary: 191 174 160; /* Light tan #BFAEA0 */
+    --hc-surface: 248 246 241; /* Light cream #F8F6F1 */
+    --hc-accent: 123 84 84; /* Muted mauve/rose #7B5454 */
+    --hc-warm: 248 246 241; /* Light cream #F8F6F1 */
     --hc-success: 107 207 127; /* Growth Green #6BCF7F */
     --hc-warning: 255 184 77; /* Gentle Alert #FFB84D */
-    --hc-soft: 234 244 244; /* Tranquil Mist #EAF4F4 */
+    --hc-soft: 220 199 182; /* Warm beige #DCC7B6 */
     
     /* shadcn/ui variables */
-    --background: 255 255 255; /* Pure White for better contrast */
-    --foreground: 30 41 59; /* Darker text for better readability */
+    --background: 248 246 241; /* Light cream background */
+    --foreground: 51 51 51; /* Charcoal/Dark gray text #333333 */
 
-    --card: 255 255 255;
-    --card-foreground: 30 41 59;
+    --card: 248 246 241;
+    --card-foreground: 51 51 51;
 
-    --popover: 255 255 255;
-    --popover-foreground: 30 41 59;
+    --popover: 248 246 241;
+    --popover-foreground: 51 51 51;
 
-    --primary: 59 107 140; /* Therapeutic Ocean Blue */
+    --primary: 123 84 84; /* Muted mauve/rose */
     --primary-foreground: 255 255 255;
 
-    --secondary: 248 250 252; /* Very Light Blue */
-    --secondary-foreground: 30 41 59;
+    --secondary: 220 199 182; /* Warm beige */
+    --secondary-foreground: 51 51 51;
 
-    --muted: 248 250 252; /* Light background */
-    --muted-foreground: 71 85 105; /* Darker muted text */
+    --muted: 220 199 182; /* Warm beige background */
+    --muted-foreground: 51 51 51; /* Charcoal text */
 
-    --accent: 232 184 109; /* Warm Sunrise */
-    --accent-foreground: 30 41 59; /* Dark text on accent */
+    --accent: 123 84 84; /* Muted mauve/rose */
+    --accent-foreground: 255 255 255; /* White text on accent */
 
     --destructive: 220 38 38;
     --destructive-foreground: 255 255 255;
 
-    --border: 226 232 240; /* Lighter border for better visibility */
-    --input: 226 232 240;
-    --ring: 59 107 140;
+    --border: 191 174 160; /* Light tan border */
+    --input: 191 174 160;
+    --ring: 123 84 84;
 
     --radius: 1rem; /* Increased for friendlier feel */
 
     /* Sidebar variables for shadcn compatibility */
-    --sidebar-background: 255 255 255;
-    --sidebar-foreground: 44 55 66;
-    --sidebar-primary: 59 107 140;
+    --sidebar-background: 248 246 241;
+    --sidebar-foreground: 51 51 51;
+    --sidebar-primary: 123 84 84;
     --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 234 244 244;
-    --sidebar-accent-foreground: 44 55 66;
-    --sidebar-border: 207 224 230;
-    --sidebar-ring: 59 107 140;
+    --sidebar-accent: 220 199 182;
+    --sidebar-accent-foreground: 51 51 51;
+    --sidebar-border: 191 174 160;
+    --sidebar-ring: 123 84 84;
   }
 }
 
@@ -68,7 +68,7 @@
   body {
     @apply bg-background text-foreground font-['Open_Sans',_'SF_Pro_Display',_'Roboto',_sans-serif];
     line-height: 1.6;
-    color: rgb(30 41 59); /* Force dark text for readability */
+    color: rgb(51 51 51); /* Force charcoal text for readability */
     /* Mobile-first typography */
     font-size: 16px; /* Ensure 16px base font size for mobile accessibility */
   }
@@ -77,7 +77,7 @@
     @apply font-['Inter',_'SF_Pro_Display',_'Roboto',_sans-serif] font-semibold;
     line-height: 1.25;
     letter-spacing: -0.025em;
-    color: rgb(30 41 59); /* Dark headings for visibility */
+    color: rgb(51 51 51); /* Charcoal headings for visibility */
   }
   
   /* Mobile-optimized text sizes */

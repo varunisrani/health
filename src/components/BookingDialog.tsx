@@ -52,7 +52,7 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
     setMeetLink(generatedLink);
     
     // Save to localStorage
-    const existingSessions = JSON.parse(localStorage.getItem('healconnect_sessions') || '[]');
+    const existingSessions = JSON.parse(localStorage.getItem('mendedminds_sessions') || '[]');
     const newSession = {
       id: Date.now().toString(),
       therapistId: therapist?.id,
@@ -63,7 +63,7 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({ open, onOpenChange
       status: 'upcoming'
     };
     existingSessions.push(newSession);
-    localStorage.setItem('healconnect_sessions', JSON.stringify(existingSessions));
+    localStorage.setItem('mendedminds_sessions', JSON.stringify(existingSessions));
     
     onOpenChange(false);
     setShowSuccessSheet(true);

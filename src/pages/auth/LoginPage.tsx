@@ -37,7 +37,7 @@ const LoginPage = () => {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-semibold text-hc-primary">
-            Welcome back to HealConnect
+            Welcome back to Mended Minds
           </CardTitle>
         </CardHeader>
         <CardContent>

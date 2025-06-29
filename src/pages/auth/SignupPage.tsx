@@ -30,7 +30,7 @@ const SignupPage = () => {
     try {
       const success = await signup(email, password, name);
       if (success) {
-        toast({ title: "Account created!", description: "Welcome to HealConnect." });
+        toast({ title: "Account created!", description: "Welcome to Mended Minds." });
         navigate('/dashboard');
       }
     } catch (error) {
@@ -45,7 +45,7 @@ const SignupPage = () => {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-semibold text-hc-primary">
-            Join HealConnect
+            Join Mended Minds
           </CardTitle>
         </CardHeader>
         <CardContent>

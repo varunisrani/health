@@ -1,8 +1,8 @@
-# Daily Mood Tracker - HealConnect Serenity
+# Daily Mood Tracker - Mended Minds
 
 ## Overview
 
-The Daily Mood Tracker system has been successfully implemented in HealConnect Serenity. This comprehensive mood tracking solution allows users to:
+The Daily Mood Tracker system has been successfully implemented in Mended Minds. This comprehensive mood tracking solution allows users to:
 
 - Log daily mood entries with emoji-based selection
 - Add detailed notes and activity tracking
@@ -87,13 +87,13 @@ The Daily Mood Tracker system has been successfully implemented in HealConnect S
 ### Architecture
 - **Frontend Framework**: React 18 with TypeScript
 - **State Management**: React Query + Context API
-- **UI Components**: shadcn/ui with custom HealConnect styling
+- **UI Components**: shadcn/ui with custom Mended Minds styling
 - **Charts**: Recharts library for data visualization
 - **Styling**: TailwindCSS with custom hc-* color palette
 - **Data Persistence**: localStorage (ready for backend integration)
 
 ### Design System Integration
-- Follows existing HealConnect color scheme:
+- Follows existing Mended Minds color scheme:
   - `hc-primary`: Medical Navy Blue (#2C5282)
   - `hc-secondary`: Soft Gray-Blue (#748EA8)
   - `hc-tertiary`: Light Sage Green (#869A8B)
@@ -205,4 +205,4 @@ src/
 6. **Goal Setting**: Mood improvement targets
 7. **Integration**: Connect with therapy sessions and wellness activities
 
-The Daily Mood Tracker is now fully integrated into HealConnect Serenity and ready for user testing and feedback!
+The Daily Mood Tracker is now fully integrated into Mended Minds and ready for user testing and feedback!

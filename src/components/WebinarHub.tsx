@@ -65,12 +65,12 @@ export const WebinarHub: React.FC<WebinarHubProps> = ({
     { id: 'depression', name: 'Depression Support', count: 6 },
     { id: 'stress', name: 'Stress Relief', count: 10 },
     { id: 'relationships', name: 'Relationships', count: 5 },
-    { id: 'sleep', name: 'Sleep & Wellness', count: 7 }
+    { id: 'sleep', name: 'Sleep & Consultant', count: 7 }
   ];
 
   // Load bookmarked webinars from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('healconnect_bookmarked_webinars');
+    const saved = localStorage.getItem('mendedminds_bookmarked_webinars');
     if (saved) {
       setBookmarkedWebinars(new Set(JSON.parse(saved)));
     }
@@ -78,7 +78,7 @@ export const WebinarHub: React.FC<WebinarHubProps> = ({
 
   // Save bookmarked webinars to localStorage
   useEffect(() => {
-    localStorage.setItem('healconnect_bookmarked_webinars', JSON.stringify([...bookmarkedWebinars]));
+    localStorage.setItem('mendedminds_bookmarked_webinars', JSON.stringify([...bookmarkedWebinars]));
   }, [bookmarkedWebinars]);
 
   const handleJoinWebinar = (webinarId: string) => {

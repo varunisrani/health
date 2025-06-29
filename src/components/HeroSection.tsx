@@ -31,11 +31,12 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-white via-slate-50/30 to-hc-soft/10 overflow-hidden">
-      {/* Background Pattern - healing gradient overlay */}
-      <div className="absolute inset-0 opacity-10 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,107,140,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(232,184,109,0.15),transparent_50%)]"></div>
+    <section className="relative min-h-screen py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-hc-surface via-hc-soft/30 to-hc-secondary/10 overflow-hidden">
+      {/* Enhanced Background Pattern */}
+      <div className="absolute inset-0 opacity-20 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(123,84,84,0.15),transparent_60%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(220,199,182,0.2),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(191,174,160,0.1),transparent_40%)]"></div>
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -45,33 +46,40 @@ const HeroSection = () => {
             {/* Logo */}
             <div className="flex items-center space-x-2 sm:space-x-3">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-hc-primary to-hc-secondary rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg sm:text-xl">H</span>
+                <span className="text-white font-bold text-lg sm:text-xl">M</span>
               </div>
               <span className="text-xl sm:text-2xl font-inter font-semibold text-hc-primary">
-                HealConnect
+                Mended Minds
               </span>
             </div>
 
             {/* Headline */}
-            <div className="space-y-4 sm:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-inter font-semibold text-slate-900 leading-tight">
-                Guided Support for Your{" "}
-                <span className="bg-gradient-to-r from-hc-primary to-hc-secondary bg-clip-text text-transparent">Healing Journey</span>
+            <div className="space-y-6 sm:space-y-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter font-bold text-slate-900 leading-[1.1] tracking-tight">
+                <span className="block mb-2 sm:mb-3 bg-gradient-to-r from-hc-primary via-hc-primary to-hc-secondary bg-clip-text text-transparent">
+                  Mental wellness
+                </span>
+                <span className="block text-slate-800 font-medium text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-3">
+                  is a journey.
+                </span>
+                <span className="block text-hc-primary font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-3 sm:mt-4">
+                  We're here every step of the way
+                </span>
               </h1>
               
-              <p className="text-base sm:text-lg lg:text-xl text-slate-800 leading-relaxed max-w-xl font-medium">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed max-w-2xl font-medium">
                 Healing is a shared journey—let's take the first step together. 
-                Connect with trusted wellness mentors for personalized yoga, meditation, and music therapy sessions.
+                Connect with trusted consultant mentors for personalized yoga, meditation, and music therapy sessions.
               </p>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 relative z-20">
+            {/* Enhanced CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 sm:pt-6 relative z-20">
               <Button 
                 onClick={handleStartTrial}
                 variant="hc-primary"
                 size="lg"
-                className="h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
+                className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 w-full sm:w-auto bg-gradient-to-r from-hc-primary to-hc-secondary text-white border-0"
               >
                 Start Your 14-Day Free Journey
               </Button>
@@ -80,7 +88,7 @@ const HeroSection = () => {
                 variant="outline" 
                 size="lg"
                 onClick={handleBrowseMentors}
-                className="h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base rounded-xl sm:rounded-2xl border-2 border-hc-primary text-hc-primary hover:bg-hc-soft hover:border-hc-secondary transition-all duration-300 w-full sm:w-auto"
+                className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg font-semibold rounded-2xl border-2 border-hc-primary text-hc-primary hover:bg-gradient-to-r hover:from-hc-primary hover:to-hc-secondary hover:text-white hover:border-transparent transition-all duration-500 hover:-translate-y-1 hover:scale-105 w-full sm:w-auto shadow-lg hover:shadow-2xl"
               >
                 Browse Mentors →
               </Button>
@@ -92,23 +100,31 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Right Illustration */}
+          {/* Right Illustration - Enhanced */}
           <div className="relative lg:pl-8 xl:pl-12 fade-in order-first lg:order-last">
             <div className="relative">
-              {/* Healing Gradient Blob Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-hc-primary/15 via-hc-secondary/15 to-hc-accent/15 rounded-2xl sm:rounded-[2.5rem] lg:rounded-[3rem] transform rotate-2 lg:rotate-3 scale-105 lg:scale-110 shadow-lg"></div>
+              {/* Multiple Gradient Backgrounds for Depth */}
+              <div className="absolute inset-0 bg-gradient-to-br from-hc-primary/20 via-hc-secondary/20 to-hc-tertiary/15 rounded-2xl sm:rounded-[2.5rem] lg:rounded-[3rem] transform rotate-1 lg:rotate-2 scale-105 lg:scale-110 shadow-2xl opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-tl from-hc-secondary/15 via-hc-tertiary/20 to-hc-primary/10 rounded-2xl sm:rounded-[2.5rem] lg:rounded-[3rem] transform -rotate-1 lg:-rotate-1 scale-102 lg:scale-105 shadow-xl opacity-40"></div>
               
-              {/* Illustration Container */}
-              <div className="relative bg-gradient-to-br from-white/90 to-hc-soft/50 backdrop-blur-sm rounded-2xl sm:rounded-[2rem] lg:rounded-[2.5rem] p-6 sm:p-8 lg:p-12 shadow-xl lg:shadow-2xl border border-hc-soft/50">
-                {/* Simple Yoga Pose Illustration */}
-                <div className="w-full h-48 sm:h-64 lg:h-80 flex items-center justify-center">
-                  <div className="text-5xl sm:text-6xl lg:text-8xl filter drop-shadow-lg">🧘‍♀️</div>
+              {/* Main Image Container */}
+              <div className="relative bg-gradient-to-br from-white/95 to-hc-soft/60 backdrop-blur-sm rounded-2xl sm:rounded-[2rem] lg:rounded-[2.5rem] p-4 sm:p-6 lg:p-8 shadow-2xl border border-hc-soft/30 overflow-hidden">
+                {/* Wellness Journey Image */}
+                <div className="relative w-full h-56 sm:h-72 lg:h-96 overflow-hidden rounded-xl sm:rounded-2xl">
+                  <img 
+                    src="https://i.ibb.co/9DHKmVQ/photo-2025-06-29-10-03-28.jpg" 
+                    alt="Mental wellness journey - peaceful meditation and healing" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 filter brightness-105 contrast-105"
+                  />
+                  {/* Subtle overlay for better text contrast if needed */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-hc-primary/5 via-transparent to-transparent"></div>
                 </div>
                 
-                {/* Healing Floating Elements */}
-                <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 lg:-top-4 lg:-right-4 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-gradient-to-br from-hc-tertiary to-hc-success rounded-full animate-bounce shadow-lg"></div>
-                <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 lg:-bottom-4 lg:-left-4 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-gradient-to-br from-hc-secondary to-hc-primary rounded-full animate-bounce shadow-lg" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute top-1/2 -left-3 sm:-left-4 lg:-left-6 w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 bg-gradient-to-br from-hc-accent to-hc-warm rounded-full animate-bounce shadow-lg" style={{ animationDelay: '1s' }}></div>
+                {/* Enhanced Floating Elements with Better Positioning */}
+                <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 lg:-top-6 lg:-right-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-hc-tertiary to-hc-secondary rounded-full animate-bounce shadow-2xl border-2 border-white/50 backdrop-blur-sm"></div>
+                <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-hc-secondary to-hc-primary rounded-full animate-bounce shadow-2xl border-2 border-white/50" style={{ animationDelay: '0.5s' }}></div>
+                <div className="absolute top-1/3 -left-4 sm:-left-5 lg:-left-7 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-gradient-to-br from-hc-primary to-hc-tertiary rounded-full animate-bounce shadow-xl border-2 border-white/50" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute bottom-1/3 -right-4 sm:-right-5 lg:-right-7 w-5 h-5 sm:w-7 sm:h-7 lg:w-9 lg:h-9 bg-gradient-to-br from-hc-tertiary via-hc-secondary to-hc-primary rounded-full animate-bounce shadow-xl border-2 border-white/50" style={{ animationDelay: '1.5s' }}></div>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ const faqs = [
     answer: "Our matching system considers your goals, preferred practices, and personality. You can browse mentor profiles, read reviews, and even have a brief intro call before committing to sessions."
   },
   {
-    question: "What if I'm new to wellness practices?",
+    question: "What if I'm new to consultant practices?",
     answer: "Perfect! Many of our mentors specialize in working with beginners. We have specially designed starter programs and our mentors will guide you step-by-step at your own pace."
   },
   {
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: "How does the free trial work?",
-    answer: "Your 14-day free trial gives you full access to explore mentors, join sessions, and use our wellness library. No credit card required to start, and you can cancel anytime."
+    answer: "Your 14-day free trial gives you full access to explore mentors, join sessions, and use our consultant library. No credit card required to start, and you can cancel anytime."
   },
   {
     question: "Is my personal information kept confidential?",
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     question: "What happens if I need immediate crisis support?",
-    answer: "HealConnect is designed for ongoing wellness support and is not a replacement for emergency mental health services. If you're experiencing a crisis, please contact emergency services or a crisis hotline immediately."
+    answer: "Mended Minds is designed for ongoing consultant support and is not a replacement for emergency mental health services. If you're experiencing a crisis, please contact emergency services or a crisis hotline immediately."
   }
 ];
 
@@ -45,7 +45,7 @@ const FAQSection = () => {
             Frequently Asked <span className="hc-primary">Questions</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about starting your healing journey with HealConnect.
+            Everything you need to know about starting your healing journey with Mended Minds.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ const FAQSection = () => {
             <div>
               <h3 className="font-semibold text-orange-800 mb-2">Important Medical Disclaimer</h3>
               <p className="text-orange-700 leading-relaxed">
-                HealConnect provides wellness support and is <strong>not a replacement for professional medical or mental health therapy</strong>. 
+                Mended Minds provides consultant support and is <strong>not a replacement for professional medical or mental health therapy</strong>. 
                 If you're experiencing a mental health crisis, please contact emergency services immediately or reach out to:
               </p>
               <div className="mt-3 space-y-1 text-sm">

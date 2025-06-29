@@ -96,7 +96,7 @@ export const AnonymousMode: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">Anonymous Mode</h2>
-          <p className="text-gray-600">Use HealConnect without revealing your identity</p>
+          <p className="text-gray-600">Use Mended Minds without revealing your identity</p>
         </div>
         <Badge 
           variant={anonymousMode ? "default" : "secondary"} 
@@ -143,7 +143,7 @@ export const AnonymousMode: React.FC = () => {
             <Alert className="border-blue-200 bg-blue-50">
               <Info className="h-4 w-4 text-blue-600" />
               <AlertDescription className="text-blue-800">
-                You are currently using HealConnect with your identified account. Enable anonymous mode for enhanced privacy.
+                You are currently using Mended Minds with your identified account. Enable anonymous mode for enhanced privacy.
               </AlertDescription>
             </Alert>
           )}
@@ -288,7 +288,7 @@ export const AnonymousMode: React.FC = () => {
               <div>
                 <h4 className="font-medium">Ready to go anonymous?</h4>
                 <p className="text-sm text-gray-600">
-                  Enhance your privacy and use HealConnect anonymously
+                  Enhance your privacy and use Mended Minds anonymously
                 </p>
               </div>
               <Button

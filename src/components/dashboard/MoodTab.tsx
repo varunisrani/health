@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MoodTracker } from '@/components/MoodTracker';
+import { NewMoodTracker } from '@/components/NewMoodTracker';
 import { MoodInsights } from '@/components/MoodInsights';
 import { MoodHistory } from '@/components/MoodHistory';
 import { MoodExport } from '@/components/MoodExport';
@@ -141,7 +141,7 @@ export const MoodTab = () => {
 
         <TabsContent value="tracker" className={isMobile ? "space-y-4" : "space-y-6"}>
           <div className={isMobile ? "" : "max-w-4xl mx-auto"}>
-            <MoodTracker />
+            <NewMoodTracker />
           </div>
         </TabsContent>
 

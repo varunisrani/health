@@ -156,10 +156,20 @@ const HealingMateWidgetContent: React.FC<HealingMateWidgetProps> = ({
 
         {/* Quick Access Buttons */}
         <div className="grid grid-cols-2 gap-2">
-          <Button variant="outline" size="sm" className="text-xs">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="text-xs"
+            onClick={() => onNavigateToHealingMate?.()}
+          >
             🎵 Music
           </Button>
-          <Button variant="outline" size="sm" className="text-xs">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="text-xs"
+            onClick={() => onNavigateToHealingMate?.()}
+          >
             🧘 Meditation
           </Button>
         </div>

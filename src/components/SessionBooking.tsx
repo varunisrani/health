@@ -167,7 +167,7 @@ export const SessionBooking: React.FC<SessionBookingProps> = ({
       const bookingData: SessionBookingData = {
         type: sessionType,
         title: sessionTitle || `${sessionType === 'one-on-one' ? 'Therapy Session' : 'Webinar'} with ${selectedTherapist.name}`,
-        description: sessionDescription || `${sessionType === 'one-on-one' ? 'Individual therapy session' : 'Group webinar session'} focusing on your wellness goals.`,
+        description: sessionDescription || `${sessionType === 'one-on-one' ? 'Individual therapy session' : 'Group webinar session'} focusing on your consultant goals.`,
         therapistId: selectedTherapist.id,
         therapistName: selectedTherapist.name,
         scheduledTime,

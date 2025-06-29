@@ -377,10 +377,10 @@ export class AuditService {
   }
 
   private getSessionId(): string {
-    let sessionId = sessionStorage.getItem('healconnect_session_id');
+    let sessionId = sessionStorage.getItem('mendedminds_session_id');
     if (!sessionId) {
       sessionId = encryptionService.generateSecureToken(16);
-      sessionStorage.setItem('healconnect_session_id', sessionId);
+      sessionStorage.setItem('mendedminds_session_id', sessionId);
     }
     return sessionId;
   }

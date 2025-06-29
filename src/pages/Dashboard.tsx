@@ -113,7 +113,7 @@ const Dashboard = () => {
                       <span className="text-white font-bold text-xs sm:text-sm">H</span>
                     </div>
                     <h1 className="text-lg sm:text-2xl font-semibold bg-gradient-to-r from-hc-primary to-hc-secondary bg-clip-text text-transparent">
-                      HealConnect
+                      Mended Minds
                     </h1>
                   </div>
                   
@@ -156,7 +156,7 @@ const Dashboard = () => {
                                 </Avatar>
                                 <div>
                                   <p className="font-semibold text-slate-900">{user?.name}</p>
-                                  <p className="text-xs text-slate-600">HealConnect Member</p>
+                                  <p className="text-xs text-slate-600">Mended Minds Member</p>
                                 </div>
                               </div>
                             </div>

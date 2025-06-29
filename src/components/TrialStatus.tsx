@@ -188,7 +188,7 @@ export const TrialStatus: React.FC<TrialStatusProps> = ({
             <ul className="text-xs text-gray-600 space-y-1">
               <li>• Unlimited therapist consultations</li>
               <li>• Advanced health tracking & analytics</li>
-              <li>• Personalized wellness plans</li>
+              <li>• Personalized consultant plans</li>
               <li>• Priority support & offline access</li>
               <li>• Data export & enhanced privacy controls</li>
             </ul>

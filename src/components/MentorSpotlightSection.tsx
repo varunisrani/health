@@ -1,6 +1,8 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 const mentors = [
   {
@@ -25,7 +27,7 @@ const mentors = [
     expertise: ["Meditation", "Breathwork", "Trauma Support"],
     rating: 4.8,
     sessions: 320,
-    bio: "Licensed therapist combining traditional meditation with modern wellness techniques."
+    bio: "Licensed therapist combining traditional meditation with modern consultant techniques."
   },
   {
     name: "David Kim",
@@ -41,17 +43,35 @@ const mentors = [
     expertise: ["Nature Therapy", "Mindful Walking"],
     rating: 5.0,
     sessions: 200,
-    bio: "Outdoor wellness expert connecting healing with natural environments."
+    bio: "Outdoor consultant expert connecting healing with natural environments."
   }
 ];
 
 const MentorSpotlightSection = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, setShowAuthModal } = useAuth();
+
+  const handleViewProfile = (mentorId: number) => {
+    if (isAuthenticated) {
+      navigate(`/therapists/${mentorId}`);
+    } else {
+      setShowAuthModal(true);
+    }
+  };
+
+  const handleViewAllMentors = () => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    } else {
+      setShowAuthModal(true);
+    }
+  };
   return (
     <section className="py-20 px-6 bg-hc-surface">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl lg:text-5xl font-inter font-semibold text-gray-900 mb-6">
-            Meet Your <span className="hc-primary">Wellness Mentors</span>
+            Meet Your <span className="hc-primary">Consultant Mentors</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Connect with certified experts who understand your journey and are committed to your healing and growth.
@@ -106,7 +126,10 @@ const MentorSpotlightSection = () => {
                   </p>
 
                   {/* CTA */}
-                  <button className="w-full bg-hc-primary hover:bg-hc-primary/90 text-white font-medium py-3 rounded-xl transition-all duration-300 hover:shadow-md">
+                  <button 
+                    onClick={() => handleViewProfile(index + 1)}
+                    className="w-full bg-hc-primary hover:bg-hc-primary/90 text-white font-medium py-3 rounded-xl transition-all duration-300 hover:shadow-md"
+                  >
                     View Profile
                   </button>
                 </CardContent>
@@ -117,7 +140,10 @@ const MentorSpotlightSection = () => {
 
         {/* View All Mentors CTA */}
         <div className="text-center mt-12 fade-in">
-          <button className="bg-white border-2 border-hc-primary hc-primary hover:bg-hc-primary hover:text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-md">
+          <button 
+            onClick={handleViewAllMentors}
+            className="bg-white border-2 border-hc-primary hc-primary hover:bg-hc-primary hover:text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-md"
+          >
             View All 500+ Mentors
           </button>
         </div>

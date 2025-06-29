@@ -51,7 +51,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     // Check for existing auth on mount
-    const savedUser = localStorage.getItem('healconnect_user');
+    const savedUser = localStorage.getItem('mendedminds_user');
     if (savedUser) {
       try {
         const parsedUser = JSON.parse(savedUser);
@@ -63,7 +63,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loadSubscriptionData(parsedUser.id);
       } catch (error) {
         console.error('Error parsing saved user:', error);
-        localStorage.removeItem('healconnect_user');
+        localStorage.removeItem('mendedminds_user');
       }
     }
   }, []);
@@ -107,7 +107,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setUser(mockUser);
       setIsAuthenticated(true);
-      localStorage.setItem('healconnect_user', JSON.stringify(mockUser));
+      localStorage.setItem('mendedminds_user', JSON.stringify(mockUser));
       
       // Load subscription data
       await loadSubscriptionData(mockUser.id);
@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setUser(mockUser);
       setIsAuthenticated(true);
-      localStorage.setItem('healconnect_user', JSON.stringify(mockUser));
+      localStorage.setItem('mendedminds_user', JSON.stringify(mockUser));
       
       // Load subscription data (will create trial)
       await loadSubscriptionData(mockUser.id);
@@ -167,7 +167,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setTrialStatus(null);
     setIsAuthenticated(false);
     setShowAuthModal(false);
-    localStorage.removeItem('healconnect_user');
+    localStorage.removeItem('mendedminds_user');
   };
 
   // Calculate trial status flags

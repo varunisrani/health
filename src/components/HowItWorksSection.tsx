@@ -4,18 +4,18 @@ import { Card, CardContent } from "@/components/ui/card";
 const steps = [
   {
     icon: "🤝",
-    title: "Connect",
-    description: "Browse verified mentors and find someone who resonates with your healing goals and preferred wellness practices."
+    title: "You don't have to face it alone. Real support, real people.",
+    description: "Find someone who listens—not just hears."
   },
   {
     icon: "🌱",
-    title: "Explore",
-    description: "Access personalized sessions, guided meditations, yoga routines, and music therapy tailored to your unique journey."
+    title: "Explore-",
+    description: "Discover peace within. One breath, one session at a time. Your healing tools, personalized for your path."
   },
   {
     icon: "✨",
-    title: "Grow",
-    description: "Track your progress, celebrate milestones, and build lasting wellness habits with continuous mentor support."
+    title: "Grow-",
+    description: "Track your growth—not just goals. Celebrate every small step. Healing is never linear."
   }
 ];
 
@@ -25,7 +25,7 @@ const HowItWorksSection = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl lg:text-5xl font-inter font-semibold text-gray-900 mb-6">
-            How <span className="hc-primary">HealConnect</span> Works
+            How <span className="hc-primary">Mended Minds</span> Works
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Your healing journey made simple with three thoughtful steps designed around your needs and comfort.

@@ -32,8 +32,8 @@ export const useMood = () => {
 };
 
 // Local storage keys
-const MOOD_ENTRIES_KEY = 'healconnect_mood_entries';
-const MOOD_STATS_KEY = 'healconnect_mood_stats';
+const MOOD_ENTRIES_KEY = 'mendedminds_mood_entries';
+const MOOD_STATS_KEY = 'mendedminds_mood_stats';
 
 // Mock API functions (using localStorage)
 const getMoodEntries = async (userId: string): Promise<MoodEntry[]> => {
@@ -175,7 +175,7 @@ const generateInsights = (entries: MoodEntry[], stats: MoodStats): MoodInsight[]
       type: 'concern',
       title: 'Mood Declining',
       description: 'Your mood has been trending downward recently.',
-      actionSuggestion: 'Consider reaching out to a therapist or trying some wellness activities.',
+      actionSuggestion: 'Consider reaching out to a therapist or trying some consultant activities.',
     });
   }
 

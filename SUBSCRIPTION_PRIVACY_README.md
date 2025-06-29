@@ -1,6 +1,6 @@
-# HealConnect Serenity - Subscription & Privacy System
+# Mended Minds - Subscription & Privacy System
 
-This document outlines the comprehensive subscription and privacy/compliance system implemented for HealConnect Serenity.
+This document outlines the comprehensive subscription and privacy/compliance system implemented for Mended Minds.
 
 ## 🏗️ Architecture Overview
 

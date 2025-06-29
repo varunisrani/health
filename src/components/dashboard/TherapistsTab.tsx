@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { BookingDialog } from '@/components/BookingDialog';
 import { Search, Users, Award, Star } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useNavigate } from 'react-router-dom';
 
 const mockTherapists = [
   {
@@ -68,6 +69,7 @@ export const TherapistsTab = () => {
   const [selectedTherapist, setSelectedTherapist] = useState<any>(null);
   const [showBookingDialog, setShowBookingDialog] = useState(false);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   const filteredTherapists = mockTherapists.filter(therapist => {
     const matchesSearch = therapist.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -78,6 +80,10 @@ export const TherapistsTab = () => {
   const handleBookSession = (therapist: any) => {
     setSelectedTherapist(therapist);
     setShowBookingDialog(true);
+  };
+
+  const handleViewProfile = (therapistId: string) => {
+    navigate(`/therapists/${therapistId}`);
   };
 
   return (
@@ -176,19 +182,28 @@ export const TherapistsTab = () => {
                     ))}
                   </div>
                   
-                  {/* Rating & Action */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 bg-hc-soft/50 px-3 py-2 rounded-lg">
-                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                  {/* Rating & Actions */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-center bg-hc-soft/50 px-3 py-2 rounded-lg">
+                      <Star className="w-4 h-4 text-yellow-500 fill-current mr-2" />
                       <span className="text-sm font-bold text-gray-900">{therapist.rating}</span>
-                      <span className="text-xs text-gray-600">rating</span>
+                      <span className="text-xs text-gray-600 ml-1">rating</span>
                     </div>
-                    <Button 
-                      onClick={() => handleBookSession(therapist)}
-                      className="bg-gradient-to-r from-hc-accent to-hc-accent/90 hover:from-hc-accent/90 hover:to-hc-accent/80 text-slate-800 h-10 px-4 font-semibold shadow-md"
-                    >
-                      Book Session
-                    </Button>
+                    <div className="flex space-x-2">
+                      <Button 
+                        onClick={() => handleViewProfile(therapist.id)}
+                        variant="outline"
+                        className="flex-1 border-hc-primary text-hc-primary hover:bg-hc-primary hover:text-white h-10 font-semibold"
+                      >
+                        View Profile
+                      </Button>
+                      <Button 
+                        onClick={() => handleBookSession(therapist)}
+                        className="flex-1 bg-gradient-to-r from-hc-accent to-hc-accent/90 hover:from-hc-accent/90 hover:to-hc-accent/80 text-slate-800 h-10 font-semibold shadow-md"
+                      >
+                        Book Session
+                      </Button>
+                    </div>
                   </div>
                 </div>
                 
@@ -220,12 +235,21 @@ export const TherapistsTab = () => {
                       <span className="text-yellow-400 text-sm">⭐</span>
                       <span className="text-sm font-medium">{therapist.rating}</span>
                     </div>
-                    <Button 
-                      onClick={() => handleBookSession(therapist)}
-                      className="bg-hc-accent hover:bg-hc-accent/90 text-white h-9 px-4 text-sm"
-                    >
-                      Book Session
-                    </Button>
+                    <div className="flex space-x-2">
+                      <Button 
+                        onClick={() => handleViewProfile(therapist.id)}
+                        variant="outline"
+                        className="border-hc-primary text-hc-primary hover:bg-hc-primary hover:text-white h-9 px-3 text-sm"
+                      >
+                        View Profile
+                      </Button>
+                      <Button 
+                        onClick={() => handleBookSession(therapist)}
+                        className="bg-hc-accent hover:bg-hc-accent/90 text-white h-9 px-4 text-sm"
+                      >
+                        Book Session
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardContent>

@@ -178,7 +178,7 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
         createNotification(
           'subscription_upgraded',
           'Subscription Upgraded!',
-          `Welcome to HealConnect Premium! Your ${billingCycle} subscription is now active.`,
+          `Welcome to Mended Minds Premium! Your ${billingCycle} subscription is now active.`,
           'medium'
         );
         
@@ -260,7 +260,7 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
         createNotification(
           'trial_extended',
           'Trial Extended!',
-          'Your free trial has been extended by 3 days. Enjoy exploring HealConnect!',
+          'Your free trial has been extended by 3 days. Enjoy exploring Mended Minds!',
           'medium'
         );
         

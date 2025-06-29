@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: "Jessica M.",
     role: "Working Mother",
-    content: "HealConnect helped me find balance during the most stressful period of my life. Sarah's yoga sessions became my daily anchor, and the community support was incredible.",
+    content: "Mended Minds helped me find balance during the most stressful period of my life. Sarah's yoga sessions became my daily anchor, and the community support was incredible.",
     rating: 5,
     avatar: "👩‍💼"
   },
@@ -19,7 +19,7 @@ const testimonials = [
   {
     name: "Maya R.",
     role: "Entrepreneur",
-    content: "After trying countless wellness apps, HealConnect is the first that felt truly personal. Priya understands my journey and provides exactly the support I need.",
+    content: "After trying countless consultant apps, Mended Minds is the first that felt truly personal. Priya understands my journey and provides exactly the support I need.",
     rating: 5,
     avatar: "👩‍💻"
   }
@@ -34,7 +34,7 @@ const TestimonialsSection = () => {
             Stories of <span className="hc-primary">Transformation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Real healing journeys from our community members who found their path to wellness with HealConnect.
+            Real healing journeys from our community members who found their path to consultant with Mended Minds.
           </p>
         </div>
 

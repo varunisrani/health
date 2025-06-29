@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 const libraryItems = [
   {
@@ -40,13 +42,33 @@ const libraryItems = [
   }
 ];
 
-const WellnessLibrarySection = () => {
+const ConsultantLibrarySection = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, setShowAuthModal } = useAuth();
+
+  const handleExploreSection = (category: string) => {
+    if (isAuthenticated) {
+      // Navigate to the library page with the specific category
+      navigate('/library', { state: { category: category.toLowerCase() } });
+    } else {
+      setShowAuthModal(true);
+    }
+  };
+
+  const handleStartItem = (category: string, item: any) => {
+    if (isAuthenticated) {
+      // Navigate to the specific item or library category
+      navigate('/library', { state: { category: category.toLowerCase(), item: item.title } });
+    } else {
+      setShowAuthModal(true);
+    }
+  };
   return (
     <section className="py-20 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 slide-up">
           <h2 className="text-4xl lg:text-5xl font-inter font-semibold text-gray-900 mb-6">
-            Your <span className="hc-primary">Wellness Library</span>
+            Your <span className="hc-primary">Consultant Library</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Access a curated collection of guided practices designed to support every aspect of your healing journey.
@@ -82,7 +104,10 @@ const WellnessLibrarySection = () => {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-gray-600">{item.level}</span>
-                        <button className={`text-sm ${section.accentColor} hover:underline font-medium`}>
+                        <button 
+                          className={`text-sm ${section.accentColor} hover:underline font-medium`}
+                          onClick={() => handleStartItem(section.category, item)}
+                        >
                           Start →
                         </button>
                       </div>
@@ -90,8 +115,11 @@ const WellnessLibrarySection = () => {
                   ))}
                 </div>
 
-                <button className={`w-full mt-6 bg-white ${section.borderColor} border-2 ${section.accentColor} hover:bg-hc-primary hover:text-white font-medium py-3 rounded-xl transition-all duration-300`}>
-                  Explore All {section.category}
+                <button 
+                  className={`w-full mt-6 bg-white ${section.borderColor} border-2 ${section.accentColor} hover:bg-hc-primary hover:text-white font-medium py-3 rounded-xl transition-all duration-300`}
+                  onClick={() => handleExploreSection(section.category)}
+                >
+                  Explore All {section.category === 'Meditations' ? 'Meditation' : section.category}
                 </button>
               </CardContent>
             </Card>
@@ -107,7 +135,7 @@ const WellnessLibrarySection = () => {
                 Unlock Premium Library Access
               </h3>
               <p className="text-gray-600 mb-6">
-                Get unlimited access to our complete wellness library with 1000+ guided sessions, exclusive content, and new releases added weekly.
+                Get unlimited access to our complete consultant library with 1000+ guided sessions, exclusive content, and new releases added weekly.
               </p>
               <button className="bg-hc-accent hover:bg-hc-accent/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-md">
                 Start Free Trial
@@ -120,4 +148,4 @@ const WellnessLibrarySection = () => {
   );
 };
 
-export default WellnessLibrarySection;
+export default ConsultantLibrarySection;

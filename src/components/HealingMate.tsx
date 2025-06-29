@@ -276,7 +276,7 @@ export const HealingMate: React.FC<HealingMateProps> = ({ className }) => {
           </div>
           <div>
             <h1 className={`font-bold text-gray-900 ${isMobile ? 'text-lg' : 'text-2xl'}`}>Healing Mate</h1>
-            <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-base'}`}>Your personalized wellness companion</p>
+            <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-base'}`}>Your personalized consultant companion</p>
           </div>
         </div>
         

@@ -323,7 +323,7 @@ export const LiveSessions: React.FC<LiveSessionsProps> = ({
                         className="text-hc-accent hover:text-hc-accent/80 p-0 h-auto"
                       >
                         Book your first session
-                      </Button> to begin your wellness journey.
+                      </Button> to begin your consultant journey.
                     </>
                   )}
                 </p>

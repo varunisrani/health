@@ -1,7 +1,7 @@
 # Healing Mate Activities Platform - Implementation Summary
 
 ## Overview
-The Healing Mate Activities platform has been successfully implemented as a comprehensive wellness companion for HealConnect Serenity. It provides curated audio sessions, guided meditations, breathing exercises, and personalized recommendations.
+The Healing Mate Activities platform has been successfully implemented as a comprehensive consultant companion for Mended Minds. It provides curated audio sessions, guided meditations, breathing exercises, and personalized recommendations.
 
 ## Components Created
 

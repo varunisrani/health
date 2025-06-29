@@ -56,7 +56,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
         }
         const success = await signup(email, password, name);
         if (success) {
-          toast({ title: "Account created!", description: "Welcome to HealConnect." });
+          toast({ title: "Account created!", description: "Welcome to Mended Minds." });
           onOpenChange(false);
           resetForm();
           navigate('/dashboard');
@@ -101,7 +101,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange }) => {
       }`}>
         <DialogHeader className="pb-4">
           <DialogTitle className="text-center text-xl sm:text-2xl font-semibold">
-            {isLogin ? "Welcome back" : "Join HealConnect"}
+            {isLogin ? "Welcome back" : "Join Mended Minds"}
           </DialogTitle>
         </DialogHeader>
         

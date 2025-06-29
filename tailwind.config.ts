@@ -23,15 +23,15 @@ export default {
 				'open-sans': ['Open Sans', 'SF Pro Display', 'Roboto', 'sans-serif'],
 			},
 			colors: {
-				'hc-primary': 'rgb(59 107 140)', /* Therapeutic Ocean Blue */
-				'hc-secondary': 'rgb(123 160 152)', /* Sage Wellness */
-				'hc-tertiary': 'rgb(168 200 168)', /* Healing Mint */
-				'hc-surface': 'rgb(253 255 254)', /* Pure Wellness White */
-				'hc-accent': 'rgb(232 184 109)', /* Warm Sunrise */
-				'hc-warm': 'rgb(244 228 193)', /* Comfort Cream */
-				'hc-success': 'rgb(107 207 127)', /* Growth Green */
-				'hc-warning': 'rgb(255 184 77)', /* Gentle Alert */
-				'hc-soft': 'rgb(234 244 244)', /* Tranquil Mist */
+				'hc-primary': 'rgb(123 84 84)', /* Muted mauve/rose buttons */
+				'hc-secondary': 'rgb(220 199 182)', /* Warm beige brush texture */
+				'hc-tertiary': 'rgb(191 174 160)', /* Light tan brush texture */
+				'hc-surface': 'rgb(248 246 241)', /* Light cream background */
+				'hc-accent': 'rgb(123 84 84)', /* Muted mauve/rose accent */
+				'hc-warm': 'rgb(248 246 241)', /* Light cream */
+				'hc-success': 'rgb(107 207 127)', /* Growth Green - keeping for success states */
+				'hc-warning': 'rgb(255 184 77)', /* Gentle Alert - keeping for warnings */
+				'hc-soft': 'rgb(220 199 182)', /* Warm beige for soft elements */
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

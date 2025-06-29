@@ -34,7 +34,7 @@ export const SessionsTab = () => {
 
   useEffect(() => {
     // Load sessions from localStorage
-    const savedSessions = localStorage.getItem('healconnect_sessions');
+    const savedSessions = localStorage.getItem('mendedminds_sessions');
     if (savedSessions) {
       setSessions(JSON.parse(savedSessions));
     } else {
@@ -62,7 +62,7 @@ export const SessionsTab = () => {
         }
       ];
       setSessions(sampleSessions);
-      localStorage.setItem('healconnect_sessions', JSON.stringify(sampleSessions));
+      localStorage.setItem('mendedminds_sessions', JSON.stringify(sampleSessions));
     }
   }, []);
 

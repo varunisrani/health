@@ -8,12 +8,12 @@ const FooterSection = () => {
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-hc-primary rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">H</span>
+                <span className="text-white font-bold text-lg">M</span>
               </div>
-              <span className="text-2xl font-inter font-semibold">HealConnect</span>
+              <span className="text-2xl font-inter font-semibold">Mended Minds</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Guided support for your healing journey. Connect with trusted wellness mentors and build lasting wellness habits.
+              Guided support for your healing journey. Connect with trusted consultant mentors and build lasting consultant habits.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -40,7 +40,7 @@ const FooterSection = () => {
             <h3 className="font-semibold text-lg mb-6">Platform</h3>
             <div className="space-y-4">
               <a href="#" className="block text-gray-400 hover:text-white transition-colors">Browse Mentors</a>
-              <a href="#" className="block text-gray-400 hover:text-white transition-colors">Wellness Library</a>
+              <a href="#" className="block text-gray-400 hover:text-white transition-colors">Consultant Library</a>
               <a href="#" className="block text-gray-400 hover:text-white transition-colors">Community</a>
               <a href="#" className="block text-gray-400 hover:text-white transition-colors">Mobile App</a>
             </div>
@@ -72,7 +72,7 @@ const FooterSection = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm">
-            © 2024 HealConnect. All rights reserved.
+            © 2024 Mended Minds. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm mt-4 md:mt-0">
             Made with 💚 for healing communities worldwide
@@ -81,8 +81,8 @@ const FooterSection = () => {
 
         {/* Final Disclaimer */}
         <div className="mt-8 text-xs text-gray-500 text-center max-w-4xl mx-auto leading-relaxed">
-          HealConnect is not a substitute for professional medical or mental health treatment. 
-          Our mentors provide wellness guidance and support but are not licensed therapists or medical professionals. 
+          Mended Minds is not a substitute for professional medical or mental health treatment. 
+          Our mentors provide consultant guidance and support but are not licensed therapists or medical professionals. 
           Always consult with qualified healthcare providers for medical concerns and mental health treatment.
         </div>
       </div>

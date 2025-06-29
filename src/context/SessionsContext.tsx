@@ -100,7 +100,7 @@ const mockSessions: LiveSession[] = [
     scheduledTime: new Date(Date.now() + 24 * 60 * 60 * 1000), // Tomorrow
     duration: 45,
     status: 'scheduled',
-    meetingLink: 'meet.healconnect.com/session-abc123',
+    meetingLink: 'meet.mendedminds.com/session-abc123',
     participants: []
   },
   {
@@ -149,7 +149,7 @@ export const SessionsProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   // Load sessions from localStorage on mount
   useEffect(() => {
-    const savedSessions = localStorage.getItem('healconnect_live_sessions');
+    const savedSessions = localStorage.getItem('mendedminds_live_sessions');
     if (savedSessions) {
       try {
         const parsedSessions = JSON.parse(savedSessions).map((s: any) => ({
@@ -165,7 +165,7 @@ export const SessionsProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   // Save sessions to localStorage whenever sessions change
   useEffect(() => {
-    localStorage.setItem('healconnect_live_sessions', JSON.stringify(sessions));
+    localStorage.setItem('mendedminds_live_sessions', JSON.stringify(sessions));
   }, [sessions]);
 
   // Session Management Functions
