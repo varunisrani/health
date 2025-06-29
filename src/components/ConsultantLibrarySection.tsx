@@ -48,8 +48,12 @@ const ConsultantLibrarySection = () => {
 
   const handleExploreSection = (category: string) => {
     if (isAuthenticated) {
-      // Navigate to the library page with the specific category
-      navigate('/library', { state: { category: category.toLowerCase() } });
+      // For meditation, redirect to therapists page; for others, navigate to library
+      if (category.toLowerCase().includes('meditation')) {
+        navigate('/dashboard'); // Navigate to dashboard which contains therapists
+      } else {
+        navigate('/library', { state: { category: category.toLowerCase() } });
+      }
     } else {
       setShowAuthModal(true);
     }

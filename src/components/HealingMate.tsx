@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -71,6 +72,7 @@ const activityCategories = [
 ];
 
 export const HealingMate: React.FC<HealingMateProps> = ({ className }) => {
+  const navigate = useNavigate();
   const { allContent, playbackState } = useHealingMate();
   const { filteredContent, searchQuery, setSearchQuery } = useContentFilter();
   const { continueListening, dailyRecommendations } = useRecommendations();
@@ -88,13 +90,19 @@ export const HealingMate: React.FC<HealingMateProps> = ({ className }) => {
   const CategoryCard = ({ category }: { category: typeof activityCategories[0] }) => {
     const Icon = category.icon;
     
+    const handleCategoryClick = () => {
+      if (category.id === 'music') {
+        setActiveView('music');
+      } else if (category.id === 'meditation') {
+        // Redirect to dashboard/therapists for meditation
+        navigate('/dashboard');
+      }
+    };
+    
     return (
       <Card 
         className="cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
-        onClick={() => {
-          if (category.id === 'music') setActiveView('music');
-          else if (category.id === 'meditation') setActiveView('meditation');
-        }}
+        onClick={handleCategoryClick}
       >
         <CardContent className={isMobile ? "p-4" : "p-6"}>
           <div className={cn(

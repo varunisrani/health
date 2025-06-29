@@ -13,7 +13,6 @@ import { SessionsTab } from '@/components/dashboard/SessionsTab';
 import { LibraryTab } from '@/components/dashboard/LibraryTab';
 import { HealingMateTab } from '@/components/dashboard/HealingMateTab';
 import { MoodTab } from '@/components/dashboard/MoodTab';
-import { MoodWidget } from '@/components/MoodWidget';
 import { HealingMateWidget } from '@/components/HealingMateWidget';
 import { SubscriptionManager } from '@/components/SubscriptionManager';
 import { TrialStatus } from '@/components/TrialStatus';
@@ -30,9 +29,6 @@ const Dashboard = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavigateToMoodTracker = () => {
-    setActiveTab('mood');
-  };
 
   const handleNavigateToHealingMate = () => {
     setActiveTab('healing-mate');
@@ -298,7 +294,6 @@ const Dashboard = () => {
                   <TherapistsTab />
                 </div>
                 <div className="lg:col-span-1 order-1 lg:order-2 space-y-3 sm:space-y-4">
-                  <MoodWidget onNavigateToMoodTracker={handleNavigateToMoodTracker} />
                   <HealingMateWidget onNavigateToHealingMate={handleNavigateToHealingMate} />
                 </div>
               </div>
@@ -310,7 +305,6 @@ const Dashboard = () => {
                   <SessionsTab />
                 </div>
                 <div className="lg:col-span-1 order-1 lg:order-2 space-y-3 sm:space-y-4">
-                  <MoodWidget onNavigateToMoodTracker={handleNavigateToMoodTracker} />
                   <HealingMateWidget onNavigateToHealingMate={handleNavigateToHealingMate} />
                 </div>
               </div>
@@ -330,7 +324,6 @@ const Dashboard = () => {
                   <LibraryTab />
                 </div>
                 <div className="lg:col-span-1 order-1 lg:order-2 space-y-3 sm:space-y-4">
-                  <MoodWidget onNavigateToMoodTracker={handleNavigateToMoodTracker} />
                   <HealingMateWidget onNavigateToHealingMate={handleNavigateToHealingMate} />
                 </div>
               </div>

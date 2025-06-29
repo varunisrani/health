@@ -31,12 +31,20 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-hc-surface via-hc-soft/30 to-hc-secondary/10 overflow-hidden">
-      {/* Enhanced Background Pattern */}
+    <section className="relative min-h-screen py-12 sm:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, rgb(248, 246, 241) 0%, rgba(220, 199, 182, 0.3) 50%, rgba(191, 174, 160, 0.1) 100%)'
+    }}>
+      {/* Enhanced Background Pattern - Fixed Colors */}
       <div className="absolute inset-0 opacity-20 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(123,84,84,0.15),transparent_60%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(220,199,182,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(191,174,160,0.1),transparent_40%)]"></div>
+        <div className="absolute inset-0" style={{
+          background: 'radial-gradient(circle at 30% 40%, rgba(123, 84, 84, 0.15) 0%, transparent 60%)'
+        }}></div>
+        <div className="absolute inset-0" style={{
+          background: 'radial-gradient(circle at 70% 60%, rgba(220, 199, 182, 0.2) 0%, transparent 50%)'
+        }}></div>
+        <div className="absolute inset-0" style={{
+          background: 'radial-gradient(circle at 50% 80%, rgba(191, 174, 160, 0.1) 0%, transparent 40%)'
+        }}></div>
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">

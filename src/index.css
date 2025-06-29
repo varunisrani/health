@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* HealConnect Medical Design System */
+/* Mended Minds Design System - Theme Independent */
 
 @layer base {
   :root {
-    /* Mended Minds Therapeutic Color Palette */
+    /* Mended Minds FIXED Color Palette - Never Changes with Theme */
     --hc-primary: 123 84 84; /* Muted mauve/rose #7B5454 */
     --hc-secondary: 220 199 182; /* Warm beige #DCC7B6 */
     --hc-tertiary: 191 174 160; /* Light tan #BFAEA0 */
@@ -17,38 +17,68 @@
     --hc-warning: 255 184 77; /* Gentle Alert #FFB84D */
     --hc-soft: 220 199 182; /* Warm beige #DCC7B6 */
     
-    /* shadcn/ui variables */
-    --background: 248 246 241; /* Light cream background */
-    --foreground: 51 51 51; /* Charcoal/Dark gray text #333333 */
+    /* shadcn/ui variables - FIXED to Mended Minds Theme */
+    --background: 248 246 241; /* Always light cream background */
+    --foreground: 51 51 51; /* Always charcoal/dark gray text */
 
-    --card: 248 246 241;
-    --card-foreground: 51 51 51;
+    --card: 248 246 241; /* Always light cream */
+    --card-foreground: 51 51 51; /* Always charcoal */
 
-    --popover: 248 246 241;
-    --popover-foreground: 51 51 51;
+    --popover: 248 246 241; /* Always light cream */
+    --popover-foreground: 51 51 51; /* Always charcoal */
 
-    --primary: 123 84 84; /* Muted mauve/rose */
-    --primary-foreground: 255 255 255;
+    --primary: 123 84 84; /* Always muted mauve/rose */
+    --primary-foreground: 255 255 255; /* Always white */
 
-    --secondary: 220 199 182; /* Warm beige */
-    --secondary-foreground: 51 51 51;
+    --secondary: 220 199 182; /* Always warm beige */
+    --secondary-foreground: 51 51 51; /* Always charcoal */
 
-    --muted: 220 199 182; /* Warm beige background */
-    --muted-foreground: 51 51 51; /* Charcoal text */
+    --muted: 220 199 182; /* Always warm beige background */
+    --muted-foreground: 51 51 51; /* Always charcoal text */
 
-    --accent: 123 84 84; /* Muted mauve/rose */
-    --accent-foreground: 255 255 255; /* White text on accent */
+    --accent: 123 84 84; /* Always muted mauve/rose */
+    --accent-foreground: 255 255 255; /* Always white on accent */
 
     --destructive: 220 38 38;
     --destructive-foreground: 255 255 255;
 
-    --border: 191 174 160; /* Light tan border */
+    --border: 191 174 160; /* Always light tan border */
+    --input: 191 174 160; /* Always light tan */
+    --ring: 123 84 84; /* Always muted mauve/rose */
+
+    --radius: 1rem;
+
+    /* Sidebar variables - FIXED to Mended Minds */
+    --sidebar-background: 248 246 241; /* Always light cream */
+    --sidebar-foreground: 51 51 51; /* Always charcoal */
+    --sidebar-primary: 123 84 84; /* Always muted mauve/rose */
+    --sidebar-primary-foreground: 255 255 255; /* Always white */
+    --sidebar-accent: 220 199 182; /* Always warm beige */
+    --sidebar-accent-foreground: 51 51 51; /* Always charcoal */
+    --sidebar-border: 191 174 160; /* Always light tan */
+    --sidebar-ring: 123 84 84; /* Always muted mauve/rose */
+  }
+
+  /* Dark mode override - FORCE Mended Minds colors */
+  .dark {
+    /* Override dark mode with Mended Minds theme */
+    --background: 248 246 241; /* Keep light cream even in dark mode */
+    --foreground: 51 51 51; /* Keep charcoal text even in dark mode */
+    --card: 248 246 241;
+    --card-foreground: 51 51 51;
+    --popover: 248 246 241;
+    --popover-foreground: 51 51 51;
+    --primary: 123 84 84;
+    --primary-foreground: 255 255 255;
+    --secondary: 220 199 182;
+    --secondary-foreground: 51 51 51;
+    --muted: 220 199 182;
+    --muted-foreground: 51 51 51;
+    --accent: 123 84 84;
+    --accent-foreground: 255 255 255;
+    --border: 191 174 160;
     --input: 191 174 160;
     --ring: 123 84 84;
-
-    --radius: 1rem; /* Increased for friendlier feel */
-
-    /* Sidebar variables for shadcn compatibility */
     --sidebar-background: 248 246 241;
     --sidebar-foreground: 51 51 51;
     --sidebar-primary: 123 84 84;
@@ -66,57 +96,57 @@
   }
 
   body {
-    @apply bg-background text-foreground font-['Open_Sans',_'SF_Pro_Display',_'Roboto',_sans-serif];
+    /* FORCE Mended Minds colors regardless of theme */
+    background-color: rgb(248, 246, 241) !important; /* Light cream */
+    color: rgb(51, 51, 51) !important; /* Charcoal text */
+    font-family: 'Open Sans', 'SF Pro Display', 'Roboto', sans-serif;
     line-height: 1.6;
-    color: rgb(51 51 51); /* Force charcoal text for readability */
-    /* Mobile-first typography */
-    font-size: 16px; /* Ensure 16px base font size for mobile accessibility */
+    font-size: 16px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-['Inter',_'SF_Pro_Display',_'Roboto',_sans-serif] font-semibold;
+    font-family: 'Inter', 'SF Pro Display', 'Roboto', sans-serif;
+    font-weight: 600;
     line-height: 1.25;
     letter-spacing: -0.025em;
-    color: rgb(51 51 51); /* Charcoal headings for visibility */
+    color: rgb(51, 51, 51) !important; /* Force charcoal headings */
   }
   
   /* Mobile-optimized text sizes */
   @media (max-width: 767px) {
     body {
-      font-size: 16px; /* Maintain 16px minimum for mobile */
+      font-size: 16px;
       line-height: 1.6;
     }
     
     h1 {
-      font-size: 1.75rem; /* 28px */
+      font-size: 1.75rem;
       line-height: 1.2;
     }
     
     h2 {
-      font-size: 1.5rem; /* 24px */
+      font-size: 1.5rem;
       line-height: 1.3;
     }
     
     h3 {
-      font-size: 1.25rem; /* 20px */
+      font-size: 1.25rem;
       line-height: 1.3;
     }
     
     h4, h5, h6 {
-      font-size: 1.125rem; /* 18px */
+      font-size: 1.125rem;
       line-height: 1.4;
     }
     
-    /* Ensure readable text sizes */
     .text-xs {
-      font-size: 0.75rem !important; /* 12px minimum */
+      font-size: 0.75rem !important;
     }
     
     .text-sm {
-      font-size: 0.875rem !important; /* 14px */
+      font-size: 0.875rem !important;
     }
     
-    /* Better spacing for mobile */
     p {
       margin-bottom: 1rem;
     }
@@ -124,141 +154,135 @@
 }
 
 @layer utilities {
-  /* Mobile-first responsive text utilities */
-  .text-mobile-xs {
-    font-size: 0.75rem; /* 12px */
-  }
-  
-  .text-mobile-sm {
-    font-size: 0.875rem; /* 14px */
-  }
-  
-  .text-mobile-base {
-    font-size: 1rem; /* 16px */
-  }
-  
-  .text-mobile-lg {
-    font-size: 1.125rem; /* 18px */
-  }
-  
-  /* Touch-friendly spacing */
-  .touch-spacing {
-    padding: 0.75rem 1rem;
-    min-height: 44px;
-  }
-  
-  .touch-spacing-sm {
-    padding: 0.5rem 0.75rem;
-    min-height: 40px;
-  }
-  
-  /* Mobile-optimized line heights */
-  .leading-mobile {
-    line-height: 1.6;
-  }
-  
-  .leading-mobile-tight {
-    line-height: 1.4;
-  }
-  
+  /* FIXED Mended Minds color utilities - Never change with theme */
   .hc-primary {
-    color: rgb(var(--hc-primary));
+    color: rgb(123, 84, 84) !important;
   }
   
   .hc-secondary {
-    color: rgb(var(--hc-secondary));
+    color: rgb(220, 199, 182) !important;
   }
   
   .hc-tertiary {
-    color: rgb(var(--hc-tertiary));
+    color: rgb(191, 174, 160) !important;
   }
   
   .hc-accent {
-    color: rgb(var(--hc-accent));
+    color: rgb(123, 84, 84) !important;
   }
   
   .bg-hc-primary {
-    background-color: rgb(var(--hc-primary));
+    background-color: rgb(123, 84, 84) !important;
   }
   
   .bg-hc-secondary {
-    background-color: rgb(var(--hc-secondary));
+    background-color: rgb(220, 199, 182) !important;
   }
   
   .bg-hc-tertiary {
-    background-color: rgb(var(--hc-tertiary));
+    background-color: rgb(191, 174, 160) !important;
   }
   
   .bg-hc-surface {
-    background-color: rgb(var(--hc-surface));
+    background-color: rgb(248, 246, 241) !important;
   }
   
   .bg-hc-accent {
-    background-color: rgb(var(--hc-accent));
+    background-color: rgb(123, 84, 84) !important;
   }
 
   .bg-hc-warm {
-    background-color: rgb(var(--hc-warm));
+    background-color: rgb(248, 246, 241) !important;
   }
 
   .bg-hc-success {
-    background-color: rgb(var(--hc-success));
+    background-color: rgb(107, 207, 127) !important;
   }
 
   .bg-hc-warning {
-    background-color: rgb(var(--hc-warning));
+    background-color: rgb(255, 184, 77) !important;
   }
 
   .bg-hc-soft {
-    background-color: rgb(var(--hc-soft));
+    background-color: rgb(220, 199, 182) !important;
   }
 
   .text-hc-warm {
-    color: rgb(var(--hc-warm));
+    color: rgb(248, 246, 241) !important;
   }
 
   .text-hc-success {
-    color: rgb(var(--hc-success));
+    color: rgb(107, 207, 127) !important;
   }
 
   .text-hc-warning {
-    color: rgb(var(--hc-warning));
+    color: rgb(255, 184, 77) !important;
   }
   
   .hover\:bg-hc-primary\/90:hover {
-    background-color: rgba(var(--hc-primary), 0.9);
+    background-color: rgba(123, 84, 84, 0.9) !important;
   }
   
   .hover\:bg-hc-accent\/90:hover {
-    background-color: rgba(var(--hc-accent), 0.9);
+    background-color: rgba(123, 84, 84, 0.9) !important;
   }
 
   .hover\:bg-hc-secondary\/90:hover {
-    background-color: rgba(var(--hc-secondary), 0.9);
+    background-color: rgba(220, 199, 182, 0.9) !important;
   }
   
   .hover\:bg-hc-primary\/5:hover {
-    background-color: rgba(var(--hc-primary), 0.05);
+    background-color: rgba(123, 84, 84, 0.05) !important;
   }
 
   .hover\:bg-hc-soft\/50:hover {
-    background-color: rgba(var(--hc-soft), 0.5);
+    background-color: rgba(220, 199, 182, 0.5) !important;
   }
   
   .hover\:text-hc-primary\/80:hover {
-    color: rgba(var(--hc-primary), 0.8);
+    color: rgba(123, 84, 84, 0.8) !important;
   }
   
   .border-hc-primary {
-    border-color: rgb(var(--hc-primary));
+    border-color: rgb(123, 84, 84) !important;
   }
 
   .border-hc-secondary {
-    border-color: rgb(var(--hc-secondary));
+    border-color: rgb(220, 199, 182) !important;
   }
 
   .border-hc-soft {
-    border-color: rgb(var(--hc-soft));
+    border-color: rgb(220, 199, 182) !important;
+  }
+
+  .border-hc-tertiary {
+    border-color: rgb(191, 174, 160) !important;
+  }
+  
+  /* Force white background for certain elements */
+  .bg-white-force {
+    background-color: white !important;
+  }
+
+  /* Force proper text colors */
+  .text-gray-900-force {
+    color: rgb(17, 24, 39) !important;
+  }
+
+  .text-gray-800-force {
+    color: rgb(31, 41, 55) !important;
+  }
+
+  .text-gray-700-force {
+    color: rgb(55, 65, 81) !important;
+  }
+
+  .text-gray-600-force {
+    color: rgb(75, 85, 99) !important;
+  }
+
+  .text-white-force {
+    color: white !important;
   }
   
   .hover-lift {
@@ -271,6 +295,41 @@
   
   .slide-up {
     animation: slideUp 0.4s ease-out;
+  }
+
+  /* Mobile-first responsive utilities */
+  .text-mobile-xs {
+    font-size: 0.75rem;
+  }
+  
+  .text-mobile-sm {
+    font-size: 0.875rem;
+  }
+  
+  .text-mobile-base {
+    font-size: 1rem;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.125rem;
+  }
+  
+  .touch-spacing {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+  
+  .touch-spacing-sm {
+    padding: 0.5rem 0.75rem;
+    min-height: 40px;
+  }
+  
+  .leading-mobile {
+    line-height: 1.6;
+  }
+  
+  .leading-mobile-tight {
+    line-height: 1.4;
   }
 }
 
@@ -301,20 +360,20 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Custom scrollbar with Mended Minds colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--hc-surface));
+  background: rgb(248, 246, 241); /* Light cream */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--hc-primary));
+  background: rgb(123, 84, 84); /* Muted mauve/rose */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--hc-primary) / 0.8);
+  background: rgba(123, 84, 84, 0.8);
 }
