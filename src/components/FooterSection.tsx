@@ -75,7 +75,7 @@ const FooterSection = () => {
             © 2024 Mended Minds. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm mt-4 md:mt-0">
-            Made with 💚 for healing communities worldwide
+            Made with 🤎 for healing communities worldwide
           </div>
         </div>
 

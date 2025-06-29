@@ -29,8 +29,8 @@ export default {
 				'hc-surface': 'rgb(248 246 241)', /* Light cream background */
 				'hc-accent': 'rgb(123 84 84)', /* Muted mauve/rose accent */
 				'hc-warm': 'rgb(248 246 241)', /* Light cream */
-				'hc-success': 'rgb(107 207 127)', /* Growth Green - keeping for success states */
-				'hc-warning': 'rgb(255 184 77)', /* Gentle Alert - keeping for warnings */
+				'hc-success': 'rgb(123 84 84)', /* Muted mauve/rose - brown theme */
+				'hc-warning': 'rgb(123 84 84)', /* Muted mauve/rose - brown theme */
 				'hc-soft': 'rgb(220 199 182)', /* Warm beige for soft elements */
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

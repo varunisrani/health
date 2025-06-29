@@ -88,6 +88,17 @@ const HeroSection = () => {
                 variant="hc-primary"
                 size="lg"
                 className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 w-full sm:w-auto bg-gradient-to-r from-hc-primary to-hc-secondary text-white border-0"
+                style={{
+                  background: 'linear-gradient(to right, rgb(123, 84, 84), rgb(220, 199, 182))',
+                  color: 'white',
+                  border: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(to right, rgba(123, 84, 84, 0.9), rgba(220, 199, 182, 0.9))';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(to right, rgb(123, 84, 84), rgb(220, 199, 182))';
+                }}
               >
                 Start Your 14-Day Free Journey
               </Button>
@@ -96,7 +107,22 @@ const HeroSection = () => {
                 variant="outline" 
                 size="lg"
                 onClick={handleBrowseMentors}
-                className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg font-semibold rounded-2xl border-2 border-hc-primary text-hc-primary hover:bg-gradient-to-r hover:from-hc-primary hover:to-hc-secondary hover:text-white hover:border-transparent transition-all duration-500 hover:-translate-y-1 hover:scale-105 w-full sm:w-auto shadow-lg hover:shadow-2xl"
+                className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg font-semibold rounded-2xl border-2 border-hc-primary text-hc-primary hover:bg-gradient-to-r hover:from-hc-primary hover:to-hc-secondary hover:text-white hover:border-transparent transition-all duration-500 hover:-translate-y-1 hover:scale-105 w-full sm:w-auto shadow-lg hover:shadow-2xl bg-white focus:bg-hc-primary focus:text-white"
+                style={{
+                  backgroundColor: 'rgb(248, 246, 241)',
+                  borderColor: 'rgb(123, 84, 84)',
+                  color: 'rgb(123, 84, 84)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(to right, rgb(123, 84, 84), rgb(220, 199, 182))';
+                  e.currentTarget.style.color = 'white';
+                  e.currentTarget.style.borderColor = 'transparent';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgb(248, 246, 241)';
+                  e.currentTarget.style.color = 'rgb(123, 84, 84)';
+                  e.currentTarget.style.borderColor = 'rgb(123, 84, 84)';
+                }}
               >
                 Browse Mentors →
               </Button>
