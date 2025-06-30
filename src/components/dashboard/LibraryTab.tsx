@@ -265,7 +265,7 @@ export const LibraryTab = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Button
                     size={isMobile ? "default" : "lg"}
-                    className="bg-amber-800 hover:bg-amber-900 text-white rounded-full shadow-lg"
+                    className="bg-hc-primary hover:bg-hc-secondary text-white rounded-full shadow-lg"
                   >
                     <Video className={`${isMobile ? 'w-4 h-4' : 'w-6 h-6'} mr-1`} />
                     Play
@@ -343,7 +343,7 @@ export const LibraryTab = () => {
                       <div className="flex items-center space-x-4 text-sm text-gray-500">
                         <span>Duration: {video.duration}</span>
                         <span>Difficulty: {video.difficulty}</span>
-                        <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200">
+                        <Badge variant="outline" className="bg-hc-surface text-hc-primary border-hc-primary">
                           YouTube
                         </Badge>
                       </div>

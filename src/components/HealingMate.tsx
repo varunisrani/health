@@ -43,7 +43,7 @@ const activityCategories = [
     name: 'Music Therapy',
     description: 'Curated audio sessions for healing',
     icon: Music,
-    color: 'from-amber-700 to-amber-800',
+    color: 'from-hc-tertiary to-hc-accent',
     count: 0
   },
   {
@@ -51,7 +51,7 @@ const activityCategories = [
     name: 'Guided Meditation',
     description: 'Mindfulness and awareness practices',
     icon: Brain,
-    color: 'from-amber-600 to-amber-700',
+    color: 'from-hc-secondary to-hc-tertiary',
     count: 0
   },
   {
@@ -67,7 +67,7 @@ const activityCategories = [
     name: 'Sound Therapy',
     description: 'Healing frequencies and tones',
     icon: Bell,
-    color: 'from-amber-800 to-amber-900',
+    color: 'from-hc-accent to-hc-secondary',
     count: 0
   }
 ];

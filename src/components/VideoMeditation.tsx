@@ -215,7 +215,7 @@ export const VideoMeditation: React.FC<VideoMeditationProps> = ({ className }) =
           </div>
           {isCompleted && (
             <div className="absolute top-2 left-2">
-              <Badge variant="default" className="bg-amber-800">
+              <Badge variant="default" className="bg-hc-primary">
                 <Award className="w-3 h-3 mr-1" />
                 Completed
               </Badge>
