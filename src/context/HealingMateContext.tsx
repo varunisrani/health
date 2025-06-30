@@ -2,11 +2,13 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export interface HealingMateContent {
   id: string;
-  type: 'music' | 'meditation' | 'breathing' | 'sound-therapy';
+  type: 'music' | 'meditation' | 'breathing' | 'sound-therapy' | 'video-meditation';
   title: string;
   description: string;
   duration: number; // minutes
-  fileUrl: string;
+  fileUrl?: string;
+  youtubeId?: string; // For YouTube videos
+  videoUrl?: string; // For other video URLs
   thumbnailUrl?: string;
   tags: string[];
   difficulty: 'beginner' | 'intermediate' | 'advanced';
@@ -87,48 +89,76 @@ export const useHealingMate = () => {
 
 // Mock content data
 const mockContent: HealingMateContent[] = [
-  // Music Therapy
+  // Music Therapy - YouTube Videos Only
   {
-    id: 'music-1',
+    id: 'music-youtube-1',
     type: 'music',
-    title: 'Peaceful Piano Collection',
-    description: 'Gentle piano melodies for relaxation and stress relief',
-    duration: 25,
-    fileUrl: '/audio/peaceful-piano.mp3',
-    thumbnailUrl: '/images/peaceful-piano.jpg',
-    tags: ['piano', 'classical', 'relaxation', 'sleep'],
+    title: 'Healing Music Therapy Session',
+    description: 'Professional healing music therapy session for relaxation and mental wellness',
+    duration: 60,
+    youtubeId: 'n9pKdZ8Yr08',
+    thumbnailUrl: 'https://img.youtube.com/vi/n9pKdZ8Yr08/maxresdefault.jpg',
+    tags: ['healing', 'therapy', 'relaxation', 'wellness', 'professional'],
     difficulty: 'beginner',
-    category: 'Instrumental',
-    instructor: 'Dr. Sarah Chen',
-    series: 'Piano Therapy Collection'
+    category: 'Therapeutic',
+    instructor: 'Music Therapy Professional',
+    series: 'YouTube Healing Collection'
   },
   {
-    id: 'music-2',
+    id: 'music-youtube-2',
     type: 'music',
-    title: 'Nature Sounds Harmony',
-    description: 'Forest sounds blended with soft ambient music',
-    duration: 30,
-    fileUrl: '/audio/nature-harmony.mp3',
-    thumbnailUrl: '/images/nature-sounds.jpg',
-    tags: ['nature', 'ambient', 'forest', 'birds'],
+    title: 'Live Healing Music Stream',
+    description: 'Live streaming healing music session for continuous relaxation',
+    duration: 180,
+    youtubeId: '9859xr-roN8',
+    thumbnailUrl: 'https://img.youtube.com/vi/9859xr-roN8/maxresdefault.jpg',
+    tags: ['live', 'streaming', 'healing', 'continuous', 'ambient'],
     difficulty: 'beginner',
-    category: 'Nature',
-    instructor: 'Michael Rivers',
-    series: 'Natural Healing'
+    category: 'Live Sessions',
+    instructor: 'Live Music Healer',
+    series: 'YouTube Healing Collection'
   },
   {
-    id: 'music-3',
+    id: 'music-youtube-3',
     type: 'music',
-    title: 'Binaural Beats Focus',
-    description: 'Scientifically designed frequencies for enhanced concentration',
-    duration: 20,
-    fileUrl: '/audio/binaural-focus.mp3',
-    thumbnailUrl: '/images/binaural-beats.jpg',
-    tags: ['binaural', 'focus', 'productivity', 'alpha-waves'],
+    title: 'Therapeutic Sound Healing',
+    description: 'Specialized therapeutic sound healing session for deep relaxation',
+    duration: 45,
+    youtubeId: 'HdA_c1n5LkE',
+    thumbnailUrl: 'https://img.youtube.com/vi/HdA_c1n5LkE/maxresdefault.jpg',
+    tags: ['therapeutic', 'sound-healing', 'relaxation', 'meditation', 'healing'],
     difficulty: 'intermediate',
-    category: 'Binaural',
-    instructor: 'Dr. Emma Thompson',
-    series: 'Brainwave Entrainment'
+    category: 'Sound Healing',
+    instructor: 'Sound Healing Specialist',
+    series: 'YouTube Healing Collection'
+  },
+  {
+    id: 'music-youtube-4',
+    type: 'music',
+    title: 'Calming Music Therapy',
+    description: 'Gentle calming music therapy session for stress relief and peace',
+    duration: 30,
+    youtubeId: '3ryRxtn6Om0',
+    thumbnailUrl: 'https://img.youtube.com/vi/3ryRxtn6Om0/maxresdefault.jpg',
+    tags: ['calming', 'therapy', 'stress-relief', 'peace', 'gentle'],
+    difficulty: 'beginner',
+    category: 'Calming',
+    instructor: 'Calming Music Therapist',
+    series: 'YouTube Healing Collection'
+  },
+  {
+    id: 'music-youtube-5',
+    type: 'music',
+    title: 'Relaxing Healing Sounds',
+    description: 'Collection of relaxing healing sounds for meditation and wellness',
+    duration: 40,
+    youtubeId: 'wQiSW_0iTPc',
+    thumbnailUrl: 'https://img.youtube.com/vi/wQiSW_0iTPc/maxresdefault.jpg',
+    tags: ['relaxing', 'healing', 'sounds', 'meditation', 'wellness'],
+    difficulty: 'beginner',
+    category: 'Relaxation',
+    instructor: 'Relaxation Sound Artist',
+    series: 'YouTube Healing Collection'
   },
   
   // Guided Meditation
@@ -233,6 +263,64 @@ const mockContent: HealingMateContent[] = [
     category: 'Crystal Healing',
     instructor: 'Crystal Sage',
     series: 'Vibrational Therapy'
+  },
+
+  // Video Meditation
+  {
+    id: 'video-meditation-1',
+    type: 'video-meditation',
+    title: 'Guided Mindfulness Video Session',
+    description: 'Visual meditation experience with calming imagery and guidance',
+    duration: 15,
+    youtubeId: 'HPUyw2YYUPs',
+    thumbnailUrl: 'https://img.youtube.com/vi/HPUyw2YYUPs/maxresdefault.jpg',
+    tags: ['mindfulness', 'visual', 'guided', 'relaxation', 'peace'],
+    difficulty: 'beginner',
+    category: 'Mindfulness',
+    instructor: 'Meditation Guide',
+    series: 'Video Meditation Collection'
+  },
+  {
+    id: 'video-meditation-2',
+    type: 'video-meditation',
+    title: 'Deep Relaxation Video Journey',
+    description: 'Immersive visual meditation for deep relaxation and stress relief',
+    duration: 20,
+    youtubeId: '0y0586ffZWQ',
+    thumbnailUrl: 'https://img.youtube.com/vi/0y0586ffZWQ/maxresdefault.jpg',
+    tags: ['deep-relaxation', 'stress-relief', 'visual', 'journey', 'calm'],
+    difficulty: 'beginner',
+    category: 'Relaxation',
+    instructor: 'Relaxation Expert',
+    series: 'Video Meditation Collection'
+  },
+  {
+    id: 'video-meditation-3',
+    type: 'video-meditation',
+    title: 'Nature-Based Video Meditation',
+    description: 'Connect with nature through beautiful landscapes and meditative guidance',
+    duration: 18,
+    youtubeId: 'UoW4tNwYYcQ',
+    thumbnailUrl: 'https://img.youtube.com/vi/UoW4tNwYYcQ/maxresdefault.jpg',
+    tags: ['nature', 'landscapes', 'connection', 'outdoor', 'serenity'],
+    difficulty: 'intermediate',
+    category: 'Nature',
+    instructor: 'Nature Guide',
+    series: 'Video Meditation Collection'
+  },
+  {
+    id: 'video-meditation-4',
+    type: 'video-meditation',
+    title: 'Evening Wind-Down Video Meditation',
+    description: 'Perfect for ending your day with peaceful visuals and gentle guidance',
+    duration: 25,
+    youtubeId: '8HYLyuJZKno',
+    thumbnailUrl: 'https://img.youtube.com/vi/8HYLyuJZKno/maxresdefault.jpg',
+    tags: ['evening', 'wind-down', 'peaceful', 'sleep-prep', 'gentle'],
+    difficulty: 'beginner',
+    category: 'Sleep',
+    instructor: 'Sleep Meditation Guide',
+    series: 'Video Meditation Collection'
   }
 ];
 

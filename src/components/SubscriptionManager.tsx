@@ -314,7 +314,7 @@ export const SubscriptionManager: React.FC = () => {
 
                     <Button
                       className="w-full"
-                      variant={isCurrentPlan ? 'outline' : 'default'}
+                      variant={isCurrentPlan ? 'outline' : 'hc-primary'}
                       disabled={isCurrentPlan || loading}
                       onClick={() => !isCurrentPlan && handleUpgradeClick(plan)}
                     >

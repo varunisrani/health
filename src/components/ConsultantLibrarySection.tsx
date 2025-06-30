@@ -123,7 +123,7 @@ const ConsultantLibrarySection = () => {
                 </div>
 
                 <button 
-                  className={`w-full mt-6 bg-white ${section.borderColor} border-2 ${section.accentColor} hover:bg-hc-primary hover:text-white font-medium py-3 rounded-xl transition-all duration-300`}
+                  className="w-full mt-6 bg-white border-2 border-hc-primary text-hc-primary hover:bg-hc-primary hover:text-white font-medium py-3 rounded-xl transition-all duration-300"
                   onClick={() => handleExploreSection(section.category)}
                 >
                   Explore All {section.category === 'Meditations' ? 'Meditation' : section.category}
@@ -144,7 +144,16 @@ const ConsultantLibrarySection = () => {
               <p className="text-gray-600 mb-6">
                 Get unlimited access to our complete consultant library with 1000+ guided sessions, exclusive content, and new releases added weekly.
               </p>
-              <button className="bg-hc-accent hover:bg-hc-accent/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-md">
+              <button 
+                className="bg-hc-primary hover:bg-hc-primary/90 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-md"
+                onClick={() => {
+                  if (isAuthenticated) {
+                    navigate('/dashboard');
+                  } else {
+                    setShowAuthModal(true);
+                  }
+                }}
+              >
                 Start Free Trial
               </button>
             </CardContent>

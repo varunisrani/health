@@ -27,6 +27,7 @@ import { ActivityPlayer } from '@/components/ActivityPlayer';
 import { MusicTherapy } from '@/components/MusicTherapy';
 import { GuidedMeditation } from '@/components/GuidedMeditation';
 import { PersonalizedRecommendations } from '@/components/PersonalizedRecommendations';
+import { BreathingExercises } from '@/components/BreathingExercises';
 import { useHealingMate, useContentFilter, useRecommendations } from '@/hooks/useHealingMate';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
@@ -78,7 +79,7 @@ export const HealingMate: React.FC<HealingMateProps> = ({ className }) => {
   const { continueListening, dailyRecommendations } = useRecommendations();
   const isMobile = useIsMobile();
   
-  const [activeView, setActiveView] = useState<'overview' | 'music' | 'meditation' | 'recommendations'>('overview');
+  const [activeView, setActiveView] = useState<'overview' | 'music' | 'meditation' | 'breathing' | 'recommendations'>('overview');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   // Update category counts
@@ -94,8 +95,12 @@ export const HealingMate: React.FC<HealingMateProps> = ({ className }) => {
       if (category.id === 'music') {
         setActiveView('music');
       } else if (category.id === 'meditation') {
-        // Redirect to dashboard/therapists for meditation
-        navigate('/dashboard');
+        setActiveView('meditation');
+      } else if (category.id === 'breathing') {
+        setActiveView('breathing');
+      } else if (category.id === 'sound-therapy') {
+        // For now, redirect to music therapy view - can be expanded later  
+        setActiveView('music');
       }
     };
     
@@ -250,6 +255,23 @@ export const HealingMate: React.FC<HealingMateProps> = ({ className }) => {
           </Button>
         </div>
         <GuidedMeditation />
+      </div>
+    );
+  }
+
+  if (activeView === 'breathing') {
+    return (
+      <div className={className}>
+        <div className="mb-4">
+          <Button 
+            variant="ghost" 
+            onClick={() => setActiveView('overview')}
+            className="mb-4"
+          >
+            ← Back to Overview
+          </Button>
+        </div>
+        <BreathingExercises />
       </div>
     );
   }

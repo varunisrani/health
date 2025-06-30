@@ -33,6 +33,13 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
   const progressPercent = progress > 0 ? (progress / (content.duration * 60)) * 100 : 0;
 
   const handlePlayClick = () => {
+    // For YouTube content, open in new tab instead of using audio player
+    if (content.youtubeId) {
+      window.open(`https://www.youtube.com/watch?v=${content.youtubeId}`, '_blank');
+      return;
+    }
+    
+    // For non-YouTube content, use the audio player
     if (isCurrentlyPlaying) {
       pauseContent();
     } else if (isCurrentContent && !playbackState.isPlaying) {
@@ -62,7 +69,10 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
     }
   };
 
-  const getTypeIcon = (type: string) => {
+  const getTypeIcon = (type: string, hasYouTubeId: boolean = false) => {
+    if (hasYouTubeId) {
+      return '📹'; // Video icon for YouTube content
+    }
     switch (type) {
       case 'music':
         return '🎵';
@@ -110,7 +120,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
                 {content.title}
               </h3>
               <div className="flex items-center space-x-2 text-xs text-gray-600">
-                <span>{getTypeIcon(content.type)}</span>
+                <span>{getTypeIcon(content.type, !!content.youtubeId)}</span>
                 <span>{content.duration}m</span>
                 {content.instructor && (
                   <>
@@ -158,7 +168,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
           <div className="relative">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">{getTypeIcon(content.type)}</span>
+                <span className="text-2xl">{getTypeIcon(content.type, !!content.youtubeId)}</span>
                 <Badge variant="outline" className={getDifficultyColor(content.difficulty)}>
                   {content.difficulty}
                 </Badge>
@@ -258,33 +268,93 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
   // Default variant
   return (
     <Card className={cn(
-      'group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer',
+      'group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden',
       isCurrentContent && 'ring-2 ring-hc-accent',
       className
     )}>
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <span className="text-xl">{getTypeIcon(content.type)}</span>
-            <Badge variant="outline" className={getDifficultyColor(content.difficulty)}>
-              {content.difficulty}
-            </Badge>
+      {/* YouTube Thumbnail for video content */}
+      {content.youtubeId && content.thumbnailUrl && (
+        <div className="relative h-48 overflow-hidden">
+          <img 
+            src={content.thumbnailUrl} 
+            alt={content.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Button
+              onClick={handlePlayClick}
+              size="lg"
+              className="bg-red-600 hover:bg-red-700 text-white rounded-full w-16 h-16 p-0 shadow-lg"
+            >
+              {playbackState.isLoading && isCurrentContent ? (
+                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : isCurrentlyPlaying ? (
+                <Pause className="w-6 h-6" />
+              ) : (
+                <Play className="w-6 h-6 ml-1" />
+              )}
+            </Button>
           </div>
-          
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleFavoriteClick}
-            className="w-9 h-9 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <Heart 
-              className={cn(
-                'w-4 h-4',
-                isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-gray-400'
-              )} 
-            />
-          </Button>
+          <div className="absolute top-2 right-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleFavoriteClick}
+              className="w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm"
+            >
+              <Heart 
+                className={cn(
+                  'w-4 h-4',
+                  isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-white'
+                )} 
+              />
+            </Button>
+          </div>
         </div>
+      )}
+      
+      <CardContent className="p-6">
+        {/* Header for non-video content */}
+        {!content.youtubeId && (
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center space-x-2">
+              <span className="text-xl">{getTypeIcon(content.type, !!content.youtubeId)}</span>
+              <Badge variant="outline" className={getDifficultyColor(content.difficulty)}>
+                {content.difficulty}
+              </Badge>
+            </div>
+            
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleFavoriteClick}
+              className="w-9 h-9 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <Heart 
+                className={cn(
+                  'w-4 h-4',
+                  isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-gray-400'
+                )} 
+              />
+            </Button>
+          </div>
+        )}
+        
+        {/* Header for video content */}
+        {content.youtubeId && (
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center space-x-2">
+              <span className="text-xl">{getTypeIcon(content.type, !!content.youtubeId)}</span>
+              <Badge variant="outline" className={getDifficultyColor(content.difficulty)}>
+                {content.difficulty}
+              </Badge>
+              <Badge variant="outline" className="bg-red-50 text-red-600 border-red-200">
+                YouTube
+              </Badge>
+            </div>
+          </div>
+        )}
         
         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
           {content.title}
@@ -331,24 +401,27 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
             )}
           </div>
           
-          <Button
-            onClick={handlePlayClick}
-            size="sm"
-            className={cn(
-              isCurrentlyPlaying 
-                ? 'bg-hc-accent hover:bg-hc-accent/90' 
-                : 'bg-hc-primary hover:bg-hc-primary/90'
-            )}
-          >
-            {playbackState.isLoading && isCurrentContent ? (
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-            ) : isCurrentlyPlaying ? (
-              <Pause className="w-4 h-4 mr-1" />
-            ) : (
-              <Play className="w-4 h-4 mr-1 ml-0.5" />
-            )}
-            {isCurrentlyPlaying ? 'Pause' : 'Play'}
-          </Button>
+          {/* Only show play button for non-video content */}
+          {!content.youtubeId && (
+            <Button
+              onClick={handlePlayClick}
+              size="sm"
+              className={cn(
+                isCurrentlyPlaying 
+                  ? 'bg-hc-accent hover:bg-hc-accent/90' 
+                  : 'bg-hc-primary hover:bg-hc-primary/90'
+              )}
+            >
+              {playbackState.isLoading && isCurrentContent ? (
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+              ) : isCurrentlyPlaying ? (
+                <Pause className="w-4 h-4 mr-1" />
+              ) : (
+                <Play className="w-4 h-4 mr-1 ml-0.5" />
+              )}
+              {isCurrentlyPlaying ? 'Pause' : 'Play'}
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

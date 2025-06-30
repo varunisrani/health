@@ -1,8 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useAuth } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const PricingSection = () => {
+  const { isAuthenticated, setShowAuthModal } = useAuth();
+  const navigate = useNavigate();
+
+  const handleStartTrial = () => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    } else {
+      setShowAuthModal(true);
+    }
+  };
+
+  const handleChoosePremium = () => {
+    if (isAuthenticated) {
+      navigate('/dashboard', { state: { showSubscriptionModal: true } });
+    } else {
+      setShowAuthModal(true);
+    }
+  };
+
   return (
     <section className="relative py-20 px-6 bg-gradient-to-br from-hc-secondary via-hc-surface to-hc-soft overflow-hidden">
       {/* Enhanced Background Elements */}
@@ -82,7 +103,10 @@ const PricingSection = () => {
                 </div>
               </div>
 
-              <Button className="w-full h-16 bg-gradient-to-r from-hc-tertiary to-hc-secondary hover:from-hc-secondary hover:to-hc-tertiary text-white font-bold py-4 rounded-2xl text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 hover:scale-105">
+              <Button 
+                className="w-full h-16 bg-gradient-to-r from-hc-tertiary to-hc-secondary hover:from-hc-secondary hover:to-hc-tertiary text-white font-bold py-4 rounded-2xl text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
+                onClick={handleStartTrial}
+              >
                 🚀 Start Free Trial
               </Button>
             </CardContent>
@@ -152,7 +176,10 @@ const PricingSection = () => {
                 </div>
               </div>
 
-              <Button className="w-full h-16 bg-white hover:bg-gray-50 text-hc-primary font-bold py-4 rounded-2xl text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 hover:scale-105">
+              <Button 
+                className="w-full h-16 bg-white hover:bg-gray-50 text-hc-primary font-bold py-4 rounded-2xl text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
+                onClick={handleChoosePremium}
+              >
                 💎 Choose Premium
               </Button>
             </CardContent>

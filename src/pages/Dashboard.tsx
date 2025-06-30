@@ -56,6 +56,9 @@ const Dashboard = () => {
     if (location.state?.activeTab) {
       setActiveTab(location.state.activeTab);
     }
+    if (location.state?.showSubscriptionModal) {
+      setActiveTab('subscription');
+    }
   }, [location.state]);
 
   const handleLogout = async () => {
