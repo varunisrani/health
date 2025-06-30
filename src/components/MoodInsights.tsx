@@ -74,7 +74,7 @@ export const MoodInsights = () => {
       case 'improving':
         return <TrendingUp className="h-5 w-5 text-hc-success" />;
       case 'declining':
-        return <TrendingDown className="h-5 w-5 text-red-600" />;
+        return <TrendingDown className="h-5 w-5 text-hc-secondary" />;
       default:
         return <Minus className="h-5 w-5 text-gray-600" />;
     }
@@ -85,7 +85,7 @@ export const MoodInsights = () => {
       case 'improving':
         return 'text-hc-success';
       case 'declining':
-        return 'text-red-600';
+        return 'text-hc-secondary';
       default:
         return 'text-gray-600';
     }
@@ -155,7 +155,7 @@ export const MoodInsights = () => {
                 className={cn(
                   "p-4 rounded-lg border-l-4",
                   insight.type === 'improvement' && "bg-hc-success/10 border-hc-success",
-                  insight.type === 'concern' && "bg-red-50 border-red-400",
+                  insight.type === 'concern' && "bg-hc-surface border-hc-secondary",
                   insight.type === 'streak' && "bg-blue-50 border-blue-400",
                   insight.type === 'pattern' && "bg-hc-warning/10 border-hc-warning"
                 )}

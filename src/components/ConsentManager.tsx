@@ -208,7 +208,7 @@ export const ConsentManager: React.FC = () => {
                             {record.granted ? (
                               <CheckCircle className="h-3 w-3 text-hc-primary" />
                             ) : (
-                              <XCircle className="h-3 w-3 text-red-500" />
+                              <XCircle className="h-3 w-3 text-hc-warning" />
                             )}
                             <span>
                               {record.granted ? 'Granted' : 'Revoked'} v{record.version}
@@ -239,18 +239,18 @@ export const ConsentManager: React.FC = () => {
                 {/* Version Update Notice */}
                 {currentVersion && currentVersion !== consent.version && (
                   <div className="pt-2 border-t">
-                    <div className="flex items-start gap-2 p-2 bg-blue-50 rounded">
-                      <AlertTriangle className="h-4 w-4 text-blue-600 mt-0.5" />
+                    <div className="flex items-start gap-2 p-2 bg-hc-secondary/10 rounded">
+                      <AlertTriangle className="h-4 w-4 text-hc-accent mt-0.5" />
                       <div className="text-sm">
-                        <p className="text-blue-800 font-medium">Update Available</p>
-                        <p className="text-blue-700">
+                        <p className="text-hc-primary font-medium">Update Available</p>
+                        <p className="text-hc-secondary">
                           A new version of the {consent.title.toLowerCase()} is available.
                         </p>
                         <Button
                           size="sm"
                           onClick={() => handleConsentToggle(consent.type, false)}
                           disabled={isProcessing || loading}
-                          className="mt-2 bg-blue-600 hover:bg-blue-700"
+                          className="mt-2 bg-hc-accent hover:bg-hc-accent/90"
                         >
                           Review & Update
                         </Button>
@@ -277,33 +277,33 @@ export const ConsentManager: React.FC = () => {
               </div>
               <div className="text-sm text-hc-primary">Active Consents</div>
             </div>
-            <div className="p-4 bg-orange-50 rounded-lg">
-              <div className="text-2xl font-bold text-orange-600">
+            <div className="p-4 bg-hc-warning/10 rounded-lg">
+              <div className="text-2xl font-bold text-hc-warning">
                 {consentTypes.filter(c => {
                   const currentVersion = getConsentVersion(c.type);
                   return currentVersion && currentVersion !== c.version;
                 }).length}
               </div>
-              <div className="text-sm text-orange-700">Pending Updates</div>
+              <div className="text-sm text-hc-warning">Pending Updates</div>
             </div>
-            <div className="p-4 bg-blue-50 rounded-lg">
-              <div className="text-2xl font-bold text-blue-600">
+            <div className="p-4 bg-hc-accent/10 rounded-lg">
+              <div className="text-2xl font-bold text-hc-accent">
                 {consentRecords.length}
               </div>
-              <div className="text-sm text-blue-700">Total Records</div>
+              <div className="text-sm text-hc-accent">Total Records</div>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Legal Notice */}
-      <Card className="border-orange-200 bg-orange-50">
+      <Card className="border-hc-warning/20 bg-hc-warning/5">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5" />
+            <AlertTriangle className="h-5 w-5 text-hc-warning mt-0.5" />
             <div className="text-sm">
-              <p className="text-orange-800 font-medium mb-1">Important Legal Notice</p>
-              <p className="text-orange-700">
+              <p className="text-hc-primary font-medium mb-1">Important Legal Notice</p>
+              <p className="text-hc-secondary">
                 Your consent choices are legally binding and affect how we process your personal data. 
                 You can withdraw consent at any time, though this may limit some service features. 
                 For questions about consent or data processing, please contact our Data Protection Officer.

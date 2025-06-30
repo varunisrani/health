@@ -76,7 +76,7 @@ export const LiveSessions: React.FC<LiveSessionsProps> = ({
   const getStatusBadge = (session: LiveSession) => {
     switch (session.status) {
       case 'live':
-        return <Badge className="bg-red-500 text-white animate-pulse">🔴 LIVE</Badge>;
+        return <Badge className="bg-hc-warning text-white animate-pulse">🔴 LIVE</Badge>;
       case 'scheduled':
         return <Badge className="bg-hc-tertiary text-hc-primary">Scheduled</Badge>;
       case 'completed':
@@ -152,7 +152,7 @@ export const LiveSessions: React.FC<LiveSessionsProps> = ({
             onClick={() => handleJoinSession(session.id)}
             disabled={!canJoinSession(session) || isJoiningSession}
             className={session.status === 'live' 
-              ? "bg-red-500 hover:bg-red-600 text-white animate-pulse" 
+              ? "bg-hc-warning hover:bg-hc-warning/90 text-white animate-pulse" 
               : "bg-hc-accent hover:bg-hc-accent/90 text-white"
             }
           >
@@ -193,7 +193,7 @@ export const LiveSessions: React.FC<LiveSessionsProps> = ({
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-hc-warning rounded-full animate-pulse"></div>
                 <div>
                   <p className="font-semibold text-gray-900">Currently in session</p>
                   <p className="text-sm text-gray-600">{currentSession.title}</p>
@@ -243,7 +243,7 @@ export const LiveSessions: React.FC<LiveSessionsProps> = ({
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="live" className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-hc-warning rounded-full animate-pulse"></div>
             <span>Live Now ({liveSessions.length})</span>
           </TabsTrigger>
           <TabsTrigger value="today">

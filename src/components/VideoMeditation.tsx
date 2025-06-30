@@ -36,7 +36,7 @@ const videoMeditationThemes = [
     name: 'Mindfulness',
     icon: Video,
     description: 'Visual mindfulness practices with guided instruction',
-    color: 'from-blue-500 to-indigo-600',
+    color: 'from-hc-primary to-hc-accent',
     tags: ['mindfulness', 'visual', 'guided', 'peace']
   },
   {
@@ -44,7 +44,7 @@ const videoMeditationThemes = [
     name: 'Deep Relaxation',
     icon: Moon,
     description: 'Immersive video journeys for stress relief',
-    color: 'from-purple-500 to-pink-600',
+    color: 'from-hc-secondary to-hc-tertiary',
     tags: ['deep-relaxation', 'stress-relief', 'visual', 'journey', 'calm']
   },
   {
@@ -52,7 +52,7 @@ const videoMeditationThemes = [
     name: 'Nature Connection',
     icon: Heart,
     description: 'Connect with nature through beautiful landscapes',
-    color: 'from-amber-700 to-amber-800',
+    color: 'from-hc-tertiary to-hc-accent',
     tags: ['nature', 'landscapes', 'connection', 'outdoor', 'serenity']
   },
   {
@@ -60,7 +60,7 @@ const videoMeditationThemes = [
     name: 'Sleep Preparation',
     icon: Moon,
     description: 'Evening wind-down videos for peaceful sleep',
-    color: 'from-indigo-500 to-purple-600',
+    color: 'from-hc-accent to-hc-secondary',
     tags: ['evening', 'wind-down', 'peaceful', 'sleep-prep', 'gentle']
   }
 ];

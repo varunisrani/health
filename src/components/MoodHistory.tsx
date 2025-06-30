@@ -339,7 +339,7 @@ export const MoodHistory = () => {
                           </div>
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
-                              <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50 h-8 w-8 p-0">
+                              <Button variant="ghost" size="sm" className="text-hc-warning hover:text-hc-warning/90 hover:bg-hc-warning/10 h-8 w-8 p-0">
                                 <Trash2 className="h-4 w-4" />
                               </Button>
                             </AlertDialogTrigger>
@@ -354,7 +354,7 @@ export const MoodHistory = () => {
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                                 <AlertDialogAction
                                   onClick={() => handleDeleteEntry(entry.id)}
-                                  className="bg-red-600 hover:bg-red-700"
+                                  className="bg-hc-warning hover:bg-hc-warning/90"
                                 >
                                   Delete
                                 </AlertDialogAction>
@@ -498,7 +498,7 @@ export const MoodHistory = () => {
                         <div className="flex space-x-2">
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
-                              <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">
+                              <Button variant="ghost" size="sm" className="text-hc-warning hover:text-hc-warning/90 hover:bg-hc-warning/10">
                                 <Trash2 className="h-4 w-4" />
                               </Button>
                             </AlertDialogTrigger>
@@ -513,7 +513,7 @@ export const MoodHistory = () => {
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                                 <AlertDialogAction
                                   onClick={() => handleDeleteEntry(entry.id)}
-                                  className="bg-red-600 hover:bg-red-700"
+                                  className="bg-hc-warning hover:bg-hc-warning/90"
                                 >
                                   Delete
                                 </AlertDialogAction>

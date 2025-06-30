@@ -143,7 +143,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
               <Heart 
                 className={cn(
                   'w-4 h-4',
-                  isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-gray-400'
+                  isFavorite(content.id) ? 'fill-hc-accent text-hc-accent' : 'text-gray-400'
                 )} 
               />
             </Button>
@@ -183,7 +183,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
                 <Heart 
                   className={cn(
                     'w-5 h-5',
-                    isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-gray-400'
+                    isFavorite(content.id) ? 'fill-hc-accent text-hc-accent' : 'text-gray-400'
                   )} 
                 />
               </Button>
@@ -285,7 +285,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
             <Button
               onClick={handlePlayClick}
               size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white rounded-full w-16 h-16 p-0 shadow-lg"
+              className="bg-hc-primary hover:bg-hc-secondary text-white rounded-full w-16 h-16 p-0 shadow-lg"
             >
               {playbackState.isLoading && isCurrentContent ? (
                 <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -306,7 +306,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
               <Heart 
                 className={cn(
                   'w-4 h-4',
-                  isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-white'
+                  isFavorite(content.id) ? 'fill-hc-accent text-hc-accent' : 'text-white'
                 )} 
               />
             </Button>
@@ -334,7 +334,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
               <Heart 
                 className={cn(
                   'w-4 h-4',
-                  isFavorite(content.id) ? 'fill-red-500 text-red-500' : 'text-gray-400'
+                  isFavorite(content.id) ? 'fill-hc-accent text-hc-accent' : 'text-gray-400'
                 )} 
               />
             </Button>
@@ -349,7 +349,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
               <Badge variant="outline" className={getDifficultyColor(content.difficulty)}>
                 {content.difficulty}
               </Badge>
-              <Badge variant="outline" className="bg-red-50 text-red-600 border-red-200">
+              <Badge variant="outline" className="bg-hc-surface text-hc-primary border-hc-primary">
                 YouTube
               </Badge>
             </div>

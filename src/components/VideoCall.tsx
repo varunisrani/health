@@ -146,7 +146,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
     switch (connectionQuality) {
       case 'excellent': return 'text-hc-success';
       case 'good': return 'text-hc-warning';
-      case 'poor': return 'text-red-500';
+      case 'poor': return 'text-hc-warning';
       default: return 'text-gray-500';
     }
   };
@@ -220,7 +220,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
         />
         {webrtcConnection.isMuted && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-            <MicOff className="w-6 h-6 text-red-500" />
+            <MicOff className="w-6 h-6 text-hc-warning" />
           </div>
         )}
         {!webrtcConnection.isVideoEnabled && (
@@ -241,7 +241,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
       )}>
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-hc-warning rounded-full animate-pulse"></div>
             <span className="text-sm font-medium">LIVE</span>
           </div>
           <Badge variant="secondary" className="bg-white/20 text-white">
@@ -279,7 +279,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
             onClick={toggleMute}
             className={cn(
               "rounded-full w-12 h-12 text-white",
-              webrtcConnection.isMuted ? "bg-red-500 hover:bg-red-600" : "bg-gray-700 hover:bg-gray-600"
+              webrtcConnection.isMuted ? "bg-hc-warning hover:bg-hc-warning/90" : "bg-gray-700 hover:bg-gray-600"
             )}
           >
             {webrtcConnection.isMuted ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
@@ -292,7 +292,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
             onClick={toggleVideo}
             className={cn(
               "rounded-full w-12 h-12 text-white",
-              !webrtcConnection.isVideoEnabled ? "bg-red-500 hover:bg-red-600" : "bg-gray-700 hover:bg-gray-600"
+              !webrtcConnection.isVideoEnabled ? "bg-hc-warning hover:bg-hc-warning/90" : "bg-gray-700 hover:bg-gray-600"
             )}
           >
             {webrtcConnection.isVideoEnabled ? <Video className="w-6 h-6" /> : <VideoOff className="w-6 h-6" />}
@@ -316,7 +316,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
             variant="ghost"
             size="lg"
             onClick={handleEndCall}
-            className="rounded-full w-12 h-12 bg-red-500 hover:bg-red-600 text-white"
+            className="rounded-full w-12 h-12 bg-hc-warning hover:bg-hc-warning/90 text-white"
           >
             <PhoneOff className="w-6 h-6" />
           </Button>
@@ -363,7 +363,7 @@ export const VideoCall: React.FC<VideoCallProps> = ({
 
       {/* Error Display */}
       {webrtcState.error && (
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg">
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-hc-warning text-white px-4 py-2 rounded-lg">
           <p className="text-sm">{webrtcState.error}</p>
         </div>
       )}

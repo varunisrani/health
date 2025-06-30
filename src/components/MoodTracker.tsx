@@ -372,7 +372,7 @@ export const MoodTracker = () => {
                         size="sm"
                         onClick={() => togglePrompt(prompt)}
                         className={cn(
-                          "p-0 ml-2 hover:bg-red-100 hover:text-red-600",
+                          "p-0 ml-2 hover:bg-hc-warning/10 hover:text-hc-warning",
                           isMobile ? "h-5 w-5 text-sm" : "h-6 w-6"
                         )}
                       >

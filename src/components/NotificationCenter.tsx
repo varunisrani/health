@@ -37,15 +37,15 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, 
   const getNotificationIcon = (type: Notification['type']) => {
     switch (type) {
       case 'trial_expiring':
-        return <Clock className="h-4 w-4 text-amber-800" />;
+        return <Clock className="h-4 w-4 text-hc-secondary" />;
       case 'payment_failed':
-        return <CreditCard className="h-4 w-4 text-amber-900" />;
+        return <CreditCard className="h-4 w-4 text-hc-secondary" />;
       case 'privacy_update':
-        return <Shield className="h-4 w-4 text-amber-700" />;
+        return <Shield className="h-4 w-4 text-hc-secondary" />;
       case 'consent_renewal':
-        return <Shield className="h-4 w-4 text-amber-600" />;
+        return <Shield className="h-4 w-4 text-hc-secondary" />;
       case 'security_alert':
-        return <AlertTriangle className="h-4 w-4 text-amber-800" />;
+        return <AlertTriangle className="h-4 w-4 text-hc-secondary" />;
       default:
         return <Info className="h-4 w-4 text-gray-500" />;
     }
@@ -114,15 +114,15 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, 
         <div className="space-y-4 max-h-[60vh] overflow-y-auto">
           {/* Priority Notifications */}
           {(isTrialExpiring || isTrialExpired) && (
-            <Card className="border-amber-200 bg-amber-50">
+            <Card className="border-hc-secondary bg-hc-surface">;
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
-                  <Clock className="h-5 w-5 text-orange-600 mt-0.5" />
+                  <Clock className="h-5 w-5 text-hc-secondary mt-0.5" />
                   <div className="flex-1">
-                    <h4 className="font-medium text-orange-800">
+                    <h4 className="font-medium text-hc-primary">
                       {isTrialExpired ? 'Trial Expired' : 'Trial Expiring Soon'}
                     </h4>
-                    <p className="text-sm text-orange-700 mt-1">
+                    <p className="text-sm text-hc-secondary mt-1">
                       {isTrialExpired 
                         ? 'Your free trial has expired. Upgrade to continue using premium features.'
                         : `Your trial expires in ${trialStatus?.daysRemaining} day${trialStatus?.daysRemaining !== 1 ? 's' : ''}. Upgrade now to avoid interruption.`
@@ -130,7 +130,7 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, 
                     </p>
                     <Button 
                       size="sm" 
-                      className="mt-2 bg-orange-600 hover:bg-orange-700"
+                      className="mt-2 bg-hc-primary hover:bg-hc-secondary"
                       onClick={() => {
                         onClose();
                         // Navigate to subscription page
@@ -264,7 +264,7 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({ onClick }) =
       className="relative hover:bg-slate-100"
       onClick={onClick}
     >
-      <Bell className={`h-4 w-4 ${hasUrgentNotifications ? 'text-red-500' : 'text-slate-700'}`} />
+      <Bell className={`h-4 w-4 ${hasUrgentNotifications ? 'text-hc-secondary' : 'text-slate-700'}`} />
       {(unreadCount > 0 || isTrialExpiring || isTrialExpired) && (
         <Badge 
           variant={hasUrgentNotifications ? "destructive" : "secondary"}
