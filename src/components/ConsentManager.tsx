@@ -101,7 +101,7 @@ export const ConsentManager: React.FC = () => {
     }
 
     if (isValid) {
-      return { status: 'granted', color: 'green', icon: CheckCircle };
+      return { status: 'granted', color: 'brown', icon: CheckCircle };
     } else if (latestRecord.granted) {
       return { status: 'expired', color: 'orange', icon: AlertTriangle };
     } else {
@@ -206,7 +206,7 @@ export const ConsentManager: React.FC = () => {
                         <div key={`${record.timestamp}-${index}`} className="flex items-center justify-between text-xs bg-gray-50 p-2 rounded">
                           <div className="flex items-center gap-2">
                             {record.granted ? (
-                              <CheckCircle className="h-3 w-3 text-green-500" />
+                              <CheckCircle className="h-3 w-3 text-hc-primary" />
                             ) : (
                               <XCircle className="h-3 w-3 text-red-500" />
                             )}
@@ -271,11 +271,11 @@ export const ConsentManager: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-green-50 rounded-lg">
-              <div className="text-2xl font-bold text-green-600">
+            <div className="p-4 bg-hc-surface rounded-lg">
+              <div className="text-2xl font-bold text-hc-primary">
                 {consentTypes.filter(c => hasValidConsent(c.type)).length}
               </div>
-              <div className="text-sm text-green-700">Active Consents</div>
+              <div className="text-sm text-hc-primary">Active Consents</div>
             </div>
             <div className="p-4 bg-orange-50 rounded-lg">
               <div className="text-2xl font-bold text-orange-600">

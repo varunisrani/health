@@ -284,7 +284,7 @@ export const SubscriptionManager: React.FC = () => {
                         {formatPrice(price, billingCycle)}
                       </div>
                       {billingCycle === 'yearly' && price > 0 && (
-                        <div className="text-xs text-green-600">
+                        <div className="text-xs text-hc-accent">
                           Save ${savings.toFixed(0)} ({savingsPercentage.toFixed(0)}% off)
                         </div>
                       )}
@@ -295,7 +295,7 @@ export const SubscriptionManager: React.FC = () => {
                     <ul className={`space-y-2 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="h-4 w-4 text-hc-primary mt-0.5 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}

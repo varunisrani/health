@@ -108,7 +108,7 @@ export const AnonymousMode: React.FC = () => {
       </div>
 
       {/* Anonymous Mode Toggle */}
-      <Card className={`${anonymousMode ? 'border-green-200 bg-green-50' : 'border-gray-200'}`}>
+      <Card className={`${anonymousMode ? 'border-hc-secondary bg-hc-surface' : 'border-gray-200'}`}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <EyeOff className="h-5 w-5" />
@@ -131,9 +131,9 @@ export const AnonymousMode: React.FC = () => {
           </div>
 
           {anonymousMode && (
-            <Alert className="border-green-200 bg-green-50">
-              <CheckCircle className="h-4 w-4 text-green-600" />
-              <AlertDescription className="text-green-800">
+            <Alert className="border-hc-secondary bg-hc-surface">
+              <CheckCircle className="h-4 w-4 text-hc-primary" />
+              <AlertDescription className="text-hc-primary">
                 Anonymous mode is active. Your identity is protected and your activities are not linked to your personal information.
               </AlertDescription>
             </Alert>
@@ -166,7 +166,7 @@ export const AnonymousMode: React.FC = () => {
                 <div key={index} className="flex items-start gap-3 p-3 border rounded-lg">
                   <div className={`p-2 rounded-lg ${
                     feature.enabled 
-                      ? 'bg-green-100 text-green-600' 
+                      ? 'bg-hc-tertiary/30 text-hc-primary' 
                       : 'bg-gray-100 text-gray-400'
                   }`}>
                     <Icon className="h-4 w-4" />
@@ -175,7 +175,7 @@ export const AnonymousMode: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <h4 className="font-medium text-sm">{feature.title}</h4>
                       {feature.enabled ? (
-                        <CheckCircle className="h-3 w-3 text-green-500" />
+                        <CheckCircle className="h-3 w-3 text-hc-primary" />
                       ) : (
                         <div className="h-3 w-3 border border-gray-300 rounded-full" />
                       )}
@@ -199,7 +199,7 @@ export const AnonymousMode: React.FC = () => {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
-              <h4 className="font-medium text-green-700">Enhanced Privacy</h4>
+              <h4 className="font-medium text-hc-primary">Enhanced Privacy</h4>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Complete identity protection</li>
                 <li>• No personal data linkage</li>
@@ -208,7 +208,7 @@ export const AnonymousMode: React.FC = () => {
               </ul>
             </div>
             <div className="space-y-3">
-              <h4 className="font-medium text-blue-700">Security Benefits</h4>
+              <h4 className="font-medium text-hc-accent">Security Benefits</h4>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Reduced data breach impact</li>
                 <li>• No targeted profiling</li>
@@ -221,18 +221,18 @@ export const AnonymousMode: React.FC = () => {
       </Card>
 
       {/* Limitations */}
-      <Card className="border-orange-200 bg-orange-50">
+      <Card className="border-hc-tertiary bg-hc-surface">
         <CardHeader>
-          <CardTitle className="text-orange-700 flex items-center gap-2">
+          <CardTitle className="text-hc-primary flex items-center gap-2">
             <AlertTriangle className="h-5 w-5" />
             Limitations in Anonymous Mode
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="text-sm text-orange-800 space-y-2">
+          <ul className="text-sm text-hc-primary space-y-2">
             {limitations.map((limitation, index) => (
               <li key={index} className="flex items-start gap-2">
-                <AlertTriangle className="h-3 w-3 text-orange-600 mt-0.5 flex-shrink-0" />
+                <AlertTriangle className="h-3 w-3 text-hc-accent mt-0.5 flex-shrink-0" />
                 <span>{limitation}</span>
               </li>
             ))}

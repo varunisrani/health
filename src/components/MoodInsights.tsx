@@ -198,9 +198,9 @@ export const MoodInsights = () => {
                 <Line
                   type="monotone"
                   dataKey="mood"
-                  stroke="#4F9CAF"
+                  stroke="#7B5454"
                   strokeWidth={3}
-                  dot={{ fill: '#4F9CAF', strokeWidth: 2, r: 4 }}
+                  dot={{ fill: '#7B5454', strokeWidth: 2, r: 4 }}
                   connectNulls={false}
                 />
               </LineChart>

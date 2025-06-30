@@ -183,7 +183,7 @@ export const PaymentIntegration: React.FC<PaymentIntegrationProps> = ({
             <div className="text-right">
               <div className="font-bold text-lg">${price.toFixed(2)}</div>
               {isYearly && (
-                <div className="text-xs text-green-600">
+                <div className="text-xs text-hc-accent">
                   Save ${savings.toFixed(0)} ({savingsPercentage.toFixed(0)}% off)
                 </div>
               )}
@@ -333,11 +333,11 @@ export const PaymentIntegration: React.FC<PaymentIntegrationProps> = ({
         </div>
 
         {/* Security Notice */}
-        <div className="flex items-start gap-2 p-3 bg-green-50 rounded-lg">
-          <Lock className="h-4 w-4 text-green-600 mt-0.5" />
+        <div className="flex items-start gap-2 p-3 bg-hc-surface rounded-lg">
+          <Lock className="h-4 w-4 text-hc-primary mt-0.5" />
           <div className="text-sm">
-            <p className="text-green-800 font-medium">Secure Payment</p>
-            <p className="text-green-700">Your payment information is encrypted and secure. We use industry-standard SSL encryption.</p>
+            <p className="text-hc-primary font-medium">Secure Payment</p>
+            <p className="text-hc-primary">Your payment information is encrypted and secure. We use industry-standard SSL encryption.</p>
           </div>
         </div>
       </div>
@@ -347,7 +347,7 @@ export const PaymentIntegration: React.FC<PaymentIntegrationProps> = ({
   const renderConfirmation = () => (
     <div className="space-y-6">
       <div className="text-center">
-        <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+        <CheckCircle className="h-12 w-12 text-hc-primary mx-auto mb-4" />
         <h3 className="text-lg font-semibold mb-2">Confirm Your Purchase</h3>
         <p className="text-gray-600">Please review your order before completing the payment</p>
       </div>
@@ -364,7 +364,7 @@ export const PaymentIntegration: React.FC<PaymentIntegrationProps> = ({
           </div>
           
           {isYearly && (
-            <div className="flex justify-between text-green-600">
+            <div className="flex justify-between text-hc-accent">
               <span>Yearly discount</span>
               <span>-${savings.toFixed(2)}</span>
             </div>

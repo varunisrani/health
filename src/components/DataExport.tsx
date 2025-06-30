@@ -80,7 +80,7 @@ export const DataExport: React.FC = () => {
   const getStatusIcon = (status: DataExportRequest['status']) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-hc-primary" />;
       case 'processing':
         return <Clock className="h-4 w-4 text-blue-500" />;
       case 'failed':
@@ -272,11 +272,11 @@ export const DataExport: React.FC = () => {
 
                   {/* Download section for completed exports */}
                   {request.status === 'completed' && request.downloadUrl && (
-                    <div className="bg-green-50 border border-green-200 rounded p-3 mb-3">
+                    <div className="bg-hc-surface border border-hc-secondary rounded p-3 mb-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-600" />
-                          <span className="text-sm font-medium text-green-800">
+                          <CheckCircle className="h-4 w-4 text-hc-primary" />
+                          <span className="text-sm font-medium text-hc-primary">
                             Export Ready for Download
                           </span>
                         </div>
@@ -292,7 +292,7 @@ export const DataExport: React.FC = () => {
                           <Button
                             size="sm"
                             onClick={() => handleDownload(request)}
-                            className="bg-green-600 hover:bg-green-700"
+                            className="bg-hc-primary hover:bg-hc-primary/90"
                           >
                             <Download className="h-3 w-3 mr-1" />
                             Download
@@ -300,7 +300,7 @@ export const DataExport: React.FC = () => {
                         </div>
                       </div>
                       {request.expiresAt && (
-                        <p className="text-xs text-green-700 mt-1">
+                        <p className="text-xs text-hc-primary mt-1">
                           Download expires: {request.expiresAt.toLocaleDateString()}
                         </p>
                       )}

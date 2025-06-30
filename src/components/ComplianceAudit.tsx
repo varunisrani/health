@@ -234,7 +234,7 @@ export const ComplianceAudit: React.FC = () => {
                 <p className="text-sm text-gray-600">Data Access</p>
                 <p className="text-2xl font-bold">{metrics.dataAccess}</p>
               </div>
-              <Eye className="h-8 w-8 text-green-500" />
+              <Eye className="h-8 w-8 text-hc-primary" />
             </div>
           </CardContent>
         </Card>

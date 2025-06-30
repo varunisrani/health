@@ -464,23 +464,23 @@ export const PrivacyDashboard: React.FC = () => {
             <CardContent>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                  <CheckCircle className="h-4 w-4 text-hc-primary mt-0.5" />
                   <span>All data transmitted using TLS 1.3 encryption</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                  <CheckCircle className="h-4 w-4 text-hc-primary mt-0.5" />
                   <span>Health data encrypted with AES-256-GCM</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                  <CheckCircle className="h-4 w-4 text-hc-primary mt-0.5" />
                   <span>Regular security audits and penetration testing</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                  <CheckCircle className="h-4 w-4 text-hc-primary mt-0.5" />
                   <span>HIPAA and SOC 2 Type II compliant infrastructure</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                  <CheckCircle className="h-4 w-4 text-hc-primary mt-0.5" />
                   <span>Zero-knowledge architecture for sensitive data</span>
                 </div>
               </div>
