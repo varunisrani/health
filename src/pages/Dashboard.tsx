@@ -17,13 +17,14 @@ import { HealingMateWidget } from '@/components/HealingMateWidget';
 import { SubscriptionManager } from '@/components/SubscriptionManager';
 import { TrialStatus } from '@/components/TrialStatus';
 import { NotificationCenter, NotificationBell } from '@/components/NotificationCenter';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Crown, Clock, Bell, Menu, X } from 'lucide-react';
 
 const Dashboard = () => {
   const { user, logout, subscription, trialStatus, isTrialExpiring, isTrialExpired } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const isMobile = useIsMobile();
   const [activeTab, setActiveTab] = useState('therapists');
   const [showNotifications, setShowNotifications] = useState(false);
@@ -49,6 +50,13 @@ const Dashboard = () => {
       window.removeEventListener('navigate-to-therapists', handleNavigateToTherapistsEvent);
     };
   }, []);
+
+  // Handle navigation state to set active tab when coming from library section
+  React.useEffect(() => {
+    if (location.state?.activeTab) {
+      setActiveTab(location.state.activeTab);
+    }
+  }, [location.state]);
 
   const handleLogout = async () => {
     await logout();

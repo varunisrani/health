@@ -48,9 +48,12 @@ const ConsultantLibrarySection = () => {
 
   const handleExploreSection = (category: string) => {
     if (isAuthenticated) {
-      // For meditation, redirect to therapists page; for others, navigate to library
+      // For meditation, redirect to therapists page; for yoga routines and music therapy, redirect to Healing Mate dashboard
       if (category.toLowerCase().includes('meditation')) {
         navigate('/dashboard'); // Navigate to dashboard which contains therapists
+      } else if (category.toLowerCase().includes('yoga') || category.toLowerCase().includes('music')) {
+        // Navigate to dashboard and set active tab to healing-mate
+        navigate('/dashboard', { state: { activeTab: 'healing-mate' } });
       } else {
         navigate('/library', { state: { category: category.toLowerCase() } });
       }
@@ -59,7 +62,7 @@ const ConsultantLibrarySection = () => {
     }
   };
 
-  const handleStartItem = (category: string, item: any) => {
+  const handleStartItem = (category: string, item: { title: string; duration: string; level: string }) => {
     if (isAuthenticated) {
       // Navigate to the specific item or library category
       navigate('/library', { state: { category: category.toLowerCase(), item: item.title } });
