@@ -131,14 +131,14 @@ export const TrialStatus: React.FC<TrialStatusProps> = ({
         <div className="bg-hc-surface p-3 rounded-lg">
           {isTrialExpired ? (
             <div className="text-center space-y-2">
-              <p className="text-red-600 font-medium">Your free trial has expired</p>
+              <p className="text-amber-900 font-medium">Your free trial has expired</p>
               <p className="text-sm text-gray-600">
                 Upgrade to Premium to regain access to all features
               </p>
             </div>
           ) : isTrialExpiring ? (
             <div className="text-center space-y-2">
-              <p className="text-orange-600 font-medium">
+              <p className="text-amber-800 font-medium">
                 Your trial expires in {trialStatus.daysRemaining} day{trialStatus.daysRemaining !== 1 ? 's' : ''}
               </p>
               <p className="text-sm text-gray-600">

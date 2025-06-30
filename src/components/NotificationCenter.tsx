@@ -37,15 +37,15 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, 
   const getNotificationIcon = (type: Notification['type']) => {
     switch (type) {
       case 'trial_expiring':
-        return <Clock className="h-4 w-4 text-orange-500" />;
+        return <Clock className="h-4 w-4 text-amber-800" />;
       case 'payment_failed':
-        return <CreditCard className="h-4 w-4 text-red-500" />;
+        return <CreditCard className="h-4 w-4 text-amber-900" />;
       case 'privacy_update':
-        return <Shield className="h-4 w-4 text-blue-500" />;
+        return <Shield className="h-4 w-4 text-amber-700" />;
       case 'consent_renewal':
-        return <Shield className="h-4 w-4 text-purple-500" />;
+        return <Shield className="h-4 w-4 text-amber-600" />;
       case 'security_alert':
-        return <AlertTriangle className="h-4 w-4 text-red-500" />;
+        return <AlertTriangle className="h-4 w-4 text-amber-800" />;
       default:
         return <Info className="h-4 w-4 text-gray-500" />;
     }
@@ -114,7 +114,7 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, 
         <div className="space-y-4 max-h-[60vh] overflow-y-auto">
           {/* Priority Notifications */}
           {(isTrialExpiring || isTrialExpired) && (
-            <Card className="border-orange-200 bg-orange-50">
+            <Card className="border-amber-200 bg-amber-50">
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-orange-600 mt-0.5" />

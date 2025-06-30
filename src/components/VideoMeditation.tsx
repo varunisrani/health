@@ -52,7 +52,7 @@ const videoMeditationThemes = [
     name: 'Nature Connection',
     icon: Heart,
     description: 'Connect with nature through beautiful landscapes',
-    color: 'from-green-500 to-teal-600',
+    color: 'from-amber-700 to-amber-800',
     tags: ['nature', 'landscapes', 'connection', 'outdoor', 'serenity']
   },
   {
@@ -215,7 +215,7 @@ export const VideoMeditation: React.FC<VideoMeditationProps> = ({ className }) =
           </div>
           {isCompleted && (
             <div className="absolute top-2 left-2">
-              <Badge variant="default" className="bg-green-600">
+              <Badge variant="default" className="bg-amber-800">
                 <Award className="w-3 h-3 mr-1" />
                 Completed
               </Badge>

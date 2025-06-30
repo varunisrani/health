@@ -26,9 +26,9 @@ export default {
 				'hc-primary': 'rgb(123 84 84)', /* Muted mauve/rose buttons */
 				'hc-secondary': 'rgb(220 199 182)', /* Warm beige brush texture */
 				'hc-tertiary': 'rgb(191 174 160)', /* Light tan brush texture */
-				'hc-surface': 'rgb(248 246 241)', /* Light cream background */
+				'hc-surface': 'rgb(245 242 237)', /* Light brown background */
 				'hc-accent': 'rgb(123 84 84)', /* Muted mauve/rose accent */
-				'hc-warm': 'rgb(248 246 241)', /* Light cream */
+				'hc-warm': 'rgb(245 242 237)', /* Light brown */
 				'hc-success': 'rgb(123 84 84)', /* Muted mauve/rose - brown theme */
 				'hc-warning': 'rgb(123 84 84)', /* Muted mauve/rose - brown theme */
 				'hc-soft': 'rgb(220 199 182)', /* Warm beige for soft elements */

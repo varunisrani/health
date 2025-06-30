@@ -284,7 +284,7 @@ export const SubscriptionManager: React.FC = () => {
                         {formatPrice(price, billingCycle)}
                       </div>
                       {billingCycle === 'yearly' && price > 0 && (
-                        <div className="text-xs text-hc-accent">
+                        <div className="text-xs text-amber-700">
                           Save ${savings.toFixed(0)} ({savingsPercentage.toFixed(0)}% off)
                         </div>
                       )}
@@ -371,7 +371,7 @@ export const SubscriptionManager: React.FC = () => {
           {subscription && canCancel && (
             <Card>
               <CardHeader>
-                <CardTitle className="text-red-600">Danger Zone</CardTitle>
+                <CardTitle className="text-amber-900">Danger Zone</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between">

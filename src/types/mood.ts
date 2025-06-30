@@ -36,11 +36,11 @@ export interface MoodInsight {
 
 // Mood level configuration
 export const MOOD_LEVELS = [
-  { level: 1, emoji: '😢', label: 'Very Sad', color: '#EF4444' },
-  { level: 2, emoji: '😟', label: 'Sad', color: '#F97316' },
-  { level: 3, emoji: '😐', label: 'Neutral', color: '#EAB308' },
-  { level: 4, emoji: '😊', label: 'Happy', color: '#22C55E' },
-  { level: 5, emoji: '😄', label: 'Very Happy', color: '#10B981' },
+  { level: 1, emoji: '😢', label: 'Very Sad', color: '#8B4513' },
+  { level: 2, emoji: '😟', label: 'Sad', color: '#A0522D' },
+  { level: 3, emoji: '😐', label: 'Neutral', color: '#CD853F' },
+  { level: 4, emoji: '😊', label: 'Happy', color: '#D2B48C' },
+  { level: 5, emoji: '😄', label: 'Very Happy', color: '#F4A460' },
 ];
 
 // Activity suggestions
