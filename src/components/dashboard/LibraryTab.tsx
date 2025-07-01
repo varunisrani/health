@@ -355,6 +355,32 @@ export const LibraryTab = () => {
           </div>
         </div>
       )}
+
+      {/* Premium Library Access Section */}
+      <div>
+        <div className="mt-16 text-center">
+          <Card className="max-w-2xl mx-auto rounded-3xl shadow-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 border-2 border-slate-600">
+            <CardContent className="p-10">
+              <div className="text-7xl mb-6 filter drop-shadow-lg">📚</div>
+              <h3 className="text-3xl font-bold text-slate-100 mb-6 tracking-wide">
+                Unlock Premium Library Access
+              </h3>
+              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+                Get unlimited access to our complete consultant library with 1000+ guided sessions, exclusive content, and new releases added weekly.
+              </p>
+              <button 
+                className="bg-gradient-to-r from-slate-600 to-slate-500 hover:from-slate-500 hover:to-slate-400 text-slate-100 font-bold px-10 py-5 rounded-2xl transition-all duration-500 hover:shadow-xl hover:scale-105 border border-slate-500 hover:border-slate-400"
+                onClick={() => {
+                  // Handle premium upgrade navigation
+                  console.log('Navigate to premium upgrade');
+                }}
+              >
+                Start Free Trial
+              </button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 };
