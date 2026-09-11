@@ -1,73 +1,63 @@
-# Welcome to your Lovable project
+# Mended Minds
 
-## Project info
+Mended Minds is a browser-based mental-wellness platform prototype for exploring therapists, sessions, mood tracking, and guided self-care content.
 
-**URL**: https://lovable.dev/projects/f60ccec7-9205-4049-b37d-b7f92e8cd14e
+## Core features
 
-## How can I edit this code?
+- Landing, login, signup, and protected dashboard routes.
+- Therapist discovery and profile views.
+- Session booking, history, webinar, and live-session interfaces.
+- Mood entries, history, insights, and export controls.
+- Guided meditation, breathing, music, sound, and video content browsing.
+- Subscription, trial, notification, consent, privacy, audit, and data-request demonstrations.
+- WebRTC-based video-call UI with simulated signalling.
+- Responsive components built from Radix UI primitives.
 
-There are several ways of editing your application.
+## Technology stack
 
-**Use Lovable**
+- React 18 and TypeScript
+- Vite 5 with the React SWC plugin
+- React Router 6 and TanStack Query
+- Tailwind CSS, Radix UI, and shadcn-style components
+- Recharts, React Hook Form, Zod, and date-fns
+- Browser WebRTC, Web Crypto, `localStorage`, jsPDF, and html2canvas
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f60ccec7-9205-4049-b37d-b7f92e8cd14e) and start prompting.
+## Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js compatible with the locked dependencies
+- npm
 
-**Use your preferred IDE**
+## Local setup
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/varunisrani/health.git
+cd health
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build and inspect the production bundle with:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+npm run preview
+```
 
-**Use GitHub Codespaces**
+Other verified scripts are `npm run build:dev` and `npm run lint`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Configuration
 
-## What technologies are used for this project?
+No environment variables are referenced by the current source. Prototype data and user state are stored in browser `localStorage`.
 
-This project is built with:
+## Project structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `src/pages/` — landing, authentication, dashboard, therapist, session, and library pages
+- `src/components/` — wellness features and reusable UI components
+- `src/context/` — authentication, sessions, mood, privacy, subscription, and content state
+- `src/hooks/` — mood, session, encryption, and WebRTC hooks
+- `src/services/` — mock subscription, audit, and encryption services
+- `src/types/` — application domain types
 
-## How can I deploy this project?
+## Status and limitations
 
-Simply open [Lovable](https://lovable.dev/projects/f60ccec7-9205-4049-b37d-b7f92e8cd14e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This is a front-end demonstration, not a production healthcare, teletherapy, billing, privacy-compliance, or emergency-support system. Authentication, subscriptions, payments, audit records, and most domain data are mocked in the browser. WebRTC signalling is simulated rather than backed by a signalling server, and some referenced local media assets may not be present. Do not use the prototype to store real health or payment information.
